@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 
 st.set_page_config(layout="wide")
-st.title("題目")
+st.title("地震災害防治分析—以美濃地震為例")
 
 st.header("前言")
 markedown1="流程(前言)內文"

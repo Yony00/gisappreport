@@ -21,3 +21,8 @@ work = {
 }
 df=pd.DataFrame(work)
 st.table(df)
+
+st.header("歷史地震展示")
+data1="https://raw.githubusercontent.com/liuchia515/gisappreport/refs/heads/main/data/%E6%AD%B7%E5%8F%B2%E8%B3%87%E6%96%99.csv"
+df = pd.read_csv(data1)
+st.map(df, lat="col1", long="col2", depth="col3", ML="col4")

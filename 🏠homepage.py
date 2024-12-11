@@ -32,5 +32,5 @@ def filterdata(df,selected_range):
   lower, upper = selected_range
   return df[(df["ML"]>=lower) & (df["ML"]<=upper)]
 filtered_data = filterdata(data, selected)
-st.map(filtered_data)
-st.dataframe(filtered_data)
+st.map(filtered_data, size=20, color="#0044ff")
+st.table(filtered_data)

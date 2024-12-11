@@ -17,18 +17,18 @@ m = leafmap.Map(center=[23.5, 121], zoom=7)  # 台灣範例中心點
 # 創建地圖物件
 m = leafmap.Map(center=[23.5, 121], zoom=7)  # 台灣範例中心點
 
-# 1. 下載並解壓 SHP 壓縮檔
-url = "https://github.com/tim9810/gis_final_exam/blob/main/tainung/%E5%8F%B0%E5%8D%97shp.rar"  # 替換為正確的 ZIP 檔案路徑
-local_zip = "tainung.rar"
+# 1. 下載並解壓 SHP 壓縮檔 (RAR 格式)
+url = "https://raw.github.com/tim9810/gis_final_exam/blob/main/tainung/%E5%8F%B0%E5%8D%97shp.rar"  # 替換為正確的 RAR 檔案路徑
+local_rar = "tainung.rar"
 
 try:
-    # 下載 ZIP 檔案
-    with open(local_zip, "wb") as f:
+    # 下載 RAR 檔案
+    with open(local_rar, "wb") as f:
         f.write(requests.get(url).content)
 
-    # 解壓 ZIP 檔案
-    with zipfile.ZipFile(local_zip, "r") as zip_ref:
-        zip_ref.extractall("tainung_data")
+    # 解壓 RAR 檔案
+    with rarfile.RarFile(local_rar) as rar_ref:
+        rar_ref.extractall("tainung_data")
 
     # 使用 Geopandas 加載 SHP
     shapefile_path = "tainung_data/tainung.shp"
@@ -37,6 +37,9 @@ try:
 
     # 將資料加入地圖
     m.add_gdf(gdf, layer_name="區域界線")
+
+except Exception as e:
+    st.error(f"無法讀取或處理 SHP 檔案: {e}")
 
 
 

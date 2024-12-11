@@ -22,7 +22,6 @@ data = pd.read_csv(
       "lon",
     ],
 )
-data["size"] = data.震度值*1000
 
 st.pydeck_chart(
     pdk.Deck(

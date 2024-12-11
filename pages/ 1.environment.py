@@ -25,7 +25,6 @@ data = pd.read_csv(
 
 st.pydeck_chart(
     pdk.Deck(
-        map_style=None,
         initial_view_state=pdk.ViewState(
             latitude=23.5,
             longitude=121,

@@ -27,10 +27,10 @@ st.header("歷史地震點位展示")
 data="https://raw.githubusercontent.com/liuchia515/gisappreport/refs/heads/main/data/%E6%AD%B7%E5%8F%B2%E8%B3%87%E6%96%99.csv"
 
 selected= st.slider("選擇規模",5.0,7.3,(5.0,7.3))
-midpoint = mpoint(data["lat"], data["lon"])
 def filterdata(data,selected):
   return data[data["ML"]==selected]
 map(filterdata(data, selected), midpoint[0], midpoint[1], 11)
+st.map(data)
 
 st.header("歷史地震點位展示2")
 m=leafmap.Map(center=[23.5, 121], zoom=7,minimap_control=True)

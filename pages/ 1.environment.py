@@ -39,11 +39,10 @@ st.pydeck_chart(
                 data=data,
                 get_position="[lon, lat]",
                 radius=2000,
-                height="size",
+                height="震度值",
                 pickable=True,
                 extruded=True,
             ),
         ],
-        tooltip={"text": "{測站名稱}\nearthquake intensity: {震度值}"},
     )
 )

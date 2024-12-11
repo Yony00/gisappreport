@@ -45,3 +45,6 @@ st.pydeck_chart(
 
     )
 )
+event = st.pydeck_chart(layers, on_select="rerun", selection_mode="multi-object")
+
+event.selection

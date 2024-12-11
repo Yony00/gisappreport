@@ -14,12 +14,22 @@ st.title("台南市消防局點位區圖")
 # 創建地圖物件
 m = leafmap.Map(center=[23.5, 121], zoom=7)  # 台灣範例中心點
 
-# 1. 加載 GeoJSON 檔案
-geojson_url = "https://raw.githubusercontent.com/tim9810/gis_final_exam/main/tainung/tainung.geojson"  # 替換為正確的 GeoJSON 路徑
+import requests
+
+geojson_url = "https://raw.githubusercontent.com/tim9810/gis_final_exam/main/tainung/tainung.geojson"
 try:
-    m.add_geojson(geojson_url, layer_name="區域界線")
+    # 使用指定編碼下載文件內容
+    response = requests.get(geojson_url)
+    response.encoding = "utf-8"  # 或嘗試其他編碼如 'latin1'
+    geojson_content = response.text
+    
+    # 將內容傳遞給地圖
+    m = leafmap.Map(center=[23.5, 121], zoom=7)
+    m.add_geojson(geojson_content, layer_name="區域界線")
+    m.to_streamlit(height=700)
 except Exception as e:
     st.error(f"無法讀取或處理 GeoJSON 檔案: {e}")
+
 
 # 2. 加載消防局點位資料 (CSV 檔案)
 fire_station_csv = "https://raw.githubusercontent.com/tim9810/gis_final_exam/refs/heads/main/%E5%8F%B0%E5%8D%97%E6%B6%88%E9%98%B2%E5%B1%80wgs84%E5%BA%A7%E6%A8%99utf.csv"  # 替換為你的 CSV 路徑

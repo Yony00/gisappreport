@@ -40,3 +40,4 @@ chart = pydeck.Deck(
     initial_view_state=view_state,
 )
 
+st.pydeck_chart(chart, on_select="rerun", selection_mode="multi-object")

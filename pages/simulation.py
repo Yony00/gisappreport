@@ -23,8 +23,7 @@ data = pd.read_csv(
 
 selectable_columns = ['邏輯樹', 'AbrahamsonEtAl2014','BooreAtkinson2008','CampbellBozorgnia2008','ChiouYoungs2008','LinLee2008SInter']
 options = st.selectbox('選擇一個GMPE呈現', selectable_columns)
-if options:
-    filtered = data[options]
+if options=="邏輯樹":
     st.pydeck_chart(
         pdk.Deck(
             initial_view_state=pdk.ViewState(
@@ -36,9 +35,9 @@ if options:
             layers=[
                 pdk.Layer(
                     "HexagonLayer",
-                    data=filtered,
+                    data=data,
                     get_position="[x, y]",
-                    get_radius="selectable_columns",
+                    get_radius="邏輯樹",
                     auto_highlight=True,
                     elevation_scale=50,
                     pickable=True,
@@ -47,5 +46,3 @@ if options:
             ],
         )
     )
-    st.markdown("選取縣市資料表")
-    st.dataframe(filtered)

@@ -39,7 +39,8 @@ st.pydeck_chart(
                 radius=200,
                 elevation_scale=4,
                 elevation_range=[0, 1000],
-
+                pickable=True,
+                extruded=True,
             ),
             pdk.Layer(
                 "ScatterplotLayer",

@@ -14,7 +14,7 @@ st.title("台南市消防局點位區圖")
 m = leafmap.Map(center=[23.5, 121], zoom=7)  # 台灣範例中心點
 
 # 1. 加載 GeoJSON 檔案
-geojson_url = "https://raw.githubusercontent.com/tim9810/gis_final_exam/main/tainung/tainung.geojson"
+geojson_url = "https://raw.githubusercontent.com/tim9810/gis_final_exam/refs/heads/main/tainung/arcgis_geojeson.json"
 try:
     # 將 GeoJSON 文件的 URL 傳遞給地圖
     m.add_geojson(geojson_url, layer_name="區域界線")

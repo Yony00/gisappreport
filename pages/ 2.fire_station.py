@@ -38,8 +38,7 @@ try:
     # 將資料加入地圖
     m.add_gdf(gdf, layer_name="區域界線")
 
-except Exception as e:
-    st.error(f"無法讀取或處理 SHP 檔案: {e}")
+
 
 # 2. 加載消防局點位資料 (CSV 檔案)
 fire_station_csv = "https://raw.githubusercontent.com/tim9810/gis_final_exam/refs/heads/main/%E5%8F%B0%E5%8D%97%E6%B6%88%E9%98%B2%E5%B1%80wgs84%E5%BA%A7%E6%A8%99utf.csv"  # 替換為你的 CSV 路徑

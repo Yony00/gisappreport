@@ -45,3 +45,8 @@ st.pydeck_chart(
         ],
     )
 )
+
+
+st.markdown("測站資料表格")
+df = pd.read_csv(url)
+st.table(df)

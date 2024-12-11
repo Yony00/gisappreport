@@ -23,6 +23,13 @@ data = pd.read_csv(
     ],
 )
 
+optiona = data["縣市"].tolist()
+optionb = st.multiselect("選擇多個選項", optiona)
+if optionb:
+    st.write("選取的項目：", optionb)
+    filtered = data[data["縣市"].isin(optionb)]
+    st.write("篩選後的資料：", filtered)
+
 options = st.multiselect("選擇多個選項", data.columns)
 if options:
     st.write("選定的列")

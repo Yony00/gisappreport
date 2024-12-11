@@ -33,14 +33,4 @@ def filterdata(df,selected_range):
   return df[(df["ML"]>=lower) & (df["ML"]<=upper)]
 filtered_data = filterdata(data, selected)
 st.map(filtered_data)
-
-
-st.header("歷史地震點位展示2")
-m=leafmap.Map(center=[23.5, 121], zoom=7,minimap_control=True)
-m.add_points_from_xy(
-  data1,
-  x="lon",
-  y="lat",
-  spin=True,
-)
-m.to_streamlit(height=700)
+st.dataframe(filtered_data)

@@ -34,12 +34,12 @@ if options=="邏輯樹":
             ),
             layers=[
                 pdk.Layer(
-                    "HexagonLayer",
+                    "HeatmapLayer",
                     data=data,
                     get_position="[x, y]",
-                    get_radius="邏輯樹",
+                    get_weight="邏輯樹",
                     auto_highlight=True,
-                    elevation_scale=10,
+                    radius_pixels=10,
                     pickable=True,
                     extruded=True,
                 ),

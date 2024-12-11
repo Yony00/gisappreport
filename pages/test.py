@@ -26,7 +26,6 @@ data = pd.read_csv(
 optiona = data["縣市"].unique().tolist()
 optionb = st.multiselect("選擇特定縣市", optiona)
 if optionb:
-    st.write("選取的縣市：", optionb)
     filtered = data[data["縣市"].isin(optionb)]
     st.pydeck_chart(
         pdk.Deck(

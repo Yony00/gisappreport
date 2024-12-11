@@ -27,7 +27,7 @@ except Exception as e:
 fire_station_csv = "https://raw.githubusercontent.com/tim9810/gis_final_exam/refs/heads/main/%E5%8F%B0%E5%8D%97%E6%B6%88%E9%98%B2%E5%B1%80wgs84%E5%BA%A7%E6%A8%99utf.csv"  # 替換為你的 CSV 路徑
 try:
     df = pd.read_csv(fire_station_csv)
-    if {"longitude", "latitude", "name"}.issubset(df.columns):
+    if {"经度", "纬度", "地址"}.issubset(df.columns):
         # 將點位加入地圖
         m.add_points_from_xy(
             df,

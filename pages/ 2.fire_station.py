@@ -14,14 +14,32 @@ st.title("台南市消防局點位區圖")
 # 創建地圖物件
 m = leafmap.Map(center=[23.5, 121], zoom=7)  # 台灣範例中心點
 
-# 1. 加載區域界線 (SHP 檔案)
-shapefile_path = "https://raw.github.com/tim9810/gis_final_exam/blob/main/tainung/tainung.shp"  # 替換為你的 SHP 路徑
+# 創建地圖物件
+m = leafmap.Map(center=[23.5, 121], zoom=7)  # 台灣範例中心點
+
+# 1. 下載並解壓 SHP 壓縮檔
+url = "https://github.com/tim9810/gis_final_exam/blob/main/tainung/%E5%8F%B0%E5%8D%97shp.rar"  # 替換為正確的 ZIP 檔案路徑
+local_zip = "tainung.rar"
+
 try:
+    # 下載 ZIP 檔案
+    with open(local_zip, "wb") as f:
+        f.write(requests.get(url).content)
+
+    # 解壓 ZIP 檔案
+    with zipfile.ZipFile(local_zip, "r") as zip_ref:
+        zip_ref.extractall("tainung_data")
+
+    # 使用 Geopandas 加載 SHP
+    shapefile_path = "tainung_data/tainung.shp"
     gdf = gpd.read_file(shapefile_path)
     gdf = gdf.to_crs("EPSG:4326")  # 確保座標系統為 WGS84
+
+    # 將資料加入地圖
     m.add_gdf(gdf, layer_name="區域界線")
+
 except Exception as e:
-    st.error(f"無法讀取 SHP 檔案: {e}")
+    st.error(f"無法讀取或處理 SHP 檔案: {e}")
 
 # 2. 加載消防局點位資料 (CSV 檔案)
 fire_station_csv = "https://raw.githubusercontent.com/tim9810/gis_final_exam/refs/heads/main/%E5%8F%B0%E5%8D%97%E6%B6%88%E9%98%B2%E5%B1%80wgs84%E5%BA%A7%E6%A8%99utf.csv"  # 替換為你的 CSV 路徑

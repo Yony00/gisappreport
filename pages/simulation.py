@@ -30,7 +30,7 @@ if options=="邏輯樹":
                 latitude=23.5,
                 longitude=121,
                 zoom=7,
-                pitch=50,
+                pitch=30,
             ),
             layers=[
                 pdk.Layer(
@@ -42,6 +42,7 @@ if options=="邏輯樹":
                     radius_pixels=10,
                     pickable=True,
                     extruded=True,
+                    opacity=0.5
                 ),
             ],
         )

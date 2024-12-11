@@ -2,7 +2,8 @@ import streamlit as st
 import leafmap.foliumap as leafmap
 import geopandas as gpd
 import pandas as pd
-import requests 
+import requests
+import rarfile  # 確保正確導入
 
 # 設定頁面配置
 st.set_page_config(layout="wide")
@@ -11,9 +12,6 @@ st.set_page_config(layout="wide")
 st.sidebar.title("About")
 st.sidebar.info("A Streamlit map with SHP and Fire Station data.")
 st.title("台南市消防局點位區圖")
-
-# 創建地圖物件
-m = leafmap.Map(center=[23.5, 121], zoom=7)  # 台灣範例中心點
 
 # 創建地圖物件
 m = leafmap.Map(center=[23.5, 121], zoom=7)  # 台灣範例中心點
@@ -41,22 +39,18 @@ try:
 except Exception as e:
     st.error(f"無法讀取或處理 SHP 檔案: {e}")
 
-
-
-
-# 2. 加載消防局點位資料 (CSV 檔案)
-fire_station_csv = "https://raw.githubusercontent.com/tim9810/gis_final_exam/refs/heads/main/%E5%8F%B0%E5%8D%97%E6%B6%88%E9%98%B2%E5%B1%80wgs84%E5%BA%A7%E6%A8%99utf.csv"  # 替換為你的 CSV 路徑
+# 加載消防局點位資料 (CSV 檔案)
+fire_station_csv = "https://raw.githubusercontent.com/tim9810/gis_final_exam/refs/heads/main/%E5%8F%B0%E5%8D%97%E6%B6%88%E9%98%B2%E5%B1%80wgs84%E5%BA%A7%E6%A8%99utf.csv"
 try:
     df = pd.read_csv(fire_station_csv)
     if {"经度", "纬度", "地址"}.issubset(df.columns):
-        # 將點位加入地圖
         m.add_points_from_xy(
             df,
             x="经度",
             y="纬度",
-            popup=["地址"],  # 點擊顯示名稱
-            icon_names=["fire"],  # 使用火焰圖示
-            spin=True,  # 圖示旋轉效果
+            popup=["地址"],
+            icon_names=["fire"],
+            spin=True,
             add_legend=True,
             layer_name="消防局點位",
         )

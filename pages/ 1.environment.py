@@ -43,6 +43,6 @@ st.pydeck_chart(
                 extruded=True,
             ),
         ],
-        tooltip={"text": "{測站名稱}\nearthquake intensity: {震度值}"},
+        tooltip={"text": "{"測站名稱"}\nearthquake intensity: {震度值}"},
     )
 )

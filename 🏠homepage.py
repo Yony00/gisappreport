@@ -44,7 +44,7 @@ view_state = pdk.ViewState(
     latitude=23.5, longitude=121, controller=True, zoom=7, pitch=30
 )
 chart = pdk.Deck(
-    point_layer,
+    point,
     initial_view_state=view_state,
     tooltip={"text": "{date}, {time}\nML: {ML}"},
 )

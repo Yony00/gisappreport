@@ -40,7 +40,7 @@ if optionb:
                     "HexagonLayer",
                     data=filtered,
                     get_position="[lon, lat]",
-                    get_radius=100,
+                    get_radius="震度值",
                     auto_highlight=True,
                     elevation_scale=50,
                     pickable=True,

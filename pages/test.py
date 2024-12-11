@@ -50,7 +50,7 @@ if optionb:
         )
     )
     st.markdown("選取縣市資料表")
-    st.dataframe(optionb)
+    st.dataframe(filtered)
 else:
     st.pydeck_chart(
         pdk.Deck(

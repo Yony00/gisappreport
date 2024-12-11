@@ -24,7 +24,9 @@ data = pd.read_csv(
 )
 
 options = st.multiselect("選擇多個選項", data.columns)
-st.write("您選擇了：", options)
+if options:
+    st.write("選定的列")
+    st.write(data[options])
 
 st.pydeck_chart(
     pdk.Deck(

@@ -38,7 +38,7 @@ st.pydeck_chart(
                 get_position="[lon, lat]",
                 radius=2000,
                 elevation_scale=100,
-                elevation_range=[0, 500],
+                elevation_range="震度值",
                 pickable=True,
                 extruded=True,
 

@@ -49,32 +49,30 @@ if optionb:
             ],
         )
     )
-
-
-st.pydeck_chart(
-    pdk.Deck(
-        initial_view_state=pdk.ViewState(
-            latitude=23.5,
-            longitude=121,
-            zoom=7,
-            pitch=50,
-        ),
-        layers=[
-            pdk.Layer(
-                "HexagonLayer",
-                data=data,
-                get_position="[lon, lat]",
-                get_radius="震度值",
-                auto_highlight=True,
-                elevation_scale=50,
-                pickable=True,
-                extruded=True,
+    st.write("選取縣市資料表：", optionb)
+else:
+    st.pydeck_chart(
+        pdk.Deck(
+            initial_view_state=pdk.ViewState(
+                latitude=23.5,
+                longitude=121,
+                zoom=7,
+                pitch=50,
             ),
-        ],
+            layers=[
+                pdk.Layer(
+                    "HexagonLayer",
+                    data=data,
+                    get_position="[lon, lat]",
+                    get_radius="震度值",
+                    auto_highlight=True,
+                    elevation_scale=50,
+                    pickable=True,
+                    extruded=True,
+                ),
+            ],
+        )
     )
-)
-
-
-st.markdown("測站資料表格")
-df = pd.read_csv(url)
-st.dataframe(df)
+    st.markdown("所有測站資料表格")
+    df = pd.read_csv(url)
+    st.dataframe(df)

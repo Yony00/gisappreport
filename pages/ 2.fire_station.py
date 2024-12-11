@@ -37,7 +37,8 @@ try:
 
     # 將資料加入地圖
     m.add_gdf(gdf, layer_name="區域界線")
-
+except Exception as e:
+    st.error(f"無法讀取或處理 SHP 檔案: {e}")
 
 
 

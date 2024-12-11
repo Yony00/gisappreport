@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
- import pydeck as pdk
+import pydeck as pdk
 
 st.set_page_config(layout="wide")
 st.title("地震災害防治分析—以美濃地震為例")

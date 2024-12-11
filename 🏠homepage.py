@@ -34,4 +34,4 @@ def filterdata(df,selected_range):
 filtered_data = filterdata(data, selected)
 st.map(filtered_data, size=20, color="#0044ff")
 st.write("選定規模範圍內地震資料")
-st.table(filtered_data)
+st.dataframe(filtered_data)

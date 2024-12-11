@@ -15,7 +15,7 @@ st.title("台南市消防局點位區圖")
 m = leafmap.Map(center=[23.5, 121], zoom=7)  # 台灣範例中心點
 
 # 1. 加載區域界線 (SHP 檔案)
-shapefile_path = "https://raw.github.com/tim9810/gis_final_exam/blob/main/tainung/tainung.shp"  # 替換為你的 SHP 路徑
+shapefile_path = "https://github.com/tim9810/gis_final_exam/tree/main/tainung"  # 替換為你的 SHP 路徑
 try:
     gdf = gpd.read_file(shapefile_path)
     gdf = gdf.to_crs("EPSG:4326")  # 確保座標系統為 WGS84

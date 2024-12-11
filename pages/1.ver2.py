@@ -40,6 +40,6 @@ view = pdk.ViewState(
 chart = pdk.Deck(
   layer,
   initial_view_state=view,
-  tooltip={"text": "{測站名稱}\nearthquake intensity: {震度值}"},
+  tooltip={"text": "{測站名稱}\nearthquake intensity: {lon}"},
 )
 st.pydeck_chart(chart, on_select="rerun", selection_mode="multi-object")

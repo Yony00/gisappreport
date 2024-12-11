@@ -39,7 +39,7 @@ if options=="邏輯樹":
                     get_position="[x, y]",
                     get_radius="邏輯樹",
                     auto_highlight=True,
-                    elevation_scale=50,
+                    elevation_scale=10,
                     pickable=True,
                     extruded=True,
                 ),

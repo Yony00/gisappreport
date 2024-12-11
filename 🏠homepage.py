@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import pydeck as pdk
+import leafmap.foliumap as leafmap
 
 st.set_page_config(layout="wide")
 st.title("地震災害防治分析—以美濃地震為例")
@@ -25,25 +25,12 @@ st.table(df)
 
 st.header("歷史地震展示")
 data1="https://raw.githubusercontent.com/liuchia515/gisappreport/refs/heads/main/data/%E6%AD%B7%E5%8F%B2%E8%B3%87%E6%96%99.csv"
-df= pd.read_csv(
+m=leafmap.Map(center=[23.5, 121], zoom=7,minimap_control=True)
+m.add_points_from_xy(
   data1,
-  header=0,
-  names=["date","time","lat","lon","depth","ML",],
+  x="lon",
+  y="lat",
+  color_column="ML",
+  spin=True,
+  add_legend=True,
 )
-point = pdk.Layer(
-    "ScatterplotLayer",
-    data=df,
-    get_position=["lon", "lat"],
-    get_color="[255, 75, 75]",
-    pickable=True,
-    auto_highlight=True,
-    get_radius="ML",
-)
-view_state = pdk.ViewState(latitude=23.5, longitude=121, zoom=7, pitch=30,)
-chart = pdk.Deck(
-    point,
-    initial_view_state=view_state,
-    tooltip={"text": "{date}, {time}\nML: {ML}"},
-)
-st.pydeck_chart(chart, on_select="rerun", selection_mode="multi-object")
-

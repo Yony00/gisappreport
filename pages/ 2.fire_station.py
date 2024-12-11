@@ -31,9 +31,9 @@ try:
         # 將點位加入地圖
         m.add_points_from_xy(
             df,
-            x="longitude",
-            y="latitude",
-            popup=["name"],  # 點擊顯示名稱
+            x="经度",
+            y="纬度",
+            popup=["地址"],  # 點擊顯示名稱
             icon_names=["fire"],  # 使用火焰圖示
             spin=True,  # 圖示旋轉效果
             add_legend=True,

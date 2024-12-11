@@ -37,11 +37,12 @@ st.pydeck_chart(
                 "HexagonLayer",
                 data=data,
                 get_position="[lon, lat]",
-                get_radius="震度值"*100,
+                get_radius="震度值",
                 auto_highlight=True,
                 pickable=True,
                 extruded=True,
             ),
         ],
+        tooltip={"text": "{測站名稱}\nearthquake intensity: {震度值}"},
     )
 )

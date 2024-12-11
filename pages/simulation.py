@@ -23,5 +23,5 @@ data = pd.read_csv(
 
 selectable_columns = ['邏輯樹', 'AbrahamsonEtAl2014','BooreAtkinson2008','CampbellBozorgnia2008','ChiouYoungs2008','LinLee2008SInter']
 selected_column = st.selectbox('選擇一個GMPE呈現', selectable_columns)
-options = df[selected_column].unique()
+options = data[selected_column].unique()
 selected_value = st.selectbox(f'選擇一個 {selected_column}', options)

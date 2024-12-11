@@ -22,7 +22,7 @@ data = pd.read_csv(
       "lon",
     ],
 )
-data["size"] = capitals.震度值*50
+data["size"] = data.震度值*50
 
 st.pydeck_chart(
     pdk.Deck(

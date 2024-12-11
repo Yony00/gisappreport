@@ -49,7 +49,8 @@ if optionb:
             ],
         )
     )
-    st.write("選取縣市資料表：", optionb)
+    st.markdown("選取縣市資料表")
+    st.dataframe(optionb)
 else:
     st.pydeck_chart(
         pdk.Deck(

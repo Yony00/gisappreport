@@ -41,8 +41,9 @@ st.pydeck_chart(
                 elevation_range=[0, 500],
                 pickable=True,
                 extruded=True,
+                tooltip={"text": "{測站名稱}\nearthquake intensity: {震度值}"},
             ),
         ],
-        tooltip={"text": "{"測站名稱"}\nearthquake intensity: {震度值}"},
+
     )
 )

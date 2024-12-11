@@ -43,6 +43,6 @@ st.pydeck_chart(
                 extruded=True,
             ),
         ],
-        tooltip = {"text": "測站: {測站名稱}"},
+        tooltip = {"text": "<b>測站: </b> {測站名稱}"},
     )
 )

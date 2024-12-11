@@ -24,13 +24,16 @@ df=pd.DataFrame(work)
 st.table(df)
 
 st.header("歷史地震點位展示")
-data="https://raw.githubusercontent.com/liuchia515/gisappreport/refs/heads/main/data/%E6%AD%B7%E5%8F%B2%E8%B3%87%E6%96%99.csv"
+url="https://raw.githubusercontent.com/liuchia515/gisappreport/refs/heads/main/data/%E6%AD%B7%E5%8F%B2%E8%B3%87%E6%96%99.csv"
+data = pd.read_csv(url)
 
 selected= st.slider("選擇規模",5.0,7.3,(5.0,7.3))
-def filterdata(data,selected):
-  return data[data["ML"]==selected]
-map(filterdata(data, selected), midpoint[0], midpoint[1], 11)
-st.map(data)
+def filterdata(df,selected_range):
+  lower, upper = selected_range
+  return df[(df["ML"]>=lower) & (df["ML"]<=upper)]
+filtered_data = filterdata(data, selected)
+st.map(filtered_data)
+
 
 st.header("歷史地震點位展示2")
 m=leafmap.Map(center=[23.5, 121], zoom=7,minimap_control=True)

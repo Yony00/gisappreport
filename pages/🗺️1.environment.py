@@ -36,7 +36,7 @@ st.pydeck_chart(
                 "HexagonLayer",
                 data=data,
                 get_position="[lon, lat]",
-                radius=1000,
+                radius=2000,
                 elevation_scale=100,
                 elevation_range=[0, 500],
                 pickable=True,

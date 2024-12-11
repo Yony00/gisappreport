@@ -40,10 +40,10 @@ point = pdk.Layer(
     auto_highlight=True,
     get_radius="ML",
 )
-view_state = pydeck.ViewState(
+view_state = pdk.ViewState(
     latitude=23.5, longitude=121, controller=True, zoom=7, pitch=30
 )
-chart = pydeck.Deck(
+chart = pdk.Deck(
     point_layer,
     initial_view_state=view_state,
     tooltip={"text": "{date}, {time}\nML: {ML}"},

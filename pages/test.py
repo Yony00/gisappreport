@@ -29,6 +29,28 @@ if optionb:
     st.write("選取的項目：", optionb)
     filtered = data[data["縣市"].isin(optionb)]
     st.write("篩選後的資料：", filtered)
+    st.pydeck_chart(
+        pdk.Deck(
+            initial_view_state=pdk.ViewState(
+                latitude=23.5,
+                longitude=121,
+                zoom=7,
+                pitch=50,
+            ),
+            layers=[
+                pdk.Layer(
+                    "HexagonLayer",
+                    data=filtered,
+                    get_position="[lon, lat]",
+                    get_radius="震度值",
+                    auto_highlight=True,
+                    elevation_scale=50,
+                    pickable=True,
+                    extruded=True,
+                ),
+            ],
+        )
+    )
 
 
 st.pydeck_chart(

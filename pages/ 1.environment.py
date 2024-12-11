@@ -38,10 +38,11 @@ st.pydeck_chart(
                 get_position="[lon, lat]",
                 get_radius="震度值",
                 auto_highlight=True,
+                elevation_scale=50
                 pickable=True,
                 extruded=True,
             ),
         ],
-    tooltip = {"text": "測站: {測站名稱}"},
+        tooltip = {"text": "測站: {測站名稱}"},
     )
 )

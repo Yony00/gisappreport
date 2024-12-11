@@ -23,30 +23,57 @@ data = pd.read_csv(
     ],
 )
 
-st.pydeck_chart(
-    pdk.Deck(
-        initial_view_state=pdk.ViewState(
-            latitude=23.5,
-            longitude=121,
-            zoom=7,
-            pitch=50,
-        ),
-        layers=[
-            pdk.Layer(
-                "HexagonLayer",
-                data=data,
-                get_position="[lon, lat]",
-                get_radius="震度值",
-                auto_highlight=True,
-                elevation_scale=50,
-                pickable=True,
-                extruded=True,
+optiona = data["縣市"].unique().tolist()
+optionb = st.multiselect("選擇特定縣市", optiona)
+if optionb:
+    filtered = data[data["縣市"].isin(optionb)]
+    st.pydeck_chart(
+        pdk.Deck(
+            initial_view_state=pdk.ViewState(
+                latitude=23.5,
+                longitude=121,
+                zoom=7,
+                pitch=50,
             ),
-        ],
+            layers=[
+                pdk.Layer(
+                    "HexagonLayer",
+                    data=filtered,
+                    get_position="[lon, lat]",
+                    get_radius="震度值",
+                    auto_highlight=True,
+                    elevation_scale=50,
+                    pickable=True,
+                    extruded=True,
+                ),
+            ],
+        )
     )
-)
-
-
-st.markdown("測站資料表格")
-df = pd.read_csv(url)
-st.dataframe(df)
+    st.markdown("選取縣市資料表")
+    st.dataframe(filtered)
+else:
+    st.pydeck_chart(
+        pdk.Deck(
+            initial_view_state=pdk.ViewState(
+                latitude=23.5,
+                longitude=121,
+                zoom=7,
+                pitch=50,
+            ),
+            layers=[
+                pdk.Layer(
+                    "HexagonLayer",
+                    data=data,
+                    get_position="[lon, lat]",
+                    get_radius="震度值",
+                    auto_highlight=True,
+                    elevation_scale=50,
+                    pickable=True,
+                    extruded=True,
+                ),
+            ],
+        )
+    )
+    st.markdown("所有測站資料表格")
+    df = pd.read_csv(url)
+    st.dataframe(df)

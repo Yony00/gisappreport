@@ -33,16 +33,13 @@ df= pd.read_csv(
 point = pdk.Layer(
     "ScatterplotLayer",
     data=df,
-    id="history earthquake",
     get_position=["lon", "lat"],
     get_color="[255, 75, 75]",
     pickable=True,
     auto_highlight=True,
     get_radius="ML",
 )
-view_state = pdk.ViewState(
-    latitude=23.5, longitude=121, controller=True, zoom=7, pitch=30
-)
+view_state = pdk.ViewState(latitude=23.5, longitude=121, zoom=7, pitch=30,)
 chart = pdk.Deck(
     point,
     initial_view_state=view_state,

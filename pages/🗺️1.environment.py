@@ -2,10 +2,11 @@ import streamlit as st
 import leafmap.foliumap as leafmap
 import pydeck
 import pandas as pd
+import numpy as np
 
 st.title("測試頁1")
 url="https://raw.githubusercontent.com/liuchia515/gisappreport/refs/heads/main/data/%E8%A7%80%E6%B8%AC%E5%80%BC.csv"
-capitals = pd.read_csv(
+data = pd.read_csv(
     url,
     header=0,
     names=[
@@ -21,23 +22,33 @@ capitals = pd.read_csv(
       "lon",
     ],
 )
-point_layer = pydeck.Layer(
-    "ScatterplotLayer",
-    data=capitals,
-    id="earthquake",
-    get_position=["lon", "lat"],
-    get_color="[255, 75, 75]",
-    pickable=True,
-    auto_highlight=True,
-    get_radius="震度值",
+st.pydeck_chart(
+    pdk.Deck(
+        map_style=None,
+        initial_view_state=pdk.ViewState(
+            latitude=23.5,
+            longitude=121,
+            zoom=7,
+            pitch=50,
+        ),
+        layers=[
+            pdk.Layer(
+                "HexagonLayer",
+                data=data,
+                get_position="[lon, lat]",
+                radius=200,
+                elevation_scale=4,
+                elevation_range=[0, 1000],
+                pickable=True,
+                extruded=True,
+            ),
+            pdk.Layer(
+                "ScatterplotLayer",
+                data=data,
+                get_position="[lon, lat]",
+                get_color="[200, 30, 0, 160]",
+                get_radius=200,
+            ),
+        ],
+    )
 )
-view_state = pydeck.ViewState(
-    latitude=23.5, longitude=121, controller=True, zoom=7, pitch=30
-)
-
-chart = pydeck.Deck(
-    point_layer,
-    initial_view_state=view_state,
-)
-
-st.pydeck_chart(chart, on_select="rerun", selection_mode="multi-object")

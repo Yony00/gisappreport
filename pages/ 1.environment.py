@@ -22,6 +22,8 @@ data = pd.read_csv(
       "lon",
     ],
 )
+data["size"] = capitals.震度值*50
+
 st.pydeck_chart(
     pdk.Deck(
         map_style=None,
@@ -37,7 +39,7 @@ st.pydeck_chart(
                 data=data,
                 get_position="[lon, lat]",
                 radius=2000,
-                height="震度值"*100,
+                height="size",
                 pickable=True,
                 extruded=True,
             ),

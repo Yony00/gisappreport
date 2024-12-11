@@ -27,10 +27,11 @@ st.header("歷史地震點位展示")
 url="https://raw.githubusercontent.com/liuchia515/gisappreport/refs/heads/main/data/%E6%AD%B7%E5%8F%B2%E8%B3%87%E6%96%99.csv"
 data = pd.read_csv(url)
 
-selected= st.slider("選擇規模",5.0,7.3,(5.0,7.3))
+selected= st.slider("選擇規模範圍",5.0,7.3,(5.0,7.3))
 def filterdata(df,selected_range):
   lower, upper = selected_range
   return df[(df["ML"]>=lower) & (df["ML"]<=upper)]
 filtered_data = filterdata(data, selected)
 st.map(filtered_data, size=20, color="#0044ff")
+st.write("選定規模範圍內地震資料")
 st.table(filtered_data)

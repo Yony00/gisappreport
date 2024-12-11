@@ -37,7 +37,7 @@ st.pydeck_chart(
                 "HexagonLayer",
                 data=data,
                 get_position="[lon, lat]",
-                get_radius="震度值",
+                get_radius="震度值"*100,
                 auto_highlight=True,
                 pickable=True,
                 extruded=True,

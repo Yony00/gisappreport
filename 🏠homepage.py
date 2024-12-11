@@ -30,8 +30,6 @@ m.add_points_from_xy(
   data1,
   x="lon",
   y="lat",
-  color_column="ML",
   spin=True,
-  add_legend=True,
 )
 m.to_streamlit(height=700)

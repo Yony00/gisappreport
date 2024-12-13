@@ -18,8 +18,7 @@ m.add_points_from_xy(
   filtered_data,
   x="lon",
   y="lat",
-  color_column="region",
-  icon_names=["gear", "map", "leaf", "globe"],
+  color_column="ML",
   spin=True,
   add_legend=True,
 )

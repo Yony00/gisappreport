@@ -19,6 +19,7 @@ if all(col in data.columns for col in required_columns):
         get_position='[lon, lat]',  # 經緯度位置
         get_radius='radius',  # 根據震央距(Km)設定半徑
         get_fill_color='color',  # 使用預處理的顏色欄位
+        extruded=True,
         get_elevation='elevation',  # 使用預處理的高度欄位
         auto_highlight=True,  # 高亮選中點
     )

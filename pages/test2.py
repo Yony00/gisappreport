@@ -36,7 +36,7 @@ m.add_heatmap(
 
 if options=="邏輯樹":
     left_layer, right_layer = "邏輯樹", "AbrahamsonEtAl2014"
-elif options=="":
+elif options=="AbrahamsonEtAl2014":
     left_layer, right_layer = "AbrahamsonEtAl2014", "邏輯樹"
 m.split_map(left_layer=left_layer,right_layer=right_layer)
 m.to_streamlit(height=700)

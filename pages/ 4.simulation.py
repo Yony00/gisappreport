@@ -27,9 +27,9 @@ if options=="邏輯樹":
     st.pydeck_chart(
         pdk.Deck(
             initial_view_state=pdk.ViewState(
-                latitude=23.5,
-                longitude=121,
-                zoom=7,
+                latitude=23.15,
+                longitude=120.2,
+                zoom=9,
                 pitch=30,
             ),
             layers=[

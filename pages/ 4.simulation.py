@@ -52,9 +52,9 @@ if options=="AbrahamsonEtAl2014":
     st.pydeck_chart(
         pdk.Deck(
             initial_view_state=pdk.ViewState(
-                latitude=23.5,
-                longitude=121,
-                zoom=7,
+                latitude=23.15,
+                longitude=120.3,
+                zoom=9,
                 pitch=30,
             ),
             layers=[
@@ -64,7 +64,7 @@ if options=="AbrahamsonEtAl2014":
                     get_position="[x, y]",
                     get_weight="AbrahamsonEtAl2014",
                     auto_highlight=True,
-                    radius_pixels=10,
+                    radius_pixels=50,
                     pickable=True,
                     extruded=True,
                     opacity=0.5
@@ -76,9 +76,9 @@ if options=="BooreAtkinson2008":
     st.pydeck_chart(
         pdk.Deck(
             initial_view_state=pdk.ViewState(
-                latitude=23.5,
-                longitude=121,
-                zoom=7,
+                latitude=23.15,
+                longitude=120.3,
+                zoom=9,
                 pitch=30,
             ),
             layers=[
@@ -88,7 +88,7 @@ if options=="BooreAtkinson2008":
                     get_position="[x, y]",
                     get_weight="BooreAtkinson2008",
                     auto_highlight=True,
-                    radius_pixels=10,
+                    radius_pixels=50,
                     pickable=True,
                     extruded=True,
                     opacity=0.5
@@ -100,9 +100,9 @@ if options=="CampbellBozorgnia2008":
     st.pydeck_chart(
         pdk.Deck(
             initial_view_state=pdk.ViewState(
-                latitude=23.5,
-                longitude=121,
-                zoom=7,
+                latitude=23.15,
+                longitude=120.3,
+                zoom=9,
                 pitch=30,
             ),
             layers=[
@@ -112,7 +112,7 @@ if options=="CampbellBozorgnia2008":
                     get_position="[x, y]",
                     get_weight="CampbellBozorgnia2008",
                     auto_highlight=True,
-                    radius_pixels=10,
+                    radius_pixels=50,
                     pickable=True,
                     extruded=True,
                     opacity=0.5
@@ -124,9 +124,9 @@ if options=="ChiouYoungs2008":
     st.pydeck_chart(
         pdk.Deck(
             initial_view_state=pdk.ViewState(
-                latitude=23.5,
-                longitude=121,
-                zoom=7,
+                latitude=23.15,
+                longitude=120.3,
+                zoom=9,
                 pitch=30,
             ),
             layers=[
@@ -136,7 +136,7 @@ if options=="ChiouYoungs2008":
                     get_position="[x, y]",
                     get_weight="ChiouYoungs2008",
                     auto_highlight=True,
-                    radius_pixels=10,
+                    radius_pixels=50,
                     pickable=True,
                     extruded=True,
                     opacity=0.5
@@ -148,9 +148,9 @@ if options=="LinLee2008SInter":
     st.pydeck_chart(
         pdk.Deck(
             initial_view_state=pdk.ViewState(
-                latitude=23.5,
-                longitude=121,
-                zoom=7,
+                latitude=23.15,
+                longitude=120.3,
+                zoom=9,
                 pitch=30,
             ),
             layers=[
@@ -160,7 +160,7 @@ if options=="LinLee2008SInter":
                     get_position="[x, y]",
                     get_weight="LinLee2008SInter",
                     auto_highlight=True,
-                    radius_pixels=10,
+                    radius_pixels=50,
                     pickable=True,
                     extruded=True,
                     opacity=0.5

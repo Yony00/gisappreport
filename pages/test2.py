@@ -36,13 +36,12 @@ if options=="邏輯樹":
         pacity=0.7,
     ) 
     col1, col2 = st.columns(2)
-    col1, col2 = st.columns(2)
 
 with col1:
     st.write("左側地圖：邏輯樹")
-    left_map.to_streamlit(height=700)
+    m1.to_streamlit(height=700)
 
 with col2:
     st.write("右側地圖：AbrahamsonEtAl2014")
-    right_map.to_streamlit(height=700)
+    m2.to_streamlit(height=700)
 

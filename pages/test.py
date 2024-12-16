@@ -25,7 +25,7 @@ if options=="邏輯樹":
         info_mode="on_hover", 
     )
     m.add_heatmap(
-        options,
+        url,
         latitude="x",
         lontitude="y",
         value="邏輯樹",

@@ -35,7 +35,7 @@ with col1:
             pdk.Deck(
                 initial_view_state=pdk.ViewState(
                     latitude=23.15,
-                    longitude=120.2,
+                    longitude=120.3,
                     zoom=9,
                     pitch=50,
                 ),
@@ -59,7 +59,7 @@ with col1:
             pdk.Deck(
                 initial_view_state=pdk.ViewState(
                     latitude=23.15,
-                    longitude=120.2,
+                    longitude=120.3,
                     zoom=9,
                     pitch=50,
                 ),

@@ -14,6 +14,24 @@ gdf = gdf[gdf['COUNTYNAME'] == '臺南市']
 
 selectable_columns = ['邏輯樹', 'AbrahamsonEtAl2014','BooreAtkinson2008','CampbellBozorgnia2008','ChiouYoungs2008','LinLee2008SInter']
 options = st.selectbox('選擇一個GMPE呈現', selectable_columns)
+a= m.add_heatmap(
+    data,
+    latitude="y",
+    longitude="x",
+    value="邏輯樹",
+    name="邏輯樹",
+    radius=15,
+    pacity=0.7,
+)
+b= m.add_heatmap(
+    data,
+    latitude="y",
+    longitude="x",
+    value="AbrahamsonEtAl2014",
+    name="AbrahamsonEtAl2014",
+    radius=15,
+    pacity=0.7,
+)
 
 if options=="邏輯樹":
     url="https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%E6%A8%A1%E6%93%AC%E6%95%B8%E5%80%BC_%E8%87%BA%E5%8D%97.csv"
@@ -42,14 +60,8 @@ if options=="AbrahamsonEtAl2014":
         layer_name="行政區界",
         info_mode="on_hover", 
     )
-    m.add_heatmap(
-        data,
-        latitude="y",
-        longitude="x",
-        value="AbrahamsonEtAl2014",
-        name="AbrahamsonEtAl2014",
-        radius=15,
-        pacity=0.7,
+    m.split_map(
+        left_layer=a,right_layer=b
     )
     m.to_streamlit(height=700)
 

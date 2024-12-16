@@ -62,7 +62,7 @@ with col1:
                 ),
                 layers=[
                     pdk.Layer(
-                        "HexagonLayer",
+                        "ScatterplotLayer",
                         data=data,
                         get_position="[lon, lat]",
                         radius=1000,

@@ -64,8 +64,8 @@ if options=="AbrahamsonEtAl2014":
     )
     m.split_map(
         data,
-        left_layer={"layer_name":"邏輯樹"},
-        right_layer={"layer_name":"AbrahamsonEtAl2014"},
+        left_layer={"layer_name":"邏輯樹","colormap": "coolwarm"},
+        right_layer={"layer_name":"AbrahamsonEtAl2014","colormap": "coolwarm"},
     )
     m.to_streamlit(height=700)
 

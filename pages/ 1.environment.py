@@ -22,11 +22,11 @@ data = pd.read_csv(
       "lon",
     ],
 )
-
-optiona = data["縣市"].unique().tolist()
-optionb = st.multiselect("選擇特定縣市", optiona)
+option0 = data["縣市"]=="臺南市"
+optiona = option0["鄉鎮"].unique().tolist()
+optionb = st.multiselect("選擇特定區", optiona)
 if optionb:
-    filtered = data[data["縣市"].isin(optionb)]
+    filtered = data[data["鄉鎮"].isin(optionb)]
     st.pydeck_chart(
         pdk.Deck(
             initial_view_state=pdk.ViewState(

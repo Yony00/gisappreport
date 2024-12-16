@@ -69,7 +69,8 @@ with col1:
                         auto_highlight=True,
                         elevation_scale=10,
                         extruded=True,
-                        get_fill_color="color",                       
+                        get_fill_color="[200, 30, 0, 160]",
+                        radius_scale=10,
                     ),
                 ],
             )

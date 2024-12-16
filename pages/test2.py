@@ -45,3 +45,7 @@ else:
 st.markdown("所有測站資料表格")
 df = pd.read_csv(url)
 st.dataframe(df)
+
+print(data['color'].head())  # 顏色應為三元素數組 [R, G, B]
+print(data['radius'].head())  # 半徑應為正數
+print(data['elevation'].head()) 

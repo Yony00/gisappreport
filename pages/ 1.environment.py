@@ -54,9 +54,9 @@ else:
     st.pydeck_chart(
         pdk.Deck(
             initial_view_state=pdk.ViewState(
-                latitude=23.5,
-                longitude=121,
-                zoom=7,
+                latitude=23.15,
+                longitude=120.3,
+                zoom=10,
                 pitch=50,
             ),
             layers=[

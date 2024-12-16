@@ -9,9 +9,6 @@ import folium
 
 st.title("測試用頁面")
 m = leafmap.Map(center=[23.5, 121], zoom=7)
-polygon = 'https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%E9%84%89%E9%8E%AE%E5%B8%82%E5%8D%80%E7%95%8C/%E9%84%89(%E9%8E%AE%E3%80%81%E5%B8%82%E3%80%81%E5%8D%80)%E7%95%8C%E7%B7%9A(TWD97%E7%B6%93%E7%B7%AF%E5%BA%A6)1131028/TOWN_MOI_1131028.shp'
-gdf = gpd.read_file(polygon)
-gdf = gdf[gdf['COUNTYNAME'] == '臺南市']
 url="https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%E6%A8%A1%E6%93%AC%E6%95%B8%E5%80%BC_%E8%87%BA%E5%8D%97.csv"
 data = pd.read_csv(url)
 
@@ -37,15 +34,9 @@ m.add_heatmap(
     pacity=0.7,
 )
 
-if options=="AbrahamsonEtAl2014":
-    url="https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%E6%A8%A1%E6%93%AC%E6%95%B8%E5%80%BC_%E8%87%BA%E5%8D%97.csv"
-    data = pd.read_csv(url)
-    m.add_gdf(
-        gdf,
-        layer_name="行政區界",
-        info_mode="on_hover", 
-    )
-    m.split_map(
-        left_layer="邏輯樹",right_layer="AbrahamsonEtAl2014",
-    )
-    m.to_streamlit(height=700)
+if options=="邏輯樹":
+    left_layer, right_layer = "邏輯樹", "AbrahamsonEtAl2014"
+elif options=="":
+    left_layer, right_layer = "AbrahamsonEtAl2014", "邏輯樹"
+m.split_map(left_layer=left_layer,right_layer=right_layer)
+m.to_streamlit(height=700)

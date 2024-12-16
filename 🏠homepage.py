@@ -28,7 +28,7 @@ st.write("下方圖台為1973~2024年9月為止規模5以上的地震震央點�
 url="https://raw.githubusercontent.com/liuchia515/gisappreport/refs/heads/main/data/%E6%AD%B7%E5%8F%B2%E8%B3%87%E6%96%99.csv"
 data = pd.read_csv(url)
 
-cola,colb=st.columns([3,1])
+cola,colb=st.columns([5,1])
 width = None
 height = 800
 tiles = None

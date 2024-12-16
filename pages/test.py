@@ -63,7 +63,7 @@ if options=="AbrahamsonEtAl2014":
         info_mode="on_hover", 
     )
     m.split_map(
-        left_layer=a,right_layer=b
+        left_layer="a",right_layer="b"
     )
     m.to_streamlit(height=700)
 

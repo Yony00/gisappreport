@@ -3,7 +3,7 @@ import pydeck as pdk
 import pandas as pd
 import numpy as np
 
-st.title("3D觀測值分布圖")
+st.title("觀測值散佈圖")
 url="https://raw.githubusercontent.com/liuchia515/gisappreport/refs/heads/main/data/%E8%A7%80%E6%B8%AC%E5%80%BC.csv"
 data = pd.read_csv(url)
 

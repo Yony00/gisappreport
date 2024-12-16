@@ -22,7 +22,7 @@ hospital_data = hospital_data[['TOWN', 'H_CNT', 'H_BED', 'H_SRVP', 'H_SRVB']]
 hospital_data = hospital_data.rename(columns={"TOWN": "鄉鎮市區名稱", 'H_CNT': '醫療院所家數', 'H_BED': '醫療院所床數', 'H_SRVP': '醫療院所平均每家服務人數', 'H_SRVB': '醫療院所平均每千人擁有病床數'})
 
 gdf = gdf.merge(hospital_data, left_on='TOWNNAME', right_on='鄉鎮市區名稱', how='left')
-gdf['H_CNT'] = pd.to_numeric(gdf['H_CNT'], errors='coerce').fillna(0) 
+gdf['醫療院所家數'] = pd.to_numeric(gdf['醫療院所家數'], errors='coerce').fillna(0) 
 
 m.add_gdf(
     gdf,

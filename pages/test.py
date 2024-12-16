@@ -12,8 +12,8 @@ url="https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%E6%A8%
 data = pd.read_csv(url)
 m.add_heatmap(
     url,
-    latitude="x",
-    longitude="y",
+    latitude="y",
+    longitude="x",
     value="邏輯樹",
     name="邏輯樹",
     radius=20,

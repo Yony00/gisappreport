@@ -70,7 +70,7 @@ with col1:
                         get_position="[lon, lat]",
                         get_radius="震度值",
                         auto_highlight=True,
-                        elevation_scale=50,
+                        elevation_scale=10,
                         pickable=True,
                         extruded=True,
                     ),

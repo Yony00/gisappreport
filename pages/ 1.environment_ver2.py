@@ -12,7 +12,7 @@ height = 800
 tiles = None
 
 data['color'] = data['震度值'].apply(lambda x: [255, 255 - (x*x*x), x*x*x])
-data['radius'] = data['震度值'].apply(lambda x:x*x*x*20)
+data['radius'] = data['震度值'].apply(lambda x:x*x*x*10)
 
 with col1:
     optiona = data["鄉鎮"].unique().tolist()

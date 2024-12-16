@@ -73,6 +73,7 @@ with col1:
                         elevation_scale=10,
                         pickable=True,
                         extruded=True,
+                        get_weight="震度值",                        
                     ),
                 ],
             )

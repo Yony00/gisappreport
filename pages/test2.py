@@ -10,7 +10,7 @@ data = pd.read_csv(url)
 data['color'] = data['震度值'].apply(lambda x: [255, 255 - x * 25, 0])  # 根據震度值設定顏色
 data['elevation'] = data['震度值'] * 10  # 根據震度值設定高度
 data['radius'] = data['震央距(Km)']
-required_columns = ['lat', 'long', '震度值', '震央距(Km)', 'color', 'elevation', 'radius']
+required_columns = ['lat', 'lon', '震度值', '震央距(Km)', 'color', 'elevation', 'radius']
 if all(col in data.columns for col in required_columns):
     # 使用 ScatterplotLayer 繪製 3D 散佈圖
     scatterplot_layer = pdk.Layer(
@@ -20,7 +20,6 @@ if all(col in data.columns for col in required_columns):
         get_radius='radius',  # 根據震央距(Km)設定半徑
         get_fill_color='color',  # 使用預處理的顏色欄位
         get_elevation='elevation',  # 使用預處理的高度欄位
-        pickable=True,  # 點可選擇
         auto_highlight=True,  # 高亮選中點
     )
 

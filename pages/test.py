@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import geopandas as gpd
 import leafmap.foliumap as leafmap
+import folium
 
 st.title("測試用頁面")
 m = leafmap.Map(center=[23.5, 121], zoom=7)
@@ -63,9 +64,7 @@ if options=="AbrahamsonEtAl2014":
         info_mode="on_hover", 
     )
     m.split_map(
-        data,
-        left_layer={"layer_name":"邏輯樹","colormap": "coolwarm"},
-        right_layer={"layer_name":"AbrahamsonEtAl2014","colormap": "coolwarm"},
+        left_layer="a",right_layer="b",
     )
     m.to_streamlit(height=700)
 

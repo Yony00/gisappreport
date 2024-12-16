@@ -63,7 +63,9 @@ if options=="AbrahamsonEtAl2014":
         info_mode="on_hover", 
     )
     m.split_map(
-        left_layer="邏輯樹",right_layer="AbrahamsonEtAl2014"
+        data,
+        left_layer={"layer_name":"邏輯樹"},
+        right_layer={"layer_name":"AbrahamsonEtAl2014"},
     )
     m.to_streamlit(height=700)
 

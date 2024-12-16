@@ -18,7 +18,7 @@ data = pd.read_csv(url)
 selectable_columns = ['邏輯樹', 'AbrahamsonEtAl2014','BooreAtkinson2008','CampbellBozorgnia2008','ChiouYoungs2008','LinLee2008SInter']
 options = st.selectbox('選擇一個GMPE呈現', selectable_columns)
 
-a= m.add_heatmap(
+m.add_heatmap(
     data,
     latitude="y",
     longitude="x",
@@ -27,7 +27,7 @@ a= m.add_heatmap(
     radius=15,
     pacity=0.7,
 )
-b= m.add_heatmap(
+m.add_heatmap(
     data,
     latitude="y",
     longitude="x",

@@ -19,7 +19,7 @@ selectable_columns = ['邏輯樹', 'AbrahamsonEtAl2014','BooreAtkinson2008','Cam
 options = st.selectbox('選擇一個GMPE呈現', selectable_columns)
 
 m.add_heatmap(
-    data,
+    url,
     latitude="x",
     longitude="y",
     value="邏輯樹",

@@ -39,7 +39,7 @@ if options=="邏輯樹":
                     get_position="[x, y]",
                     get_weight="邏輯樹",
                     auto_highlight=True,
-                    radius_pixels=10,
+                    radius_pixels=50,
                     pickable=True,
                     extruded=True,
                     opacity=0.5

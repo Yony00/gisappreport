@@ -11,7 +11,7 @@ width = None
 height = 800
 tiles = None
 
-data['color'] = data['震度值'].apply(lambda x: [255, 255 - (x*x) * 10, 10 + x * 25])
+data['color'] = data['震度值'].apply(lambda x: [255, 255 - (x*x), 10 + (x*x)])
 data['radius'] = data['震度值']*250
 
 with col1:

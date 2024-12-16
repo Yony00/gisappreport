@@ -31,7 +31,7 @@ if options=="邏輯樹":
         lontitude="y",
         value="邏輯樹",
         name="邏輯樹",
-        radius=100,
+        radius=20,
     )
     m.to_streamlit(height=700)
 

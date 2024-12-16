@@ -20,3 +20,11 @@ m.add_points_from_xy(
 )
 m.to_streamlit(height=700)
 st.dataframe(hos)
+
+#各行政區醫療院所數量&每千人擁有病床數&救護車數量
+st.subheader("各行政區醫療院所數量&每千人擁有病床數&救護車數量")
+hosdata_url="https://raw.githubusercontent.com/liuchia515/gisappreport/refs/heads/main/data/%E9%86%AB%E7%99%82%E9%99%A2%E6%89%80%E6%95%B8%E9%87%8F/104%E5%B9%B412%E6%9C%88%E8%A1%8C%E6%94%BF%E5%8D%80%E9%86%AB%E7%99%82%E9%99%A2%E6%89%80%E7%B5%B1%E8%A8%88_%E9%84%89%E9%8E%AE%E5%B8%82%E5%8D%80_%E8%87%BA%E5%8D%97%E5%B8%82.csv"
+hosdata=pd.read_csv(hosdata_url)
+st.dataframe(hosdata)
+
+

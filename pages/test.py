@@ -20,13 +20,14 @@ options = st.selectbox('選擇一個GMPE呈現', selectable_columns)
 
 if options=="邏輯樹":
     url="https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%E6%A8%A1%E6%93%AC%E6%95%B8%E5%80%BC_%E8%87%BA%E5%8D%97.csv"
+    data = pd.read_csv(url)
     m.add_gdf(
         gdf,
         layer_name="行政區界",
         info_mode="on_hover", 
     )
     m.add_heatmap(
-        url,
+        data,
         latitude="x",
         longitude="y",
         value="邏輯樹",

@@ -28,13 +28,13 @@ tiles = None
 
 def get_color(震度值):
     if 震度值 == 4:
-        return [255, 255, 204]  # 淡黃色
+        return [255, 255, 204,255]  # 淡黃色
     elif 震度值 == 5:
-        return [255, 255, 0]    # 黃色
+        return [255, 255, 0,255]    # 黃色
     elif 震度值 == 6:
-        return [255, 153, 51]   # 橙色
+        return [255, 153, 51,255]   # 橙色
     else:
-        return [255, 0, 0]      # 紅色
+        return [255, 0, 0,255]      # 紅色
 data['color'] = data['震度值'].apply(get_color)
 
 with col1:

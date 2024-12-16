@@ -1,5 +1,4 @@
 import streamlit as st
-import leafmap.foliumap as leafmap
 import pydeck as pdk
 import pandas as pd
 import numpy as np
@@ -19,12 +18,19 @@ data = pd.read_csv(
 selectable_columns = ['邏輯樹', 'AbrahamsonEtAl2014', 'BooreAtkinson2008', 'CampbellBozorgnia2008', 'ChiouYoungs2008', 'LinLee2008SInter']
 options = st.selectbox('選擇一個GMPE呈現', selectable_columns)
 
-# 顏色映射範圍設定
+# 顏色映射函數
 def color_map(value):
     """ 根據邏輯樹的數值來設置顏色 """
+    # 假設邏輯樹值範圍在0到1之間，將其映射為顏色
     return [
-        int(min(255, value * 2)), 0, int(min(255, 255 - value * 2)), 255
+        int(min(255, value * 255)),  # red channel
+        0,                           # green channel
+        int(min(255, 255 - value * 255)),  # blue channel
+        255                          # alpha channel
     ]
+
+# 將顏色映射應用到每個「邏輯樹」數據點
+data['color'] = data['邏輯樹'].apply(color_map)
 
 # 顯示選擇的GMPE資料
 if options == "邏輯樹":
@@ -47,7 +53,7 @@ if options == "邏輯樹":
                     pickable=True,
                     extruded=True,
                     opacity=0.5,
-                    get_color=["邏輯樹", color_map]  # 使用自訂的顏色映射
+                    get_color="color"  # 使用顏色列來設定顏色
                 ),
             ],
         )

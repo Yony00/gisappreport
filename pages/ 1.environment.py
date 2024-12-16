@@ -12,17 +12,6 @@ width = None
 height = 800
 tiles = None
 
-def get_color(震度值):
-    if 震度值 == 4:
-        return [255, 255, 204,255]  # 淡黃色
-    elif 震度值 == 5:
-        return [255, 255, 0,255]    # 黃色
-    elif 震度值 == 6:
-        return [255, 153, 51,255]   # 橙色
-    else:
-        return [255, 0, 0,255]      # 紅色
-data['color'] = data['震度值'].apply(get_color)
-
 with col1:
     optiona = data["鄉鎮"].unique().tolist()
     optionb = st.multiselect("選擇行政區（多選）", optiona)
@@ -44,7 +33,6 @@ with col1:
                         get_radius="震度值",
                         auto_highlight=True,
                         elevation_scale=10,
-                        pickable=True,
                         extruded=True,
                         get_weight="震度值",
                     ),
@@ -62,15 +50,14 @@ with col1:
                 ),
                 layers=[
                     pdk.Layer(
-                        "ScatterplotLayer",
-                        data,
+                        "HexagonLayer",
+                        data=data,
                         get_position="[lon, lat]",
                         get_radius="震度值",
                         auto_highlight=True,
                         elevation_scale=10,
                         extruded=True,
-                        get_fill_color="[200, 30, 0, 160]",
-                        radius_scale=10,
+                        get_weight="震度值",
                     ),
                 ],
             )

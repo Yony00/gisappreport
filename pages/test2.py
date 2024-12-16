@@ -9,7 +9,7 @@ data = pd.read_csv(url)
 
 data['color'] = data['震央距(Km)'].apply(lambda x: [255, 255 - x * 28, 10 + x * 25])  # 根據震度值設定顏色
 data['elevation'] = data['震度值'] * 10000  # 根據震度值設定高度
-data['radius'] = data['震度值']*100
+data['radius'] = data['震度值']*300
 required_columns = ['lat', 'lon', '震度值', '震央距(Km)', 'color', 'elevation', 'radius']
 if all(col in data.columns for col in required_columns):
     # 使用 ScatterplotLayer 繪製 3D 散佈圖

@@ -34,3 +34,98 @@ if options=="邏輯樹":
     )
     m.to_streamlit(height=700)
 
+if options=="AbrahamsonEtAl2014":
+    url="https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%E6%A8%A1%E6%93%AC%E6%95%B8%E5%80%BC_%E8%87%BA%E5%8D%97.csv"
+    data = pd.read_csv(url)
+    m.add_gdf(
+        gdf,
+        layer_name="行政區界",
+        info_mode="on_hover", 
+    )
+    m.add_heatmap(
+        data,
+        latitude="y",
+        longitude="x",
+        value="AbrahamsonEtAl2014",
+        name="AbrahamsonEtAl2014",
+        radius=15,
+        pacity=0.7,
+    )
+    m.to_streamlit(height=700)
+
+if options=="BooreAtkinson2008":
+    url="https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%E6%A8%A1%E6%93%AC%E6%95%B8%E5%80%BC_%E8%87%BA%E5%8D%97.csv"
+    data = pd.read_csv(url)
+    m.add_gdf(
+        gdf,
+        layer_name="行政區界",
+        info_mode="on_hover", 
+    )
+    m.add_heatmap(
+        data,
+        latitude="y",
+        longitude="x",
+        value="BooreAtkinson2008",
+        name="BooreAtkinson2008",
+        radius=15,
+        pacity=0.7,
+    )
+    m.to_streamlit(height=700)
+
+if options=="CampbellBozorgnia2008":
+    url="https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%E6%A8%A1%E6%93%AC%E6%95%B8%E5%80%BC_%E8%87%BA%E5%8D%97.csv"
+    data = pd.read_csv(url)
+    m.add_gdf(
+        gdf,
+        layer_name="行政區界",
+        info_mode="on_hover", 
+    )
+    m.add_heatmap(
+        data,
+        latitude="y",
+        longitude="x",
+        value="CampbellBozorgnia2008",
+        name="CampbellBozorgnia2008",
+        radius=15,
+        pacity=0.7,
+    )
+    m.to_streamlit(height=700)
+
+if options=="ChiouYoungs2008":
+    url="https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%E6%A8%A1%E6%93%AC%E6%95%B8%E5%80%BC_%E8%87%BA%E5%8D%97.csv"
+    data = pd.read_csv(url)
+    m.add_gdf(
+        gdf,
+        layer_name="行政區界",
+        info_mode="on_hover", 
+    )
+    m.add_heatmap(
+        data,
+        latitude="y",
+        longitude="x",
+        value="ChiouYoungs2008",
+        name="ChiouYoungs2008",
+        radius=15,
+        pacity=0.7,
+    )
+    m.to_streamlit(height=700)
+
+if options=="LinLee2008SInter":
+    url="https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%E6%A8%A1%E6%93%AC%E6%95%B8%E5%80%BC_%E8%87%BA%E5%8D%97.csv"
+    data = pd.read_csv(url)
+    m.add_gdf(
+        gdf,
+        layer_name="行政區界",
+        info_mode="on_hover", 
+    )
+    m.add_heatmap(
+        data,
+        latitude="y",
+        longitude="x",
+        value="LinLee2008SInter",
+        name="LinLee2008SInter",
+        radius=15,
+        pacity=0.7,
+    )
+    m.to_streamlit(height=700)
+

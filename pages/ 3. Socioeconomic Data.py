@@ -20,6 +20,8 @@ hospital_csv = 'https://github.com/liuchia515/gisappreport/raw/refs/heads/main/d
 hospital_data = pd.read_csv(hospital_csv)
 
 gdf = gdf.merge(hospital_data, left_on='TOWNNAME', right_on='TOWN', how='left')
+gdf['H_CNT'] = pd.to_numeric(gdf['H_CNT'], errors='coerce').fillna(0) 
+
 m.add_gdf(
     gdf,
     layer_name="臺南市行政區醫院數量",

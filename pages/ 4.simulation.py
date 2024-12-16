@@ -28,7 +28,7 @@ if options=="邏輯樹":
         pdk.Deck(
             initial_view_state=pdk.ViewState(
                 latitude=23.15,
-                longitude=120.2,
+                longitude=120.3,
                 zoom=9,
                 pitch=30,
             ),

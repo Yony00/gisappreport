@@ -6,11 +6,14 @@ import numpy as np
 st.title("觀測值散佈圖")
 url="https://raw.githubusercontent.com/liuchia515/gisappreport/refs/heads/main/data/%E8%A7%80%E6%B8%AC%E5%80%BC.csv"
 data = pd.read_csv(url)
+col1,col2=st.columns([2,1])
+width = None
+height = 800
+tiles = None
 
-data['color'] = data['震度值'].apply(lambda x: [255, 255 - x * 30, 10 + x * 25])  # 根據震度值設定顏色
-data['elevation'] = data['震度值'] * 10000  # 根據震度值設定高度
+data['color'] = data['震度值'].apply(lambda x: [255, 255 - x * 30, 10 + x * 25])
 data['radius'] = data['震度值']*250
-required_columns = ['lat', 'lon', '震度值', '震央距(Km)', 'color', 'elevation', 'radius']
+
 if all(col in data.columns for col in required_columns):
     # 使用 ScatterplotLayer 繪製 3D 散佈圖
     scatterplot_layer = pdk.Layer(
@@ -19,9 +22,7 @@ if all(col in data.columns for col in required_columns):
         get_position='[lon, lat]',  # 經緯度位置
         get_radius='radius',  # 根據震央距(Km)設定半徑
         get_fill_color='color',  # 使用預處理的顏色欄位
-        get_elevation='radius',  # 使用預處理的高度欄位
         auto_highlight=True,  # 高亮選中點
-        extruded=True,
         pickable=True,
     )
 

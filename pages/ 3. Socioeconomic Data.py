@@ -27,12 +27,17 @@ hospital_data = hospital_data.rename(columns={"TOWN": "鄉鎮市區名稱", 'H_C
 gdf = gdf.merge(hospital_data, left_on='TOWNNAME', right_on='鄉鎮市區名稱', how='left')
 gdf['醫療院所家數'] = pd.to_numeric(gdf['醫療院所家數'], errors='coerce').fillna(0) 
 
-m.add_gdf(gdf, layer_name="臺南市行政區醫院數量")
+m.add_gdf(m.add_gdf(
+    gdf,
+    layer_name="醫療院所家數",
+    color_column="醫療院所家數",
+    cmap="Blues",
+    style={"fillOpacity": 0.7, "weight": 1},
+    info_mode="on_hover", 
+)
+)
 m.to_streamlit(height=700)
 
 st.header("醫療院所資料統計")
 markdown = "（內容）"
 st.markdown(markdown)
-m.add_data(gdf, column = '醫療院所家數', cmap = 'Blues',
-           opacity = 0.7, legend_title = '醫療院所家數', layer_name = '醫療院所家數',
-           style = {'fillOpacity': 0.8, 'weight': 1})

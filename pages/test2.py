@@ -23,63 +23,29 @@ def get_color(震度值):
         return [255, 0, 0,255]      # 紅色
 data['color'] = data['震度值'].apply(get_color)
 
-with col1:
-    optiona = data["鄉鎮"].unique().tolist()
-    optionb = st.multiselect("選擇行政區（多選）", optiona)
-    if optionb:
-        filtered = data[data["鄉鎮"].isin(optionb)]
-        st.pydeck_chart(
-            pdk.Deck(
-                initial_view_state=pdk.ViewState(
-                    latitude=23.15,
-                    longitude=120.3,
-                    zoom=9,
-                    pitch=50,
-                ),
-                layers=[
-                    pdk.Layer(
-                        "HexagonLayer",
-                        data=filtered,
-                        get_position="[lon, lat]",
-                        get_radius="震度值",
-                        auto_highlight=True,
-                        elevation_scale=10,
-                        pickable=True,
-                        extruded=True,
-                        get_weight="震度值",
-                    ),
-                ],
-            )
-        )
-    else:
-        st.pydeck_chart(
-            pdk.Deck(
-                initial_view_state=pdk.ViewState(
-                    latitude=23.15,
-                    longitude=120.3,
-                    zoom=9,
-                    pitch=50,
-                ),
-                layers=[
-                    pdk.Layer(
-                        "ScatterplotLayer",
-                        data,
-                        get_position="[lon, lat]",
-                        get_radius="震度值",
-                        auto_highlight=True,
-                        elevation_scale=10,
-                        extruded=True,
-                        get_fill_color="[200, 30, 0, 160]",
-                        radius_scale=10,
-                    ),
-                ],
-            )
-        )
-with col2:
-    if optionb:
-        st.markdown("選取區資料表格")
-        st.dataframe(filtered) 
-    else:
-        st.markdown("所有測站資料表格")
-        df = pd.read_csv(url)
-        st.dataframe(df)
+st.pydeck_chart(
+    pdk.Deck(
+        initial_view_state=pdk.ViewState(
+            latitude=23.15,
+            longitude=120.3,
+            zoom=9,
+            pitch=50,
+        ),
+        layers=[
+            pdk.Layer(
+                "ScatterplotLayer",
+                data,
+                get_position="[lon, lat]",
+                get_radius="震度值",
+                auto_highlight=True,
+                elevation_scale=10,
+                extruded=True,
+                get_fill_color="[200, 30, 0, 160]",
+                radius_scale=10,
+            ),
+        ],
+    )
+)
+st.markdown("所有測站資料表格")
+df = pd.read_csv(url)
+st.dataframe(df)

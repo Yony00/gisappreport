@@ -22,8 +22,7 @@ data = pd.read_csv(
       "lon",
     ],
 )
-option0 = data["縣市"]=="臺南市"
-optiona = option0["鄉鎮"].unique().tolist()
+optiona = data["鄉鎮"].unique().tolist()
 optionb = st.multiselect("選擇特定區", optiona)
 if optionb:
     filtered = data[data["鄉鎮"].isin(optionb)]

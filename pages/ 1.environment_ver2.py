@@ -68,7 +68,7 @@ with col1:
 with col2:
     if optionb:
         st.markdown("選取區資料表格")
-        st.dataframe(filtered["測站名稱","震度值","震央距(Km)","垂直向(gal)","南北向(gal)","東西向(gal)","鄉鎮","lat","lon"]) 
+        st.dataframe(filtered) 
     else:
         st.markdown("所有測站資料表格")
         df = pd.read_csv(url)

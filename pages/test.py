@@ -30,7 +30,7 @@ if options=="邏輯樹":
         value="邏輯樹",
         name="邏輯樹",
         radius=15,
-        pacity=0.5,
+        pacity=0.7,
     )
     m.to_streamlit(height=700)
 

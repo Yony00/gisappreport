@@ -13,39 +13,29 @@ tiles = None
 
 data['color'] = data['震度值'].apply(lambda x: [255, 255 - x * 30, 10 + x * 25])
 data['radius'] = data['震度值']*250
+scatterplot_layer = pdk.Layer(
+    'ScatterplotLayer',
+    data=data,  # 資料來源
+    get_position='[lon, lat]',  # 經緯度位置
+    get_radius='radius',  # 根據震央距(Km)設定半徑
+    get_fill_color='color',  # 使用預處理的顏色欄位
+    auto_highlight=True,  # 高亮選中點
+    pickable=True,
+)
+view_state = pdk.ViewState(
+    latitude=23.15,  # 設定地圖中心的緯度
+    longitude=120.3,  # 設定地圖中心的經度
+    zoom=9,  # 地圖縮放級別
+    pitch=50,  # 地圖傾斜角度
+    bearing=0  # 地圖旋轉角度
+)
+deck = pdk.Deck(
+    layers=[scatterplot_layer],
+    initial_view_state=view_state,
+    tooltip={"text": "測站名稱: {測站名稱}\n震度: {震度值}"},
+)
+st.pydeck_chart(deck,on_select="rerun")
 
-if all(col in data.columns for col in required_columns):
-    # 使用 ScatterplotLayer 繪製 3D 散佈圖
-    scatterplot_layer = pdk.Layer(
-        'ScatterplotLayer',
-        data=data,  # 資料來源
-        get_position='[lon, lat]',  # 經緯度位置
-        get_radius='radius',  # 根據震央距(Km)設定半徑
-        get_fill_color='color',  # 使用預處理的顏色欄位
-        auto_highlight=True,  # 高亮選中點
-        pickable=True,
-    )
-
-    # 設定地圖視角
-    view_state = pdk.ViewState(
-        latitude=23.15,  # 設定地圖中心的緯度
-        longitude=120.3,  # 設定地圖中心的經度
-        zoom=9,  # 地圖縮放級別
-        pitch=50,  # 地圖傾斜角度
-        bearing=0  # 地圖旋轉角度
-    )
-
-    # 創建 Deck
-    deck = pdk.Deck(
-        layers=[scatterplot_layer],
-        initial_view_state=view_state,
-        tooltip={"text": "測站名稱: {測站名稱}\n震度: {震度值}"},
-    )
-
-    # 顯示地圖
-    st.pydeck_chart(deck,on_select="rerun")
-else:
-    st.error("資料中缺少必要的欄位。")
 st.markdown("所有測站資料表格")
 df = pd.read_csv(url)
 st.dataframe(df)

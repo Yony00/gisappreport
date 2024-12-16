@@ -38,7 +38,7 @@ if all(col in data.columns for col in required_columns):
     deck = pdk.Deck(
         layers=[scatterplot_layer],
         initial_view_state=view_state,
-        tooltip={"text": "{測站名稱}\n震度: {震度值}"},
+        tooltip={"text": "測站名稱: {測站名稱}\n震度: {震度值}"},
     )
 
     # 顯示地圖

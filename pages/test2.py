@@ -22,6 +22,7 @@ if all(col in data.columns for col in required_columns):
         get_elevation='radius',  # 使用預處理的高度欄位
         auto_highlight=True,  # 高亮選中點
         extruded=True,
+        pickable=True,
     )
 
     # 設定地圖視角
@@ -37,10 +38,11 @@ if all(col in data.columns for col in required_columns):
     deck = pdk.Deck(
         layers=[scatterplot_layer],
         initial_view_state=view_state,
+        tooltip={"text": "{測站名稱}\nValue: {震度值}"},
     )
 
     # 顯示地圖
-    st.pydeck_chart(deck)
+    st.pydeck_chart(deck,on_select="rerun")
 else:
     st.error("資料中缺少必要的欄位。")
 st.markdown("所有測站資料表格")

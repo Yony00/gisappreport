@@ -35,3 +35,18 @@ if options=="邏輯樹":
     )
     m.to_streamlit(height=700)
 
+
+
+# 創建地圖
+m = leafmap.Map(center=[37.7749, -122.4194], zoom=10)
+
+# 示例數據
+data = pd.DataFrame({
+    "lat": [37.7749, 34.0522, 40.7128],
+    "lon": [-122.4194, -118.2437, -74.0060],
+    "weight": [0.8, 0.6, 0.9]
+})
+
+# 添加熱力圖
+m.add_heatmap(data, lat="lat", lon="lon", value="weight")
+m.to_streamlit()

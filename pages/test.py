@@ -28,7 +28,7 @@ if options=="邏輯樹":
     m.add_heatmap(
         url,
         latitude="x",
-        lontitude="y",
+        longitude="y",
         value="邏輯樹",
         name="邏輯樹",
         radius=20,

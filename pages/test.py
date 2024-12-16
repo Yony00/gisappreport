@@ -17,5 +17,5 @@ m.add_points_from_xy(
   add_legend=True,
   layer_name="臺南市醫院資訊",
 )
-
+m.to_streamlit(height=700)
 st.dataframe(hos)

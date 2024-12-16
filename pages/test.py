@@ -18,7 +18,17 @@ data = pd.read_csv(url)
 selectable_columns = ['邏輯樹', 'AbrahamsonEtAl2014','BooreAtkinson2008','CampbellBozorgnia2008','ChiouYoungs2008','LinLee2008SInter']
 options = st.selectbox('選擇一個GMPE呈現', selectable_columns)
 
-if options=="邏輯樹":
+m.add_heatmap(
+    data,
+    latitude="x",
+    longitude="y",
+    value="邏輯樹",
+    name="邏輯樹",
+    radius=20,
+)
+m.to_streamlit(height=700)
+
+if options=="AbrahamsonEtAl2014":
     url="https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%E6%A8%A1%E6%93%AC%E6%95%B8%E5%80%BC_%E8%87%BA%E5%8D%97.csv"
     data = pd.read_csv(url)
     m.add_gdf(

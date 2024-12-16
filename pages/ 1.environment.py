@@ -26,6 +26,17 @@ width = None
 height = 800
 tiles = None
 
+def get_color(震度值):
+    if 震度值 == 4:
+        return [255, 255, 204]  # 淡黃色
+    elif 震度值 == 5:
+        return [255, 255, 0]    # 黃色
+    elif 震度值 == 6:
+        return [255, 153, 51]   # 橙色
+    else:
+        return [255, 0, 0]      # 紅色
+data['color'] = data['震度值'].apply(get_color)
+
 with col1:
     optiona = data["鄉鎮"].unique().tolist()
     optionb = st.multiselect("選擇行政區（多選）", optiona)
@@ -72,6 +83,7 @@ with col1:
                         auto_highlight=True,
                         elevation_scale=10,
                         extruded=True,
+                        get_fill_color="color",
                         get_weight="震度值",                        
                     ),
                 ],

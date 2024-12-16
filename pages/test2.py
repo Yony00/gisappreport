@@ -10,13 +10,13 @@ data = pd.read_csv(url)
 data['color'] = data['震度值'].apply(lambda x: [255, 255 - x * 25, 0])  # 根據震度值設定顏色
 data['elevation'] = data['震度值'] * 10  # 根據震度值設定高度
 data['radius'] = data['震央距(Km)']
-required_columns = ['latitude', 'longitude', '震度值', '震央距(Km)', 'color', 'elevation', 'radius']
+required_columns = ['lat', 'long', '震度值', '震央距(Km)', 'color', 'elevation', 'radius']
 if all(col in data.columns for col in required_columns):
     # 使用 ScatterplotLayer 繪製 3D 散佈圖
     scatterplot_layer = pdk.Layer(
         'ScatterplotLayer',
         data,  # 資料來源
-        get_position='[longitude, latitude]',  # 經緯度位置
+        get_position='[lon, lat]',  # 經緯度位置
         get_radius='radius',  # 根據震央距(Km)設定半徑
         get_fill_color='color',  # 使用預處理的顏色欄位
         get_elevation='elevation',  # 使用預處理的高度欄位
@@ -26,8 +26,8 @@ if all(col in data.columns for col in required_columns):
 
     # 設定地圖視角
     view_state = pdk.ViewState(
-        latitude=data['latitude'].mean(),  # 設定地圖中心的緯度
-        longitude=data['longitude'].mean(),  # 設定地圖中心的經度
+        latitude=data['lat'].mean(),  # 設定地圖中心的緯度
+        longitude=data['lon'].mean(),  # 設定地圖中心的經度
         zoom=10,  # 地圖縮放級別
         pitch=45,  # 地圖傾斜角度
         bearing=0  # 地圖旋轉角度
@@ -37,7 +37,6 @@ if all(col in data.columns for col in required_columns):
     deck = pdk.Deck(
         layers=[scatterplot_layer],
         initial_view_state=view_state,
-        map_style='mapbox://styles/mapbox/light-v9',  # 設定地圖樣式
     )
 
     # 顯示地圖

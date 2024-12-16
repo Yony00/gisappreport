@@ -36,7 +36,7 @@ with col1:
                 initial_view_state=pdk.ViewState(
                     latitude=23.1,
                     longitude=120.1,
-                    zoom=8,
+                    zoom=9,
                     pitch=50,
                 ),
                 layers=[
@@ -46,7 +46,7 @@ with col1:
                         get_position="[lon, lat]",
                         get_radius="震度值",
                         auto_highlight=True,
-                        elevation_scale=50,
+                        elevation_scale=10,
                         pickable=True,
                         extruded=True,
                         get_weight="震度值",
@@ -60,7 +60,7 @@ with col1:
                 initial_view_state=pdk.ViewState(
                     latitude=23.15,
                     longitude=120.2,
-                    zoom=8,
+                    zoom=9,
                     pitch=50,
                 ),
                 layers=[

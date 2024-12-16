@@ -28,7 +28,7 @@ tiles = None
 
 with col1:
     optiona = data["鄉鎮"].unique().tolist()
-    optionb = st.multiselect("選擇特定區", optiona)
+    optionb = st.multiselect("選擇行政區（多選）", optiona)
     if optionb:
         filtered = data[data["鄉鎮"].isin(optionb)]
         st.pydeck_chart(

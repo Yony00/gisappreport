@@ -16,7 +16,6 @@ data = pd.read_csv(
       "垂直向(gal)",
       "南北向(gal)",
       "東西向(gal)",
-      "縣市",
       "鄉鎮",
       "lat",
       "lon",

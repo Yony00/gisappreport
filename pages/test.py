@@ -17,6 +17,7 @@ data = pd.read_csv(url)
 
 selectable_columns = ['邏輯樹', 'AbrahamsonEtAl2014','BooreAtkinson2008','CampbellBozorgnia2008','ChiouYoungs2008','LinLee2008SInter']
 options = st.selectbox('選擇一個GMPE呈現', selectable_columns)
+
 a= m.add_heatmap(
     data,
     latitude="y",
@@ -64,7 +65,7 @@ if options=="AbrahamsonEtAl2014":
         info_mode="on_hover", 
     )
     m.split_map(
-        left_layer="a",right_layer="b",
+        left_layer="邏輯樹",right_layer="AbrahamsonEtAl2014",
     )
     m.to_streamlit(height=700)
 

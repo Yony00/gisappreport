@@ -15,7 +15,7 @@ if all(col in data.columns for col in required_columns):
     # 使用 ScatterplotLayer 繪製 3D 散佈圖
     scatterplot_layer = pdk.Layer(
         'ScatterplotLayer',
-        data,  # 資料來源
+        data=data,  # 資料來源
         get_position='[lon, lat]',  # 經緯度位置
         get_radius='radius',  # 根據震央距(Km)設定半徑
         get_fill_color='color',  # 使用預處理的顏色欄位
@@ -45,7 +45,3 @@ else:
 st.markdown("所有測站資料表格")
 df = pd.read_csv(url)
 st.dataframe(df)
-
-print(data['color'].head())  # 顏色應為三元素數組 [R, G, B]
-print(data['radius'].head())  # 半徑應為正數
-print(data['elevation'].head()) 

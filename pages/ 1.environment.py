@@ -63,14 +63,13 @@ with col1:
                 layers=[
                     pdk.Layer(
                         "ScatterplotLayer",
-                        data=data,
+                        data,
                         get_position="[lon, lat]",
-                        radius=1000,
+                        get_radius="震度值",
                         auto_highlight=True,
                         elevation_scale=10,
                         extruded=True,
-                        get_fill_color="color",
-                        get_weight="震度值",                        
+                        get_fill_color="color",                       
                     ),
                 ],
             )

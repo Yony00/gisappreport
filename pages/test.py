@@ -13,13 +13,13 @@ polygon = 'https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%
 gdf = gpd.read_file(polygon)
 gdf = gdf[gdf['COUNTYNAME'] == '臺南市']
 
-url="https://raw.githubusercontent.com/liuchia515/gisappreport/refs/heads/main/data/%E6%A8%A1%E6%93%AC%E6%95%B8%E5%80%BC.csv"
+url="https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%E6%A8%A1%E6%93%AC%E6%95%B8%E5%80%BC_%E8%87%BA%E5%8D%97.csv"
 data = pd.read_csv(url)
 selectable_columns = ['邏輯樹', 'AbrahamsonEtAl2014','BooreAtkinson2008','CampbellBozorgnia2008','ChiouYoungs2008','LinLee2008SInter']
 options = st.selectbox('選擇一個GMPE呈現', selectable_columns)
 
 if options=="邏輯樹":
-    url="https://raw.githubusercontent.com/liuchia515/gisappreport/refs/heads/main/data/%E6%A8%A1%E6%93%AC%E6%95%B8%E5%80%BC.csv"
+    url="https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%E6%A8%A1%E6%93%AC%E6%95%B8%E5%80%BC_%E8%87%BA%E5%8D%97.csv"
     m.add_gdf(
         gdf,
         layer_name="行政區界",

@@ -4,7 +4,7 @@ import pydeck as pdk
 import pandas as pd
 import numpy as np
 st.title("模擬值熱圖")
-url="https://raw.githubusercontent.com/liuchia515/gisappreport/refs/heads/main/data/%E6%A8%A1%E6%93%AC%E6%95%B8%E5%80%BC.csv"
+url="https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%E6%A8%A1%E6%93%AC%E6%95%B8%E5%80%BC_%E8%87%BA%E5%8D%97.csv"
 data = pd.read_csv(
     url,
     header=0,

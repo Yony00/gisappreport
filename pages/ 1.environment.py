@@ -21,58 +21,68 @@ data = pd.read_csv(
       "lon",
     ],
 )
+col1,col2=st.columns([2,1])
+width = None
+height = 800
+tiles = None
+
 optiona = data["鄉鎮"].unique().tolist()
 optionb = st.multiselect("選擇特定區", optiona)
-if optionb:
-    filtered = data[data["鄉鎮"].isin(optionb)]
-    st.pydeck_chart(
-        pdk.Deck(
-            initial_view_state=pdk.ViewState(
-                latitude=23.1,
-                longitude=120.1,
-                zoom=8,
-                pitch=50,
-            ),
-            layers=[
-                pdk.Layer(
-                    "HexagonLayer",
-                    data=filtered,
-                    get_position="[lon, lat]",
-                    get_radius="震度值",
-                    auto_highlight=True,
-                    elevation_scale=50,
-                    pickable=True,
-                    extruded=True,
-                    get_weight="震度值",
+
+with col1:
+    if optionb:
+        filtered = data[data["鄉鎮"].isin(optionb)]
+        st.pydeck_chart(
+            pdk.Deck(
+                initial_view_state=pdk.ViewState(
+                    latitude=23.1,
+                    longitude=120.1,
+                    zoom=8,
+                    pitch=50,
                 ),
-            ],
+                layers=[
+                    pdk.Layer(
+                        "HexagonLayer",
+                        data=filtered,
+                        get_position="[lon, lat]",
+                        get_radius="震度值",
+                        auto_highlight=True,
+                        elevation_scale=50,
+                        pickable=True,
+                        extruded=True,
+                        get_weight="震度值",
+                    ),
+                ],
+            )
         )
-    )
-    st.markdown("選取區資料表格")
-    st.dataframe(filtered)
-else:
-    st.pydeck_chart(
-        pdk.Deck(
-            initial_view_state=pdk.ViewState(
-                latitude=23.15,
-                longitude=120.2,
-                zoom=8,
-                pitch=50,
-            ),
-            layers=[
-                pdk.Layer(
-                    "HexagonLayer",
-                    data=data,
-                    get_position="[lon, lat]",
-                    get_radius="震度值",
-                    auto_highlight=True,
-                    elevation_scale=50,
-                    pickable=True,
-                    extruded=True,
+    else:
+        st.pydeck_chart(
+            pdk.Deck(
+                initial_view_state=pdk.ViewState(
+                    latitude=23.15,
+                    longitude=120.2,
+                    zoom=8,
+                    pitch=50,
                 ),
-            ],
+                layers=[
+                    pdk.Layer(
+                        "HexagonLayer",
+                        data=data,
+                        get_position="[lon, lat]",
+                        get_radius="震度值",
+                        auto_highlight=True,
+                        elevation_scale=50,
+                        pickable=True,
+                        extruded=True,
+                    ),
+                ],
+            )
         )
-    )
-    st.markdown("所有測站資料表格")
-    df = pd.read_csv(url)
-    st.dataframe(df)
+with col2:
+    if optionb:
+        st.markdown("選取區資料表格")
+        st.dataframe(filtered) 
+    else:
+        st.markdown("所有測站資料表格")
+        df = pd.read_csv(url)
+        st.dataframe(df)

@@ -6,7 +6,7 @@ import leafmap.foliumap as leafmap
 st.title("測試用頁面")
 
 #臺南市醫院資訊
-st.subtitle("臺南市醫院資訊")
+st.subheader("臺南市醫院資訊")
 hos_url="https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%E9%86%AB%E7%99%82%E9%99%A2%E6%89%80%E6%95%B8%E9%87%8F/%E8%87%BA%E5%8D%97%E5%B8%82%E9%86%AB%E7%99%82%E9%99%A2%E6%89%80%E9%BB%9E%E4%BD%8D%E8%B3%87%E6%96%99.csv"
 hos = pd.read_csv(hos_url)
 m = leafmap.Map(center=[23.15, 120.3], zoom=9)

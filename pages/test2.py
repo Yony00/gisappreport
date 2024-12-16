@@ -7,7 +7,7 @@ st.title("3D觀測值分布圖")
 url="https://raw.githubusercontent.com/liuchia515/gisappreport/refs/heads/main/data/%E8%A7%80%E6%B8%AC%E5%80%BC.csv"
 data = pd.read_csv(url)
 
-data['color'] = data['震度值'].apply(lambda x: [255, 255 - x * 30, 10 + x * 25])  # 根據震度值設定顏色
+data['color'] = data['震度值'].apply(lambda x: [255, 255 - (x * 30), 10 + (x * 25)])  # 根據震度值設定顏色
 data['elevation'] = data['震度值'] * 10000  # 根據震度值設定高度
 data['radius'] = data['震度值']*250
 required_columns = ['lat', 'lon', '震度值', '震央距(Km)', 'color', 'elevation', 'radius']

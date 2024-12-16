@@ -6,8 +6,6 @@ import pandas as pd
 
 st.set_page_config(layout="wide")
 
-st.sidebar.title("About")
-st.sidebar.info("A Streamlit map with Socioeconomic data.")
 st.title("臺南市社會經濟資料")
 st.header("醫療院所資料統計")
 markdown = "（內容）"

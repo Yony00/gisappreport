@@ -25,7 +25,7 @@ m.add_gdf(
     layer_name="臺南市行政區醫院數量",
     info_mode='on_hover',
     style={"fillOpacity": 0.6, "weight": 0.5},
-    color_column="	H_CNT",
+    color_column="H_CNT",
     cmap="Oranges",
 )
 m.to_streamlit(height=700)

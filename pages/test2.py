@@ -22,6 +22,7 @@ if all(col in data.columns for col in required_columns):
         get_elevation='elevation',  # 使用預處理的高度欄位
         auto_highlight=True,  # 高亮選中點
         extruded=True,
+        pickable=True,
     )
 
     # 設定地圖視角

@@ -28,11 +28,18 @@ st.write("下方圖台為1973~2024年9月為止規模5以上的地震震央點�
 url="https://raw.githubusercontent.com/liuchia515/gisappreport/refs/heads/main/data/%E6%AD%B7%E5%8F%B2%E8%B3%87%E6%96%99.csv"
 data = pd.read_csv(url)
 
-selected= st.slider("請依照需求自行調整範圍",5.0,7.3,(5.0,7.3))
-def filterdata(df,selected_range):
-  lower, upper = selected_range
-  return df[(df["ML"]>=lower) & (df["ML"]<=upper)]
-filtered_data = filterdata(data, selected)
-st.map(filtered_data, size=20, color="#0044ff")
-st.write("選定規模範圍內地震資料")
-st.dataframe(filtered_data)
+cola,colb=st.columns([3,1])
+width = None
+height = 800
+tiles = None
+
+with cola:
+  selected= st.slider("請依照需求自行調整範圍",5.0,7.3,(5.0,7.3))
+  def filterdata(df,selected_range):
+    lower, upper = selected_range
+    return df[(df["ML"]>=lower) & (df["ML"]<=upper)]
+  filtered_data = filterdata(data, selected)
+  st.map(filtered_data, size=20, color="#0044ff")
+with colb:
+  st.write("選定規模範圍內地震資料")
+  st.dataframe(filtered_data)

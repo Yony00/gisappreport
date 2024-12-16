@@ -3,7 +3,7 @@ import leafmap.foliumap as leafmap
 import pydeck as pdk
 import pandas as pd
 import numpy as np
-st.title("3D模擬值分布圖")
+st.title("模擬值熱圖")
 url="https://raw.githubusercontent.com/liuchia515/gisappreport/refs/heads/main/data/%E6%A8%A1%E6%93%AC%E6%95%B8%E5%80%BC.csv"
 data = pd.read_csv(
     url,

@@ -27,7 +27,7 @@ hospital_data = hospital_data.rename(columns={"TOWN": "鄉鎮市區名稱", 'H_C
 gdf = gdf.merge(hospital_data, left_on='TOWNNAME', right_on='鄉鎮市區名稱', how='left')
 gdf['醫療院所家數'] = pd.to_numeric(gdf['醫療院所家數'], errors='coerce').fillna(0) 
 
-m.add_gdf(m.add_gdf(
+m.add_gdf(
     gdf,
     layer_name="醫療院所家數",
     color_column="醫療院所家數",

@@ -18,7 +18,7 @@ tainan = taiwan[taiwan['COUNTYNAME'] == '臺南市']
 hospital_point_csv = 'https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%E8%87%BA%E5%8D%97%E5%B8%82%E9%86%AB%E7%99%82%E9%99%A2%E6%89%80%E9%BB%9E%E4%BD%8D%E8%B3%87%E6%96%99.csv'
 hospital_point = pd.read_csv(hospital_point_csv)
 
-col1,col2=st.columns([2,1])
+col1,col2=st.columns([1,1])
 with col1:
             option_list = hospital_point["行政區"].unique().tolist()
             option = st.multiselect("選擇行政區", option_list)
@@ -35,7 +35,7 @@ with col1:
                         add_legend=True,
                         layer_name="醫院點位",
                         )
-m.to_streamlit(height=700)
+            m.to_streamlit(height=400)
 
 
 with col2:
@@ -44,8 +44,7 @@ with col2:
         st.dataframe(filtered) 
     else:
         st.markdown("所有醫院位置")
-        df = pd.read_csv(url)
-        st.dataframe(df)
+        st.dataframe(hospital_point)
 
 st.header("各行政區救護車數量")
 markdown = "（內容）"

@@ -80,10 +80,9 @@ st.subheader("收容人數熱區圖")
 st.title("Heatmap")
 
 
-filepath = "https://raw.githubusercontent.com/tim9810/gis_final_exam/refs/heads/main/%E5%8F%B0%E5%8D%97%E9%81%BF%E9%9B%A3%E6%89%80utf.csv"
 m2 = leafmap.Map(center=[23, 120.3], zoom=10)
 m2.add_heatmap(
-            filepath,
+            refuge_point_csv,
             latitude="經度",
             longitude="緯度",
             value="最大容納人數",

@@ -95,7 +95,7 @@ m2.to_streamlit(height=500)
 #警察局
 st.subheader("警察點位資料")
 
-police_point_csv = 'https://raw.githubusercontent.com/tim9810/gis_final_exam/refs/heads/main/%E5%8F%B0%E5%8D%97%E9%81%BF%E9%9B%A3%E6%89%80utf.csv'
+police_point_csv = 'https://raw.githubusercontent.com/tim9810/gis_final_exam/refs/heads/main/PoliceAddress1_utf.csv'
 police_point = pd.read_csv(police_point_csv)
 
 option_list2 = police_point["行政區"].unique().tolist()

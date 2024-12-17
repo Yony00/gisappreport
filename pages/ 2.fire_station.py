@@ -5,9 +5,20 @@ import leafmap.foliumap as leafmap
 import geopandas as gpd
 import pandas as pd
 
-!wget -O TaipeiSansTCBeta-Regular.ttf https://github.com/liuchia515/gisappreport/blob/main/data/TaipeiSansTCBeta-Regular.ttf
-matplotlib.font_manager.fontManager.addfont('TaipeiSansTCBeta-Regular.ttf')
-matplotlib.rc('font', family='Taipei Sans TC Beta')
+# 1. 下載字體檔案並設置 Matplotlib 字體
+font_url = "https://github.com/liuchia515/gisappreport/raw/main/data/TaipeiSansTCBeta-Regular.ttf"
+font_path = "TaipeiSansTCBeta-Regular.ttf"
+
+# 檢查字體是否已下載
+if not os.path.exists(font_path):
+    with open(font_path, "wb") as f:
+        f.write(requests.get(font_url).content)
+    st.success("字體下載成功！")
+
+# 設定 Matplotlib 使用字體
+taipei_font = fm.FontProperties(fname=font_path)
+plt.rcParams['font.family'] = taipei_font.get_name()
+plt.rcParams['axes.unicode_minus'] = False 
 
 st.set_page_config(layout="wide")
 st.title("臺南市各消防局統計資料")

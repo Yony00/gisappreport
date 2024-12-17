@@ -5,7 +5,7 @@ import leafmap.foliumap as leafmap
 import geopandas as gpd
 import pandas as pd
 
-!wget -O TaipeiSansTCBeta-Regular.ttf https://drive.google.com/uc?id=1eGAsTN1HBpJAkeVM57_C7ccp7hbgSz3_&export=download
+!wget -O TaipeiSansTCBeta-Regular.ttf https://github.com/liuchia515/gisappreport/blob/main/data/TaipeiSansTCBeta-Regular.ttf
 matplotlib.font_manager.fontManager.addfont('TaipeiSansTCBeta-Regular.ttf')
 matplotlib.rc('font', family='Taipei Sans TC Beta')
 

@@ -27,7 +27,7 @@ m.add_points_from_xy(
 )
 m.to_streamlit(height=400)
 
-st.subheader("完整的消防局表格")
+st.subheader("消防局表格")
 if option:
     st.markdown("### 選取的行政區消防局資料")
     st.dataframe(filtered)

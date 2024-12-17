@@ -5,6 +5,7 @@ import geopandas as gpd
 import pandas as pd
 
 matplotlib.rcParams['font.sans-serif'] = ['Microsoft JhengHei']
+matplotlib.rcParams['axes.unicode_minus'] = False  # 解決負號 '-' 無法顯示的問題
 
 st.set_page_config(layout="wide")
 st.title("臺南市各消防局統計資料")

@@ -116,3 +116,15 @@ if option2:
 else:
     st.markdown("### 所有行政區警察局資料")
     st.dataframe(police_point)
+
+# 統計各行政區警察局數量並繪製長條圖
+st.subheader("各行政區警察局數量")
+firestation_count = firestation_point['行政區'].value_counts()
+fig, ax = plt.subplots(figsize=(10, 6))
+firestation_count.plot(kind='bar', color='blue', ax=ax)
+plt.title("各行政區警察局數量")
+plt.xlabel("行政區")
+plt.ylabel("警察局數量")
+plt.xticks(rotation=45)
+plt.tight_layout()
+st.pyplot(fig)

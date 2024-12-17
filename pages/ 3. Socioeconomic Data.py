@@ -40,6 +40,7 @@ ambulance_csv = 'https://github.com/liuchia515/gisappreport/raw/refs/heads/main/
 ambulance = pd.read_csv(ambulance_csv)
 count_data = ambulance.groupby('行政區').size()
 tainan['count'] = tainan['TOWNNAME'].map(count_data)
+tainan['count'] = tainan['count'].fillna(0)
 
 fig, ax = plt.subplots(figsize = (10, 6))
 tainan.plot(column = 'count',cmap='OrRd', ax = ax, legend=True)

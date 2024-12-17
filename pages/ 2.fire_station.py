@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import matplotlib
 import streamlit as st
 import leafmap.foliumap as leafmap
 import geopandas as gpd

@@ -5,8 +5,9 @@ import leafmap.foliumap as leafmap
 import geopandas as gpd
 import pandas as pd
 
-matplotlib.rcParams['font.sans-serif'] = ['SimHei']
-matplotlib.rcParams['axes.unicode_minus'] = False  # 解決負號 '-' 無法顯示的問題
+import os
+if os.name == 'nt':  # Windows 系統
+    matplotlib.rcParams['font.sans-serif'] = ['Microsoft JhengHei']
 
 st.set_page_config(layout="wide")
 st.title("臺南市各消防局統計資料")

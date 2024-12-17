@@ -34,3 +34,14 @@ else:
     st.markdown("### 所有行政區消防局資料")
     st.dataframe(firestation_point)
 
+# 統計各行政區消防局數量並繪製長條圖
+st.subheader("各行政區消防局數量")
+firestation_count = firestation_point['行政區'].value_counts()
+fig, ax = plt.subplots(figsize=(10, 6))
+firestation_count.plot(kind='bar', color='orange', ax=ax)
+plt.title("各行政區消防局數量")
+plt.xlabel("行政區")
+plt.ylabel("消防局數量")
+plt.xticks(rotation=45)
+plt.tight_layout()
+st.pyplot(fig)

@@ -104,7 +104,7 @@ filtered2 = police_point[police_point["行政區"].isin(option2)]
 
 m3 = leafmap.Map(center=[23, 120.3], zoom=10)
 m3.add_points_from_xy(
-    filtered2, x='經度', y='緯度',
+    filtered2, x='x', y='y',
     popup2=['中文單位名稱','地址','行政區'],
     layer_name2="避難所點位",
 )

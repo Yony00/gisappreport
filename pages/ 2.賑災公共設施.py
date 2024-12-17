@@ -99,7 +99,7 @@ police_point_csv = 'https://raw.githubusercontent.com/tim9810/gis_final_exam/ref
 police_point = pd.read_csv(police_point_csv)
 
 option_list2 = police_point["行政區"].unique().tolist()
-option2 = st.multiselect("選擇行政區", option_list1)
+option2 = st.multiselect("選擇行政區", option_list2)
 filtered2 = police_point[police_point["行政區"].isin(option2)]
 
 m3 = leafmap.Map(center=[23, 120.3], zoom=10)

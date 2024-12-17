@@ -18,25 +18,34 @@ tainan = taiwan[taiwan['COUNTYNAME'] == '臺南市']
 hospital_point_csv = 'https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%E8%87%BA%E5%8D%97%E5%B8%82%E9%86%AB%E7%99%82%E9%99%A2%E6%89%80%E9%BB%9E%E4%BD%8D%E8%B3%87%E6%96%99.csv'
 hospital_point = pd.read_csv(hospital_point_csv)
 
-col1,col2=st.columns([1,1])
+col1,col2=st.columns([3,2])
+
 with col1:
             option_list = hospital_point["行政區"].unique().tolist()
             option = st.multiselect("選擇行政區", option_list)
             filtered = hospital_point[hospital_point["行政區"].isin(option)]
-            
-            m = leafmap.Map(center=[23.2, 120.3], zoom=10)
-            m.add_points_from_xy(
-                        filtered,
-                        x='經度',
-                        y='緯度',
-                        popup=['機構名稱', '行政區', '地址'],
-                        icon_names=["red cross"],
-                        spin=True,
-                        add_legend=True,
-                        layer_name="醫院點位",
-                        )
-            m.to_streamlit(height=400)
-
+            if option:
+                        m = leafmap.Map(center=[23, 120.3], zoom=10)
+                        m.add_points_from_xy(
+                                    filtered, x='經度', y='緯度',
+                                    popup=['機構名稱', '行政區', '地址'],
+                                    icon_names=["hospital"],
+                                    spin=True,
+                                    add_legend=True,
+                                    layer_name="醫院點位",
+                                    )
+                        m.to_streamlit(height=400)
+            else:
+                        m = leafmap.Map(center=[23, 120.3], zoom=10)
+                        m.add_points_from_xy(
+                                    hospital_point, x='經度', y='緯度',
+                                    popup=['機構名稱', '行政區', '地址'],
+                                    icon_names=["hospital"],
+                                    spin=True,
+                                    add_legend=True,
+                                    layer_name="醫院點位",
+                                    )
+                        m.to_streamlit(height=400) 
 
 with col2:
     if option:

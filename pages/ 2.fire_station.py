@@ -1,3 +1,9 @@
+import matplotlib.pyplot as plt
+import streamlit as st
+import leafmap.foliumap as leafmap
+import geopandas as gpd
+import pandas as pd
+
 st.set_page_config(layout="wide")
 st.title("臺南市各消防局統計資料")
 st.header("臺南市各消防局點位")

@@ -22,7 +22,7 @@ data = pd.read_csv(
 )
 
 selectable_columns = ['邏輯樹', 'AbrahamsonEtAl2014','BooreAtkinson2008','CampbellBozorgnia2008','ChiouYoungs2008','LinLee2008SInter']
-options = st.selectbox('選擇一個GMPE呈現', selectable_columns)
+options = st.selectbox('選擇一種GMPE呈現', selectable_columns)
 if options=="邏輯樹":
     st.pydeck_chart(
         pdk.Deck(

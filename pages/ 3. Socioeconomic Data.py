@@ -3,6 +3,12 @@ import streamlit as st
 import leafmap.foliumap as leafmap
 import geopandas as gpd
 import pandas as pd
+from matplotlib import font_manager
+
+font_path = "C:/Windows/Fonts/msjh.ttc"  
+prop = font_manager.FontProperties(fname=font_path)
+plt.rcParams['font.family'] = prop.get_name()
+plt.rcParams['axes.unicode_minus'] = False
 
 st.set_page_config(layout="wide")
 

@@ -4,6 +4,8 @@ import streamlit as st
 import leafmap.foliumap as leafmap
 import geopandas as gpd
 import pandas as pd
+import requests
+import os
 
 # 1. 下載字體檔案並設置 Matplotlib 字體
 font_url = "https://github.com/liuchia515/gisappreport/raw/main/data/TaipeiSansTCBeta-Regular.ttf"

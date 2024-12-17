@@ -5,9 +5,8 @@ import leafmap.foliumap as leafmap
 import geopandas as gpd
 import pandas as pd
 
-import os
-if os.name == 'nt':  # Windows 系統
-    matplotlib.rcParams['font.sans-serif'] = ['Microsoft JhengHei']
+language-pack-zh*
+chinese*
 
 st.set_page_config(layout="wide")
 st.title("臺南市各消防局統計資料")

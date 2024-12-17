@@ -83,9 +83,9 @@ st.title("Heatmap")
 m2 = leafmap.Map(center=[23, 120.3], zoom=10)
 m2.add_heatmap(
             refuge_point_csv,
-            latitude='經度',
-            longitude='緯度',
-            value='最大容納人數',
+            latitude="緯度",
+            longitude="經度",
+            value="最大容納人數",
             name='熱區圖',
             radius=20,
         )

@@ -17,7 +17,6 @@ tainan = taiwan[taiwan['COUNTYNAME'] == '臺南市']
 
 hospital_point_csv = 'https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%E8%87%BA%E5%8D%97%E5%B8%82%E9%86%AB%E7%99%82%E9%99%A2%E6%89%80%E9%BB%9E%E4%BD%8D%E8%B3%87%E6%96%99.csv'
 hospital_point = pd.read_csv(hospital_point_csv)
-red_cross_icon = 'data/紅十字.jpg'
 
 col1,col2=st.columns([3,2])
 
@@ -30,7 +29,6 @@ with col1:
                         m.add_points_from_xy(
                                     filtered, x='經度', y='緯度',
                                     popup=['機構名稱', '行政區', '地址'],
-                                    icon=red_cross_icon,
                                     spin=True,
                                     add_legend=True,
                                     layer_name="醫院點位",
@@ -41,7 +39,6 @@ with col1:
                         m.add_points_from_xy(
                                     hospital_point, x='經度', y='緯度',
                                     popup=['機構名稱', '行政區', '地址'],
-                                    icon=red_cross_icon,
                                     spin=True,
                                     add_legend=True,
                                     layer_name="醫院點位",
@@ -57,7 +54,7 @@ with col2:
         st.dataframe(hospital_point)
 
 st.header("各行政區救護車數量")
-markdown = "（內容）"
+markdown = "內容"
 st.markdown(markdown)
 
 ambulance_csv = 'https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%E8%87%BA%E5%8D%97%E5%B8%82%E6%95%91%E8%AD%B7%E8%BB%8A%E8%B3%87%E6%96%99.csv'
@@ -65,6 +62,8 @@ ambulance = pd.read_csv(ambulance_csv)
 count_data = ambulance.groupby('行政區').size()
 tainan['count'] = tainan['TOWNNAME'].map(count_data)
 tainan['count'] = tainan['count'].fillna(0)
+
+st.markdown(option, '共有救護車', {count}, '台。')
 
 fig, ax = plt.subplots(figsize = (10, 6))
 tainan.plot(column = 'count',cmap='OrRd', ax = ax, legend=True)

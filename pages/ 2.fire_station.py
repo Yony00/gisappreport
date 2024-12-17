@@ -43,7 +43,7 @@ else:
 st.subheader("各行政區消防局數量")
 firestation_count = firestation_point['行政區'].value_counts()
 fig, ax = plt.subplots(figsize=(10, 6))
-firestation_count.plot(kind='bar', color='orange', ax=ax)
+firestation_count.plot(kind='bar', color='green', ax=ax)
 plt.title("各行政區消防局數量")
 plt.xlabel("行政區")
 plt.ylabel("消防局數量")

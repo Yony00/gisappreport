@@ -24,7 +24,7 @@ filtered = firestation_point[firestation_point["行政區"].isin(option)]
 m = leafmap.Map(center=[23, 120.3], zoom=10)
 m.add_points_from_xy(
     filtered, x='經度', y='緯度',
-    popup=['地址'],
+    popup=['地址','行政區'],
     layer_name="消防局點位",
 )
 m.to_streamlit(height=400)

@@ -50,3 +50,27 @@ plt.ylabel("消防局數量")
 plt.xticks(rotation=45)
 plt.tight_layout()
 st.pyplot(fig)
+
+st.subheader("避難所點位資料")
+
+refuge_point_csv = 'https://raw.githubusercontent.com/tim9810/gis_final_exam/refs/heads/main/%E5%8F%B0%E5%8D%97%E9%81%BF%E9%9B%A3%E6%89%80utf.csv'
+refuge_point = pd.read_csv(refuge_point_csv)
+
+option_list1 = refuge_point["行政區"].unique().tolist()
+option1 = st.multiselect("選擇行政區", option_list)
+filtered1 = refuge_point[refuge_point["行政區"].isin(option1)]
+
+m = leafmap.Map(center=[23, 120.3], zoom=10)
+m.add_points_from_xy(
+    filtered, x='經度', y='緯度',
+    popup=['收容所名稱','地址','行政區','最大容納人數'],
+    layer_name="避難所點位",
+)
+m.to_streamlit(height=400)
+
+if option:
+    st.markdown("### 選取的行政區避難所資料")
+    st.dataframe(filtered)
+else:
+    st.markdown("### 所有行政區避難所資料")
+    st.dataframe(firestation_point)

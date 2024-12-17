@@ -70,7 +70,7 @@ m.to_streamlit(height=400)
 
 if option:
     st.markdown("### 選取的行政區避難所資料")
-    st.dataframe(filtered)
+    st.dataframe(filtered1)
 else:
     st.markdown("### 所有行政區避難所資料")
-    st.dataframe(firestation_point)
+    st.dataframe(refuge_point)

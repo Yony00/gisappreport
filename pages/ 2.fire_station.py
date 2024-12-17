@@ -57,7 +57,7 @@ refuge_point_csv = 'https://raw.githubusercontent.com/tim9810/gis_final_exam/ref
 refuge_point = pd.read_csv(refuge_point_csv)
 
 option_list1 = refuge_point["行政區"].unique().tolist()
-option1 = st.multiselect("選擇行政區", option_list)
+option1 = st.multiselect("選擇行政區", option_list1)
 filtered1 = refuge_point[refuge_point["行政區"].isin(option1)]
 
 m = leafmap.Map(center=[23, 120.3], zoom=10)

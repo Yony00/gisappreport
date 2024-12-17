@@ -74,3 +74,5 @@ if option1:
 else:
     st.markdown("### 所有行政區避難所資料")
     st.dataframe(refuge_point)
+
+#做收容人數熱區圖

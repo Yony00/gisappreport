@@ -91,3 +91,28 @@ m2.add_heatmap(
 
 
 m2.to_streamlit(height=500)
+
+#警察局
+st.subheader("警察點位資料")
+
+police_point_csv = 'https://raw.githubusercontent.com/tim9810/gis_final_exam/refs/heads/main/%E5%8F%B0%E5%8D%97%E9%81%BF%E9%9B%A3%E6%89%80utf.csv'
+police_point = pd.read_csv(police_point_csv)
+
+option_list2 = police_point["行政區"].unique().tolist()
+option2 = st.multiselect("選擇行政區", option_list1)
+filtered2 = police_point[police_point["行政區"].isin(option2)]
+
+m3 = leafmap.Map(center=[23, 120.3], zoom=10)
+m3.add_points_from_xy(
+    filtered2, x='經度', y='緯度',
+    popup2=['中文單位名稱','地址','行政區'],
+    layer_name2="避難所點位",
+)
+m3.to_streamlit(height=500)
+
+if option2:
+    st.markdown("### 選取的行政區避難所資料")
+    st.dataframe(filtered2)
+else:
+    st.markdown("### 所有行政區避難所資料")
+    st.dataframe(police_point)

@@ -29,5 +29,5 @@ m.add_points_from_xy(
 )
 m.to_streamlit(height=400)
 
-st.dataframe(filtered) 
+
 

@@ -5,7 +5,7 @@ import geopandas as gpd
 import pandas as pd
 from matplotlib import font_manager
 
-font_path = "C:/Windows/Fonts/msjh.ttc"  
+font_path = "https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/jf-openhuninn-2.0.ttf"  
 prop = font_manager.FontProperties(fname=font_path)
 plt.rcParams['font.family'] = prop.get_name()
 plt.rcParams['axes.unicode_minus'] = False

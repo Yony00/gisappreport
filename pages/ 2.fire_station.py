@@ -5,8 +5,8 @@ import leafmap.foliumap as leafmap
 import geopandas as gpd
 import pandas as pd
 
-language-pack-zh*
-chinese*
+install language-pack-zh*
+install chinese*
 
 st.set_page_config(layout="wide")
 st.title("臺南市各消防局統計資料")

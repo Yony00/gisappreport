@@ -11,7 +11,7 @@ st.header("臺南市各醫院位置")
 markdown = "（內容）"
 st.markdown(markdown)
 
-m = leafmap.Map(center=[22, 120.5], zoom=8)
+m = leafmap.Map(center=[22.5, 120.5], zoom=10)
 
 #polygon = 'https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%E9%84%89%E9%8E%AE%E5%B8%82%E5%8D%80%E7%95%8C/%E9%84%89(%E9%8E%AE%E3%80%81%E5%B8%82%E3%80%81%E5%8D%80)%E7%95%8C%E7%B7%9A(TWD97%E7%B6%93%E7%B7%AF%E5%BA%A6)1131028/TOWN_MOI_1131028.shp'
 #gdf = gpd.read_file(polygon)

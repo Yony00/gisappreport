@@ -4,6 +4,10 @@ import leafmap.foliumap as leafmap
 import geopandas as gpd
 import pandas as pd
 
+# 設定中文字體
+matplotlib.rcParams['font.sans-serif'] = ['SimHei']  # 使用 SimHei 字體，或替換成其他支援中文的字體
+matplotlib.rcParams['axes.unicode_minus'] = False  # 解決負號 '-' 無法顯示的問題
+
 st.set_page_config(layout="wide")
 st.title("臺南市各消防局統計資料")
 st.header("臺南市各消防局點位")

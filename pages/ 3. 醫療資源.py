@@ -75,3 +75,12 @@ fig, ax = plt.subplots(figsize = (10, 6))
 tainan.plot(column = 'count',cmap='OrRd', ax = ax, legend=True)
 plt.axis('off')
 st.pyplot(fig)
+
+st.header("各行政區醫療院所數量")
+markdown = "內容"
+st.markdown(markdown)
+
+hospital_csv = 'data/臺南市醫療院所數量統計.csv'
+hospital_data = pd.read_csv(hospital_csv)
+hospital = pd.DataFrame(hospital_data)
+st.dataframe(hospital) 

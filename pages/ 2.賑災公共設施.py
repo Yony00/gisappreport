@@ -90,4 +90,4 @@ m2.add_heatmap(
             name="熱區圖",
             radius=20,
         )
-m.to_streamlit(height=400)
+m2.to_streamlit(height=400)

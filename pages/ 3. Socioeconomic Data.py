@@ -65,10 +65,11 @@ tainan['count'] = tainan['count'].fillna(0)
 
 option_list_2 = tainan['TOWNNAME'].unique().tolist()
 option_2 = st.multiselect("選擇行政區", option_list_2)
-count_op = tainan.loc[tainan['TOWNNAME'] == option_2, 'count']
 
-if option:
-            st.markdown(f"{option_2} 共有救護車 {count_op} 台。")
+if option_2:
+    for selected in option_2:
+        count_op = tainan.loc[tainan['TOWNNAME'] == selected, 'count'].values[0]
+        st.markdown(f"### {selected} 共有救護車 {int(count_op)} 台。")
 
 fig, ax = plt.subplots(figsize = (10, 6))
 tainan.plot(column = 'count',cmap='OrRd', ax = ax, legend=True)

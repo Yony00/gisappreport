@@ -4,8 +4,16 @@ import leafmap.foliumap as leafmap
 import geopandas as gpd
 import pandas as pd
 from matplotlib import font_manager
+import os
+import requests
 
-font_path = "https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/jf-openhuninn-2.0.ttf"  
+font_url = "https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/jf-openhuninn-2.0.ttf"
+font_path = "jf-openhuninn-2.0.ttf"
+
+if not os.path.isfile(font_path):
+    with open(font_path, "wb") as f:
+        f.write(requests.get(font_url).content)
+
 prop = font_manager.FontProperties(fname=font_path)
 plt.rcParams['font.family'] = prop.get_name()
 plt.rcParams['axes.unicode_minus'] = False

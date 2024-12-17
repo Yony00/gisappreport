@@ -6,7 +6,7 @@ import pandas as pd
 
 st.set_page_config(layout="wide")
 
-st.title("臺南市社會經濟資料")
+st.title("臺南市各行政區醫療資源統計資料")
 st.header("臺南市各醫院位置")
 markdown = "（內容）"
 st.markdown(markdown)

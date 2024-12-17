@@ -60,13 +60,13 @@ option_list1 = refuge_point["行政區"].unique().tolist()
 option1 = st.multiselect("選擇行政區", option_list1)
 filtered1 = refuge_point[refuge_point["行政區"].isin(option1)]
 
-m = leafmap.Map(center=[23, 120.3], zoom=10)
-m.add_points_from_xy(
-    filtered, x='經度', y='緯度',
-    popup=['收容所名稱','地址','行政區','最大容納人數'],
-    layer_name="避難所點位",
+m1 = leafmap.Map(center=[23, 120.3], zoom=10)
+m1.add_points_from_xy(
+    filtered1, x='經度', y='緯度',
+    popup1=['收容所名稱','地址','行政區','最大容納人數'],
+    layer_name1="避難所點位",
 )
-m.to_streamlit(height=400)
+m1.to_streamlit(height=400)
 
 if option:
     st.markdown("### 選取的行政區避難所資料")

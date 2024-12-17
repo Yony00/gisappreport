@@ -4,7 +4,7 @@ import leafmap.foliumap as leafmap
 import geopandas as gpd
 import pandas as pd
 
-matplotlib.rc('font', family='Microsoft JhengHei')
+matplotlib.rcParams['font.sans-serif'] = ['Microsoft JhengHei']
 
 st.set_page_config(layout="wide")
 st.title("臺南市各消防局統計資料")

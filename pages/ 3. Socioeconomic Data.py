@@ -62,10 +62,10 @@ ambulance = pd.read_csv(ambulance_csv)
 count_data = ambulance.groupby('行政區').size()
 tainan['count'] = tainan['TOWNNAME'].map(count_data)
 tainan['count'] = tainan['count'].fillna(0)
-count_op = tainan.loc[tainan['行政區'] == option, 'count'].values[0]
+count_op = tainan.loc[tainan['TOWNNAME'] == option, 'count'].values[0]
 
-st.markdown(f"{option} 共有救護車 {count_op} 台。")
-
+if option:
+            st.markdown(f"{option} 共有救護車 {count_op} 台。")
 fig, ax = plt.subplots(figsize = (10, 6))
 tainan.plot(column = 'count',cmap='OrRd', ax = ax, legend=True)
 plt.axis('off')

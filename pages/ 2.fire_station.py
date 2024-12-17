@@ -68,7 +68,7 @@ m1.add_points_from_xy(
 )
 m1.to_streamlit(height=400)
 
-if option:
+if option1:
     st.markdown("### 選取的行政區避難所資料")
     st.dataframe(filtered1)
 else:

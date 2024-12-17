@@ -77,10 +77,9 @@ else:
 
 #做收容人數熱區圖
 st.subheader("收容人數熱區圖")
-st.title("Heatmap")
 
 
-m2 = leafmap.Map(center=[23, 120.3], zoom=10)
+m2 = leafmap.Map(center=[23.1, 120.3], zoom=10)
 m2.add_heatmap(
             refuge_point_csv,
             latitude="緯度",

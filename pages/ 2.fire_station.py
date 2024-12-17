@@ -5,7 +5,7 @@ import leafmap.foliumap as leafmap
 import geopandas as gpd
 import pandas as pd
 
-matplotlib.rcParams['font.sans-serif'] = ['Microsoft JhengHei']
+matplotlib.rcParams['font.sans-serif'] = ['SimHei']
 matplotlib.rcParams['axes.unicode_minus'] = False  # 解決負號 '-' 無法顯示的問題
 
 st.set_page_config(layout="wide")

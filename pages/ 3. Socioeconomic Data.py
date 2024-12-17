@@ -36,7 +36,8 @@ st.header("各行政區救護車數量")
 markdown = "（內容）"
 st.markdown(markdown)
 
-ambulance = 'https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%E8%87%BA%E5%8D%97%E5%B8%82%E6%95%91%E8%AD%B7%E8%BB%8A%E8%B3%87%E6%96%99.csv'
+ambulance_csv = 'https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%E8%87%BA%E5%8D%97%E5%B8%82%E6%95%91%E8%AD%B7%E8%BB%8A%E8%B3%87%E6%96%99.csv'
+ambulance = pd.read_csv(ambulance_csv)
 count_data = ambulance.groupby('行政區').size()
 tainan['count'] = tainan['TOWNNAME'].map(count_data)
 

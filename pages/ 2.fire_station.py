@@ -5,17 +5,7 @@ import leafmap.foliumap as leafmap
 import geopandas as gpd
 import pandas as pd
 import requests
-import os
 
-# 1. 下載字體檔案並設置 Matplotlib 字體
-font_url = "https://github.com/liuchia515/gisappreport/raw/main/data/TaipeiSansTCBeta-Regular.ttf"
-font_path = "TaipeiSansTCBeta-Regular.ttf"
-
-# 檢查字體是否已下載
-if not os.path.exists(font_path):
-    with open(font_path, "wb") as f:
-        f.write(requests.get(font_url).content)
-    st.success("字體下載成功！")
 
 
 st.set_page_config(layout="wide")

@@ -5,6 +5,10 @@ import leafmap.foliumap as leafmap
 import geopandas as gpd
 import pandas as pd
 
+!wget -O TaipeiSansTCBeta-Regular.ttf https://drive.google.com/uc?id=1eGAsTN1HBpJAkeVM57_C7ccp7hbgSz3_&export=download
+matplotlib.font_manager.fontManager.addfont('TaipeiSansTCBeta-Regular.ttf')
+matplotlib.rc('font', family='Taipei Sans TC Beta')
+
 st.set_page_config(layout="wide")
 st.title("臺南市各消防局統計資料")
 st.header("臺南市各消防局點位")

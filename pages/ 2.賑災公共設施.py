@@ -89,4 +89,12 @@ m2.add_heatmap(
             name='熱區圖',
             radius=20,
         )
+# 添加圖例
+m2.add_colorbar(
+    colors=["blue", "green", "yellow", "red"],  # 熱區顏色範圍
+    vmin=refuge_point["最大容納人數"].min(),
+    vmax=refuge_point["最大容納人數"].max(),
+    caption="最大容納人數"
+)
+
 m2.to_streamlit(height=400)

@@ -48,8 +48,6 @@ if options=="邏輯樹":
         )
     )
     st.markdown(":gray-background[此種模擬結果相對最接近觀測值]")
-    st.markdown("使用條件：")
-    
     
 if options=="AbrahamsonEtAl2014":
     st.pydeck_chart(

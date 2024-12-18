@@ -7,12 +7,12 @@ from matplotlib import rcParams
 from matplotlib.font_manager import FontProperties
 import requests
 
-#font_path = "data/jf-openhuninn-2.0.ttf"
-#font = FontProperties(fname = font_path)
-#rcParams['font.family'] = font.get_name()
+font_path = "data/jf-openhuninn-2.0.ttf"
+font = FontProperties(fname = font_path)
+rcParams['font.family'] = font.get_name()
 
-matplotlib.font_manager.fontManager.addfont('TaipeiSansTCBeta-Regular.ttf')
-matplotlib.rc('font', family='Taipei Sans TC Beta')
+#matplotlib.font_manager.fontManager.addfont('TaipeiSansTCBeta-Regular.ttf')
+#matplotlib.rc('font', family='Taipei Sans TC Beta')
 
 st.set_page_config(layout="wide")
 

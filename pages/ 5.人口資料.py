@@ -54,7 +54,7 @@ with col2:
 st.subheader("各行政區老幼人數比例長條圖")
 old_kids = tainan[['行政區', '老幼人數比例']]
 fig, ax = plt.subplots(figsize=(8, 6))
-old_kids.plot(kind='bar', x='行政區', y='老幼人數比例', color='green', ax=ax)
+old_kids.set_index('行政區')['老幼人數比例'].plot(kind='bar', color='green', ax=ax)
 plt.xlabel("行政區")
 plt.ylabel("老幼人數比例")
 plt.xticks(rotation=45)

@@ -8,9 +8,12 @@ from matplotlib.font_manager import FontProperties
 from folium import Marker
 from folium.map import Icon
 
-font_path = "data/jf-openhuninn-2.0.ttf"
-font = FontProperties(fname = font_path)
-rcParams['font.family'] = font.get_name()
+#font_path = "data/jf-openhuninn-2.0.ttf"
+#font = FontProperties(fname = font_path)
+#rcParams['font.family'] = font.get_name()
+
+matplotlib.font_manager.fontManager.addfont('jf-openhuninn-2.0.ttf')
+matplotlib.rc('font', family='jf-openhuninn-2.0')
 
 st.set_page_config(layout="wide")
 

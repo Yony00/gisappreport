@@ -23,7 +23,7 @@ polygon = 'https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%
 taiwan = gpd.read_file(polygon)
 tainan = taiwan[taiwan['COUNTYNAME'] == '臺南市']
 pop = 'data/臺南市人口資料.csv'
-tainan_pop = pd.read_file(pop)
+tainan_pop = pd.read_csv(pop)
 
 tainan = tainan.rename(columns={'TOWNNAME': '行政區'})
 tainan = tainan.merge(tainan_pop, on="行政區", how="left")

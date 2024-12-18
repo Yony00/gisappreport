@@ -21,9 +21,11 @@ firestation['經度'] = pd.to_numeric(firestation['經度'], errors='coerce')
 firestation['緯度'] = pd.to_numeric(firestation['緯度'], errors='coerce')
 hospital['經度'] = pd.to_numeric(hospital['經度'], errors='coerce')
 hospital['緯度'] = pd.to_numeric(hospital['緯度'], errors='coerce')
-
-lon = st.number_input("請填入經度", value=None, min_value=119.500, max_value=122.500)
-lat = st.number_input("請填入緯度", value=None, min_value=22.000, max_value=24.000)
+col1,col2=st.columns()
+with col1:
+    lon = st.number_input("請填入經度", value=None, min_value=119.500, max_value=122.500)
+with col2:
+    lat = st.number_input("請填入緯度", value=None, min_value=22.000, max_value=24.000)
 
 if lat is not None and lon is not None:
     radius = 5000

@@ -23,3 +23,5 @@ folium.CircleMarker(
     opacity=1,
     popup="{} pixels".format(radius),
 ).add_to(m)
+
+m.to_streamlit(height=600)

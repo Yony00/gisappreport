@@ -53,8 +53,9 @@ with col2:
 
 st.subheader("各行政區弱勢族群人數長條圖")
 fig, ax = plt.subplots(figsize=(8, 6))
-tainan_pop[['老幼人數比例', '獨居老人人數', '低收入戶戶內人數']].plot(kind='bar', color=['lightgreen', 'lightblue', 'yellow'], ax=ax)
-plt.xlabel("行政區")
-plt.ylabel("人數")
+tainan_pop.set_index('行政區', inplace=True)
+tainan_pop[['老幼人數比例', '獨居老人人數', '低收入戶戶內人數']].plot(kind='bar', color=['lightgreen', 'lightblue', 'yellow'], ax=ax, fontproperties=font)
+plt.xlabel("行政區", fontproperties=font)
+plt.ylabel("人數", fontproperties=font)
 plt.xticks(rotation=45)
 st.pyplot(fig)

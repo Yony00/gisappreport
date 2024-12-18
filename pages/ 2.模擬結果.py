@@ -51,7 +51,7 @@ if options=="邏輯樹":
     with col1:
         st.write(' ')
     with col2:
-        st.image("此種模擬結果相對最接近觀測值")
+        st.write("此種模擬結果相對最接近觀測值")
     with col3:
         st.write(' ')
     

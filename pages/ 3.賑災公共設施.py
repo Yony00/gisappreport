@@ -69,22 +69,32 @@ refuge_point = pd.read_csv(refuge_point_csv)
 
 option_list1 = refuge_point["行政區"].unique().tolist()
 option1 = st.multiselect("選擇行政區", option_list1)
-filtered1 = refuge_point[refuge_point["行政區"].isin(option1)]
-
-m1 = leafmap.Map(center=[23, 120.3], zoom=10)
-m1.add_points_from_xy(
-    filtered1, x='經度', y='緯度',
-    popup1=['收容所名稱','地址','行政區','最大容納人數'],
-    layer_name1="避難所點位",
-)
-m1.to_streamlit(height=500)
-
+# 篩選資料
 if option1:
-    st.markdown("### 選取的行政區避難所資料")
-    st.dataframe(filtered1)
+    filtered1 = refuge_point[refuge_point["行政區"].isin(option1)]
 else:
-    st.markdown("### 所有行政區避難所資料")
-    st.dataframe(refuge_point)
+    filtered1 = refuge_point
+
+# 避難所地圖與表格
+tcol1, tcol2 = st.columns([3, 2])
+with tcol1:
+    st.subheader("地圖")
+    m1 = leafmap.Map(center=[23, 120.3], zoom=10)
+    m1.add_points_from_xy(
+        filtered1, x='經度', y='緯度',
+        popup=['收容所名稱', '地址', '行政區', '最大容納人數'],
+        layer_name="避難所點位",
+    )
+    m1.to_streamlit(height=500)
+
+with tcol2:
+    st.subheader("資料")
+    if option1:
+        st.markdown("### 選取的行政區避難所資料")
+        st.dataframe(filtered1)
+    else:
+        st.markdown("### 所有行政區避難所資料")
+        st.dataframe(refuge_point)
 
 #做收容人數熱區圖
 st.subheader("收容人數熱區圖")

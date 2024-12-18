@@ -46,7 +46,7 @@ with col1:
     st.pyplot(fig)
 with col2:
     pop_show = tainan[['行政區', '人口數', '人口密度']]
-    st.dataframe(pop_show)
+    st.dataframe(pop_show, height=800)
 
 m = leafmap.Map(center=[23, 120.3], zoom=10)
 m.add_gdf(tainan, layer_name="臺南行政區", style={"color": "blue", "weight": 1.5, "fillOpacity": 0.3})

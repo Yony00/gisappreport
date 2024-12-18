@@ -79,7 +79,7 @@ if option_2:
 
 fig, ax = plt.subplots(figsize = (10, 6))
 tainan.plot(column = 'count',cmap='OrRd', ax = ax, legend=True)
-plt.title('各行政區救護車數量面量圖')
+ax.set_title('各行政區救護車數量面量圖', fontproperties=font, fontsize=16)
 plt.axis('off')
 st.pyplot(fig)
 

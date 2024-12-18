@@ -39,8 +39,8 @@ tainan["人口密度"] = tainan["人口數"] / tainan["面積"]
 
 fig, ax = plt.subplots(figsize=(8, 6))
 tainan.plot(column="人口密度", cmap="OrRd", ax=ax, legend=True)
-ax.set_title("臺南市人口密度面量圖(單位:人/平方公里)", fontsize=12)
-plt.axis("off")
+ax.set_title("臺南市人口密度面量圖(單位:人/平方公里)", fontproperties=font, fontsize=12)
+ax.axis('off')
 st.pyplot(fig)
 
 m = leafmap.Map(center=[23, 120.3], zoom=10)

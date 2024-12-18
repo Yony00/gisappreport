@@ -29,7 +29,7 @@ with colb:
   st.write("選定規模範圍內地震資料")
   st.dataframe(filtered_data)
 
-st.subheader("20160206美濃地震觀測值散佈圖")
+st.subheader("2016.02.06美濃地震觀測值散佈圖")
 url="https://raw.githubusercontent.com/liuchia515/gisappreport/refs/heads/main/data/%E8%A7%80%E6%B8%AC%E5%80%BC.csv"
 data = pd.read_csv(url)
 col1,col2=st.columns([2,1])

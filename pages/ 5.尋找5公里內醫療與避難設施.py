@@ -13,14 +13,16 @@ rcParams['font.family'] = font.get_name()
 
 st.set_page_config(layout="wide")
 
-m = leafmap.Map(center=[23, 120.3], zoom=10)
+lon = st.number_input("請填入經度",value=None,min_value=119.990,max_value=120.750)
+lat = st.number_input("請填入緯度",value=None,min_value=22.850,max_value=23.450)
 
-draw = Draw(export=True)
-draw.add_to(m)
+st.write("經度:", lon,",緯度:",lat)
+
+m = leafmap.Map(center=[23, 120.3], zoom=10)
 
 radius=5000
 folium.Circle(
-    location=[user_lat, user_lon],
+    location=[lat, lon],
     radius=radius,
     color="cornflowerblue",
     fill=True,

@@ -92,6 +92,18 @@ m2.add_heatmap(
 
 m2.to_streamlit(height=500)
 
+#各行政區收容人數長條圖
+st.subheader("各行政區收容人數")
+refuge_count = refuge_point['行政區'].value_counts()
+fig, ax = plt.subplots(figsize=(10, 6))
+refuge_point_count.plot(kind='bar', color='blue', ax=ax)
+plt.title("各行政區收容人數")
+plt.xlabel("行政區")
+plt.ylabel("最大收容人數")
+plt.xticks(rotation=45)
+plt.tight_layout()
+st.pyplot(fig)
+
 #警察局
 st.subheader("警察點位資料")
 

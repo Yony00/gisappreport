@@ -47,7 +47,7 @@ if options=="邏輯樹":
             ],
         )
     )
-    st.write("*此模擬結果的相對最接近觀測值")
+    st.markdoen("<h2 style='text-align: center; color: black;'>此種模擬結果相對最接近觀測值 </h2>", unsafe_allow_html=True)
     
 if options=="AbrahamsonEtAl2014":
     st.pydeck_chart(

@@ -80,9 +80,9 @@ if lat is not None and lon is not None:
 
     m.to_streamlit(height=600)
     st.write("範圍內的消防站：")
-    st.dataframe(nearby_firestations[['地址', '經度', '緯度', '距離']])
+    st.table(nearby_firestations[['地址', '經度', '緯度', '距離']])
     st.write("範圍內的醫療院所：")
-    st.dataframe(nearby_hospitals[['機構名稱','地址', '經度', '緯度', '距離']])
+    st.table(nearby_hospitals[['機構名稱','地址', '經度', '緯度', '距離']])
 
 else:
     st.write("請填入有效的經緯度")

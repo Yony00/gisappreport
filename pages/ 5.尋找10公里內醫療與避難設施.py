@@ -14,7 +14,7 @@ st.set_page_config(layout="wide")
 
 m = leafmap.Map(center=[23, 120.3], zoom=10)
 radius=10
-folium.CircleMarker(
+folium.Circle(
     location=[23, 120.3],
     radius=radius,
     color="cornflowerblue",
@@ -25,3 +25,5 @@ folium.CircleMarker(
 ).add_to(m)
 
 m.to_streamlit(height=600)
+
+

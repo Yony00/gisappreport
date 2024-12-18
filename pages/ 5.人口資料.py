@@ -26,9 +26,9 @@ tainan = taiwan[taiwan['COUNTYNAME'] == '臺南市']
 pop = 'data/臺南市人口資料.csv'
 tainan_pop = gpd.read_file(pop)
 
-tainan = tainan.rename(columns={'TOWNNAME': '行政區'})tainan = tainan.merge(population_data, on="行政區", how="left")
-
-tainan["面積"] = tainan.geometry.area / 1e6  # 將面積從平方米轉換為平方公里
+tainan = tainan.rename(columns={'TOWNNAME': '行政區'})
+tainan = tainan.merge(population_data, on="行政區", how="left")
+tainan["面積"] = tainan.geometry.area / 1e6
 tainan["人口密度"] = tainan["人口數"] / tainan["面積"]
 
 fig, ax = plt.subplots(figsize=(8, 6))

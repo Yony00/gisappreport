@@ -5,6 +5,7 @@ import pandas as pd
 import folium
 from matplotlib import rcParams
 from matplotlib.font_manager import FontProperties
+from folium.plugins import Draw
 
 font_path = "data/jf-openhuninn-2.0.ttf"
 font = FontProperties(fname = font_path)

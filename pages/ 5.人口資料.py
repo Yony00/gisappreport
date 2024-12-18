@@ -51,10 +51,10 @@ with col2:
     pop_show = tainan[['行政區', '人口數', '人口密度']]
     st.dataframe(pop_show, height=600)
 
-st.subheader("各行政區獨居老人數量長條圖")
+st.subheader("各行政區弱勢族群人數長條圖")
 fig, ax = plt.subplots(figsize=(8, 6))
-tainan_pop[['老幼人數比例', '獨居老人人數', '低收入戶戶內人數']].plot(kind='bar', color=['green', 'blue'], ax=ax)
+tainan_pop[['老幼人數比例', '獨居老人人數', '低收入戶戶內人數']].plot(kind='bar', color=['lightgreen', 'lightblue', 'yellow'], ax=ax)
 plt.xlabel("行政區")
 plt.ylabel("人數")
 plt.xticks(rotation=45)
-plt.show()
+st.pyplot(fig)

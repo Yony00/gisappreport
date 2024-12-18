@@ -13,9 +13,13 @@ rcParams['font.family'] = font.get_name()
 st.set_page_config(layout="wide")
 
 m = leafmap.Map(center=[23, 120.3], zoom=10)
+
+draw = Draw(export=True)
+draw.add_to(m)
+
 radius=5000
 folium.Circle(
-    location=[23, 120.3],
+    location=[user_lat, user_lon],
     radius=radius,
     color="cornflowerblue",
     fill=True,
@@ -25,5 +29,3 @@ folium.Circle(
 ).add_to(m)
 
 m.to_streamlit(height=600)
-
-

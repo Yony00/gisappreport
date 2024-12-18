@@ -117,7 +117,7 @@ m2.to_streamlit(height=500)
 st.subheader("各行政區收容人數")
 
 # 計算各行政區的總收容人數
-refuge_capacity = refuge_point.groupby('行政區')['最大容納人數'].sum()
+refuge_capacity = refuge_point.groupby('行政區')['最大容納人數'].sum().sort_values(ascending=False)
 
 # 繪製長條圖
 fig, ax = plt.subplots(figsize=(10, 6))

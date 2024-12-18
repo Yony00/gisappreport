@@ -8,10 +8,6 @@ from matplotlib.font_manager import FontProperties
 from folium import Marker
 from folium.map import Icon
 
-m = leafmap.Map(center=[23, 120.3], zoom=10)
-m.add_gdf(tainan, layer_name="臺南行政區", style={"color": "blue", "weight": 1.5, "fillOpacity": 0.3})
-m.to_streamlit(height=600)
-
 font_path = "data/jf-openhuninn-2.0.ttf"
 font = FontProperties(fname = font_path)
 rcParams['font.family'] = font.get_name()
@@ -40,6 +36,10 @@ tainan["面積"] = tainan["面積"].replace(0, pd.NA).fillna(1)
 
 tainan["人口密度"] = tainan["人口數"] / tainan["面積"]
 
+m = leafmap.Map(center=[23, 120.3], zoom=10)
+m.add_gdf(tainan, layer_name="臺南行政區", style={"color": "blue", "weight": 1.5, "fillOpacity": 0.3})
+m.to_streamlit(height=600)
+
 col1,col2=st.columns([2,1])
 with col1:
     fig, ax = plt.subplots(figsize=(8, 6))
@@ -52,9 +52,9 @@ with col2:
     st.dataframe(pop_show, height=600)
 
 st.subheader("各行政區老幼人數比例長條圖")
-old = tainan[['行政區','老幼人數比例']]
+old_kids = tainan[['行政區','老幼人數比例']]
 fig, ax = plt.subplots(figsize=(8, 6))
-old.plot(kind='bar', color='green', ax=ax)
+old_kids.plot(kind='bar', color='green', ax=ax)
 plt.xlabel("行政區")
 plt.ylabel("老幼人數比例")
 plt.xticks(rotation=45)
@@ -72,9 +72,9 @@ plt.tight_layout()
 st.pyplot(fig)
 
 st.subheader("各行政區低收入戶戶內人數長條圖")
-old = tainan[['行政區','低收入戶戶內人數']]
+poor = tainan[['行政區','低收入戶戶內人數']]
 fig, ax = plt.subplots(figsize=(8, 6))
-old.plot(kind='bar', color='pink', ax=ax)
+poor.plot(kind='bar', color='pink', ax=ax)
 plt.xlabel("行政區")
 plt.ylabel("低收入戶戶內人數")
 plt.xticks(rotation=45)

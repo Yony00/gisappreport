@@ -42,7 +42,7 @@ with col1:
     m.to_streamlit(height=500)
 
 with col2:
-    st.subheader("表格資料")
+    st.subheader("資料")
     if option:
         st.markdown("### 選取的行政區消防局資料")
         st.dataframe(filtered)

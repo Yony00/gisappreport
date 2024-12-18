@@ -78,9 +78,9 @@ if option_2:
         st.markdown(f"{selected} 共有救護車 {int(count_op)} 台。")
 
 fig, ax = plt.subplots(figsize = (6, 6))
-tainan.plot(column = 'count',cmap='OrRd', ax = ax, legend=True)
+tainan.plot(column = 'count',cmap='OrRd', ax = ax, legend=True, legend_size = 8)
 ax.set_title('各行政區救護車數量面量圖', fontproperties=font, fontsize=14)
-plt.axis('off')
+ax.axis('off')
 st.pyplot(fig)
 
 st.header("各行政區醫療院所數量")

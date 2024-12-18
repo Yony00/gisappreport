@@ -47,7 +47,13 @@ if options=="邏輯樹":
             ],
         )
     )
-    st.markdown("<h2 style=' center; color: black;'>此種模擬結果相對最接近觀測值 </h2>", unsafe_allow_html=True)
+    col1, col2, col3 = st.columns(3)
+    with col1:
+    st.write(' ')
+    with col2:
+        st.image("此種模擬結果相對最接近觀測值")
+    with col3:
+        st.write(' ')
     
 if options=="AbrahamsonEtAl2014":
     st.pydeck_chart(

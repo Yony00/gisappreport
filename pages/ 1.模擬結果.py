@@ -21,9 +21,9 @@ data = pd.read_csv(
     ],
 )
 
-selectable_columns = ['邏輯樹', 'AbrahamsonEtAl2014','BooreAtkinson2008','CampbellBozorgnia2008','ChiouYoungs2008','LinLee2008SInter']
+selectable_columns = ['LinLee2008', 'AbrahamsonEtAl2014','BooreAtkinson2008','CampbellBozorgnia2008','ChiouYoungs2008']
 options = st.selectbox('選擇一種GMPE呈現', selectable_columns)
-if options=="邏輯樹":
+if options=="LinLee2008":
     st.pydeck_chart(
         pdk.Deck(
             initial_view_state=pdk.ViewState(
@@ -136,30 +136,6 @@ if options=="ChiouYoungs2008":
                     data=data,
                     get_position="[x, y]",
                     get_weight="ChiouYoungs2008",
-                    auto_highlight=True,
-                    radius_pixels=50,
-                    pickable=True,
-                    extruded=True,
-                    opacity=0.5
-                ),
-            ],
-        )
-    )
-if options=="LinLee2008SInter":
-    st.pydeck_chart(
-        pdk.Deck(
-            initial_view_state=pdk.ViewState(
-                latitude=23.15,
-                longitude=120.3,
-                zoom=9,
-                pitch=30,
-            ),
-            layers=[
-                pdk.Layer(
-                    "HeatmapLayer",
-                    data=data,
-                    get_position="[x, y]",
-                    get_weight="LinLee2008SInter",
                     auto_highlight=True,
                     radius_pixels=50,
                     pickable=True,

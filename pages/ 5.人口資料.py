@@ -5,6 +5,9 @@ import geopandas as gpd
 import pandas as pd
 from matplotlib import rcParams
 from matplotlib.font_manager import FontProperties
+from folium import Marker
+from folium.map import Icon
+
 
 font_path = "data/jf-openhuninn-2.0.ttf"
 font = FontProperties(fname = font_path)
@@ -25,10 +28,9 @@ m = leafmap.Map(center=[23, 120.3], zoom=10)
 m.add_gdf(tainan, layer_name="臺南行政區", style={"color": "blue", "weight": 1.5, "fillOpacity": 0.3})
 for _, row in tainan.iterrows():
     centroid = row.geometry.centroid
-    m.add_text(
-        location=[centroid.y, centroid.x],
-        text=row['TOWNNAME'],
-        font_size="12px",
-        color="white",
-    )
+    Marker(
+        location=[centroid.y, centroid.x], 
+        icon=Icon(icon="info-sign", color="red"), 
+        popup=row["TOWNNAME"],
+    ).add_to(m)
 m.to_streamlit(height=400)

@@ -3,10 +3,10 @@ import leafmap.foliumap as leafmap
 import pandas as pd
 import folium
 from math import radians, sin, cos, sqrt, atan2
-
+st.set_page_config(layout="wide")
 st.title("5的測試頁，有成功")
 
-st.set_page_config(layout="wide")
+
 
 firestation_csv = 'https://raw.githubusercontent.com/tim9810/gis_final_exam/refs/heads/main/%E5%8F%B0%E5%8D%97%E6%B6%88%E9%98%B2%E5%B1%80wgs84%E5%BA%A7%E6%A8%99utf.csv'
 firestation = pd.read_csv(firestation_csv)

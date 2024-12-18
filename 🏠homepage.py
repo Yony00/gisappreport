@@ -5,14 +5,6 @@ import leafmap.foliumap as leafmap
 
 st.set_page_config(layout="wide")
 st.title("地震災害防治分析—以美濃地震為例")
-st.header("分工表")
-work = {
-  '學號':["s1043032","s1043038","s1043048"],
-  '姓名':["楊宇農","劉家芸","蔡雨潔"],
-  '項目':["賑災公共設施","環境介紹、模擬結果","醫療資源、人口資料"],
-}
-df=pd.DataFrame(work)
-st.table(df)
 
 st.header("歷史地震點位展示")
 st.write("下方圖台為1973~2024年9月為止規模5以上的地震震央點位")

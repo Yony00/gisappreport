@@ -37,7 +37,7 @@ tainan["面積"] = tainan["面積"].replace(0, pd.NA).fillna(1)
 
 tainan["人口密度"] = tainan["人口數"] / tainan["面積"]
 
-col1,col2=st.columns([1,1])
+col1,col2=st.columns(3,1])
 with col1:
     fig, ax = plt.subplots(figsize=(8, 6))
     tainan.plot(column="人口密度", cmap="OrRd", ax=ax, legend=False)

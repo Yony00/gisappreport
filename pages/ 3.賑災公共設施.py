@@ -110,6 +110,13 @@ m2.add_heatmap(
             radius=20,
         )
 
+# 添加顏色圖例，確保數值範圍正確
+m2.add_colorbar(
+    colors=["blue", "green", "yellow", "red"],
+    vmin=refuge_point["最大容納人數"].min(),
+    vmax=refuge_point["最大容納人數"].max(),
+    caption="最大容納人數"
+)
 
 m2.to_streamlit(height=500)
 

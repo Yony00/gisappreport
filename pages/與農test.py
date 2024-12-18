@@ -1,47 +1,68 @@
+import streamlit as st
 import folium
 from streamlit_folium import st_folium
+import pandas as pd
 
-if "map_locator" not in st.session_state:
-    st.session_state["map_locator"] = None
-if "map_data" not in st.session_state:
-    st.session_state["map_data"] = None
-if "map_data" not in st.session_state:
-    st.session_state["map_data"] = None
-if "previous_point" not in st.session_state:
-    st.session_state["previous_point"] = None
+# Initialize session state
+if "markers" not in st.session_state:
+    st.session_state.markers = []
+    
+# Create sample data for the circle markers
+location_counts = pd.DataFrame({
+    'location_name': ['Paris', 'Lyon', 'Marseille'],
+    'lat': [48.8566, 45.7640, 43.2965],
+    'lon': [2.3522, 4.8357, 5.3698],
+    'count': [10, 5, 8]
+})
 
+st.title("Interactive Map Marker Creator")
 
-  map = folium.Map(location=[46.603354, 1.888334], zoom_start=5)  # Centered in France
+# Create the base map centered on France
+m = folium.Map(location=[46.603354, 1.888334], zoom_start=5)
 
-  for _, row in location_counts.iterrows():
-      folium.CircleMarker(
-          location=(row["lat"], row["lon"]),
-          radius=row["count"],  # Size relative to the count
-          color="blue",
-          fill=True,
-          fill_color="blue",
-          fill_opacity=0.6,
-          tooltip=f"Location ID: {row['location_name']} - Count: {row['count']}",
-      ).add_to(map)
+# Add existing circle markers
+for _, row in location_counts.iterrows():
+    folium.CircleMarker(
+        location=(row["lat"], row["lon"]),
+        radius=row["count"],
+        color="blue",
+        fill=True,
+        fill_color="blue",
+        fill_opacity=0.6,
+        tooltip=f"Location ID: {row['location_name']} - Count: {row['count']}",
+    ).add_to(m)
 
-  if (
-      st.session_state["map_data"] is not None and st.session_state["map_data"]["last_clicked"] is not None   
-  ):
-      import logging
+# Add existing markers from session state
+for marker in st.session_state.markers:
+    folium.Marker(
+        location=marker["location"],
+        popup=marker["popup"]
+    ).add_to(m)
 
-      logging.basicConfig(level=logging.INFO)  # You can set it to DEBUG for more detail
-      logger = logging.getLogger(__name__)
-      logger.info(st.session_state["map_data"])
-      if st.session_state["map_data"]["last_clicked"]["lat"] != st.session_state["previous_point"]:
-          clicked_lat = st.session_state["map_data"]["last_clicked"]["lat"]
-          clicked_lon = st.session_state["map_data"]["last_clicked"]["lng"]
-          st.session_state["map_locator"] = folium.Marker(
-              location=[clicked_lat, clicked_lon],
-              popup=f"New location marker at {clicked_lat} {clicked_lon}",
-          )
-          st.session_state["previous_point"] = clicked_lat
+# Get map data from user interaction
+map_data = st_folium(m, width=700, height=500, key="map")
 
-  if st.session_state["map_locator"] is not None:
-      st.session_state["map_locator"].add_to(map)
+# Handle map clicks
+if map_data["last_clicked"]:
+    clicked_lat = map_data["last_clicked"]["lat"]
+    clicked_lon = map_data["last_clicked"]["lng"]
+    
+    # Create a button to confirm marker placement
+    if st.button("Add marker at selected location"):
+        new_marker = {
+            "location": [clicked_lat, clicked_lon],
+            "popup": f"New location at {clicked_lat:.4f}, {clicked_lon:.4f}"
+        }
+        st.session_state.markers.append(new_marker)
+        st.rerun()
 
-  st.session_state["map_data"] = st_folium(map, width=700, height=500)
+# Display current markers information
+if st.session_state.markers:
+    st.write("### Current Markers:")
+    for i, marker in enumerate(st.session_state.markers, 1):
+        st.write(f"{i}. Location: {marker['location'][0]:.4f}, {marker['location'][1]:.4f}")
+
+# Add a button to clear all markers
+if st.button("Clear all markers"):
+    st.session_state.markers = []
+    st.rerun()

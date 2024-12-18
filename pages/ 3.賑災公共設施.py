@@ -136,8 +136,8 @@ with col3:
     st.subheader("地圖")
     m3 = leafmap.Map(center=[23, 120.3], zoom=10)
     m3.add_points_from_xy(
-        filtered2, x='經度', y='緯度',
-        popup=['','地址', '行政區'],
+        filtered2, x='x', y='y',
+        popup=['中文單位名稱','地址', '行政區'],
         layer_name="警察局點位",
     )
     m3.to_streamlit(height=500)

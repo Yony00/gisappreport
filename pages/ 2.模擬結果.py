@@ -42,7 +42,7 @@ if options=="請選擇一種GMPE":
                     get_position="[lon, lat]",
                     get_weight="震度值",
                     auto_highlight=True,
-                    radius_pixels=200,
+                    radius_pixels=50,
                     pickable=True,
                     extruded=True,
                     opacity=0.5

@@ -37,11 +37,16 @@ tainan["面積"] = tainan["面積"].replace(0, pd.NA).fillna(1)
 
 tainan["人口密度"] = tainan["人口數"] / tainan["面積"]
 
-fig, ax = plt.subplots(figsize=(8, 6))
-tainan.plot(column="人口密度", cmap="OrRd", ax=ax, legend=True)
-ax.set_title("臺南市人口密度面量圖(單位:人/平方公里)", fontproperties=font, fontsize=12)
-ax.axis('off')
-st.pyplot(fig)
+col1,col2=st.columns([1,1])
+with col1:
+    fig, ax = plt.subplots(figsize=(8, 6))
+    tainan.plot(column="人口密度", cmap="OrRd", ax=ax, legend=False)
+    ax.set_title("臺南市人口密度面量圖(單位:人/平方公里)", fontproperties=font, fontsize=12)
+    ax.axis('off')
+    st.pyplot(fig)
+with col2:
+    pop_show = tainan['行政區, 人口數, 人口密度']
+    st.dataframe(pop_show)
 
 m = leafmap.Map(center=[23, 120.3], zoom=10)
 m.add_gdf(tainan, layer_name="臺南行政區", style={"color": "blue", "weight": 1.5, "fillOpacity": 0.3})

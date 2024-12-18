@@ -33,7 +33,7 @@ col1, col2 = st.columns([3, 2])  # 調整比例，左邊地圖 3，右邊表格 
 
 with col1:
     st.subheader("地圖")
-    m = leafmap.Map(center=[23, 120.3], zoom=10)
+    m = leafmap.Map(center=[23.1, 120.3], zoom=10)
     m.add_points_from_xy(
         filtered, x='經度', y='緯度',
         popup=['地址', '行政區'],
@@ -79,7 +79,7 @@ else:
 tcol1, tcol2 = st.columns([3, 2])
 with tcol1:
     st.subheader("地圖")
-    m1 = leafmap.Map(center=[23, 120.3], zoom=10)
+    m1 = leafmap.Map(center=[23.1, 120.3], zoom=10)
     m1.add_points_from_xy(
         filtered1, x='經度', y='緯度',
         popup=['收容所名稱', '地址', '行政區', '最大容納人數'],
@@ -156,7 +156,7 @@ col3, col4 = st.columns([3, 2])  # 調整比例，左邊地圖 3，右邊表格 
 
 with col3:
     st.subheader("地圖")
-    m3 = leafmap.Map(center=[23, 120.3], zoom=10)
+    m3 = leafmap.Map(center=[23.1, 120.3], zoom=10)
     m3.add_points_from_xy(
         filtered2, x='x', y='y',
         popup=['中文單位名稱','地址', '行政區'],

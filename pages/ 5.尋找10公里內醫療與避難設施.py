@@ -13,9 +13,10 @@ rcParams['font.family'] = font.get_name()
 st.set_page_config(layout="wide")
 
 m = leafmap.Map(center=[23, 120.3], zoom=10)
+radius=10
 folium.CircleMarker(
     location=[-27.55, -48.8],
-    radius=10,
+    radius=radius,
     color="cornflowerblue",
     fill=True,
     fill_opacity=0.6,

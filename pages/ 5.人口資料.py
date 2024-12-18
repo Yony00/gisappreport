@@ -39,7 +39,7 @@ tainan["人口密度"] = tainan["人口數"] / tainan["面積"]
 
 fig, ax = plt.subplots(figsize=(8, 6))
 tainan.plot(column="人口密度", cmap="OrRd", ax=ax, legend=True)
-plt.title("臺南市人口密度面量圖(單位:人/平方公里)", fontsize=16)
+ax.set_title("臺南市人口密度面量圖(單位:人/平方公里)", fontsize=12)
 plt.axis("off")
 st.pyplot(fig)
 
@@ -50,6 +50,6 @@ for _, row in tainan.iterrows():
     Marker(
         location=[centroid.y, centroid.x], 
         icon=Icon(icon="info-sign", color="red"), 
-        popup=row["TOWNNAME"],
+        popup=row["行政區"],
     ).add_to(m)
 m.to_streamlit(height=400)

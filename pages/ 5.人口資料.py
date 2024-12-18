@@ -22,5 +22,13 @@ taiwan = gpd.read_file(polygon)
 tainan = taiwan[taiwan['COUNTYNAME'] == '臺南市']
 
 m = leafmap.Map(center=[23, 120.3], zoom=10)
-m.add_layer(tainan)
-m.to_streamlit(height=400) 
+m.add_gdf(tainan, layer_name="臺南行政區", style={"color": "blue", "weight": 1.5, "fillOpacity": 0.3})
+for _, row in tainan.iterrows():
+    centroid = row.geometry.centroid
+    m.add_text(
+        location=[centroid.y, centroid.x],
+        text=row['TOWNNAME'],
+        font_size="12px",
+        color="white",
+    )
+m.to_streamlit(height=400)

@@ -16,19 +16,20 @@ st.set_page_config(layout="wide")
 lon = st.number_input("請填入經度",value=None,min_value=119.990,max_value=120.750)
 lat = st.number_input("請填入緯度",value=None,min_value=22.850,max_value=23.450)
 
-st.write("經度:", lon,",緯度:",lat)
-
-m = leafmap.Map(center=[23, 120.3], zoom=10)
-
-radius=5000
-folium.Circle(
-    location=[lat, lon],
-    radius=radius,
-    color="cornflowerblue",
-    fill=True,
-    fill_opacity=0.6,
-    opacity=1,
-    popup="{} meters".format(radius)
-).add_to(m)
-
-m.to_streamlit(height=600)
+if lat == None:
+    st.write("經度:", lon,",緯度:",lat)
+elif lon == None:
+    st.write("經度:", lon,",緯度:",lat)
+else:
+    m = leafmap.Map(center=[23, 120.3], zoom=10)
+    radius=5000
+    folium.Circle(
+        location=[lat, lon],
+        radius=radius,
+        color="cornflowerblue",
+        fill=True,
+        fill_opacity=0.6,
+        opacity=1,
+        popup="{} meters".format(radius)
+        ).add_to(m)
+    m.to_streamlit(height=600)

@@ -48,7 +48,7 @@ if lat is not None and lon is not None:
     nearby_firestations = firestation[firestation['距離'] <= radius]
     nearby_hospitals = hospital[hospital['距離'] <= radius]
 
-    m = leafmap.Map(center=[lat, lon], zoom=10)
+    m = leafmap.Map(center=[lat, lon], zoom=12)
     folium.Marker(
         location=[lat, lon],
         popup=f"使用者位置\n經度: {lon}, 緯度: {lat}",

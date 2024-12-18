@@ -13,8 +13,8 @@ rcParams['font.family'] = font.get_name()
 
 st.set_page_config(layout="wide")
 
-lon = st.number_input("請填入經度",value=None,min_value=119,max_value=123)
-lat = st.number_input("請填入緯度",value=None,min_value=22,max_value=24)
+lon = st.number_input("請填入經度",value=None,min_value=119.000,max_value=123.000)
+lat = st.number_input("請填入緯度",value=None,min_value=22.000,max_value=24.000)
 
 if lat == None:
     st.write("經度:", lon,",緯度:",lat)

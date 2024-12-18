@@ -47,13 +47,9 @@ if options=="邏輯樹":
             ],
         )
     )
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        st.write(' ')
-    with col2:
-        st.write("此種模擬結果相對最接近觀測值")
-    with col3:
-        st.write(' ')
+    st.markdown(":blue-background[此種模擬結果相對最接近觀測值]")
+    st.markdown("使用條件：")
+    
     
 if options=="AbrahamsonEtAl2014":
     st.pydeck_chart(

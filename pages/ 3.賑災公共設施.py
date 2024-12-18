@@ -115,15 +115,20 @@ m2.to_streamlit(height=500)
 
 #各行政區收容人數長條圖
 st.subheader("各行政區收容人數")
-refuge_count = refuge_point['行政區'].value_counts()
+
+# 計算各行政區的總收容人數
+refuge_capacity = refuge_point.groupby('行政區')['最大容納人數'].sum()
+
+# 繪製長條圖
 fig, ax = plt.subplots(figsize=(10, 6))
-refuge_count.plot(kind='bar', color='orange', ax=ax)
+refuge_capacity.plot(kind='bar', color='orange', ax=ax)
 plt.title("各行政區收容人數")
 plt.xlabel("行政區")
-plt.ylabel("最大收容人數(百人)")
+plt.ylabel("最大收容人數(人)")
 plt.xticks(rotation=45)
 plt.tight_layout()
 st.pyplot(fig)
+
 
 #警察局
 st.subheader("警察點位資料")

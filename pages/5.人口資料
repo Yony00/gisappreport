@@ -1,0 +1,19 @@
+import matplotlib.pyplot as plt
+import streamlit as st
+import leafmap.foliumap as leafmap
+import geopandas as gpd
+import pandas as pd
+from matplotlib import rcParams
+from matplotlib.font_manager import FontProperties
+
+font_path = "data/jf-openhuninn-2.0.ttf"
+font = FontProperties(fname = font_path)
+rcParams['font.family'] = font.get_name()
+
+st.set_page_config(layout="wide")
+
+st.title("臺南市各行政區人口統計資料")
+st.header("人口密度")
+markdown = "（內容）"
+st.markdown(markdown)
+

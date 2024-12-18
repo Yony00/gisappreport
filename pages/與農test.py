@@ -2,7 +2,6 @@ import folium
 from streamlit_folium import st_folium
 import streamlit as st
 import geopandas as gpd
-from shapely.geometry import Point
 
 # 模擬設施資料（真實應使用 CSV 或資料庫）
 data = {

@@ -5,8 +5,7 @@ import geopandas as gpd
 import pandas as pd
 from matplotlib import rcParams
 from matplotlib.font_manager import FontProperties
-from folium import Marker
-from folium.map import Icon
+import requests
 
 #font_path = "data/jf-openhuninn-2.0.ttf"
 #font = FontProperties(fname = font_path)

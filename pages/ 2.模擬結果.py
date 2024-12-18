@@ -39,7 +39,7 @@ if options=="請選擇一種GMPE":
                 pdk.Layer(
                     "HeatmapLayer",
                     data=data2,
-                    get_position="[x, y]",
+                    get_position="[lon, lat]",
                     get_weight="震度值",
                     auto_highlight=True,
                     radius_pixels=50,

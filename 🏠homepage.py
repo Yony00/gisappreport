@@ -10,10 +10,6 @@ st.header("前言")
 markedown1="流程(前言)內文"
 st.markdown(markedown1)
 
-st.header("分析")
-markedown2="分析內文"
-st.markdown(markedown2)
-
 st.header("分工表")
 work = {
   '學號':["s1043032","s1043038","s1043048"],

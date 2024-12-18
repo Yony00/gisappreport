@@ -47,7 +47,7 @@ if options=="邏輯樹":
             ],
         )
     )
-    st.markdown(":blue-background[此種模擬結果相對最接近觀測值]")
+    st.markdown(":yellow-background[此種模擬結果相對最接近觀測值]")
     st.markdown("使用條件：")
     
     

@@ -3,6 +3,12 @@ import streamlit as st
 import leafmap.foliumap as leafmap
 import geopandas as gpd
 import pandas as pd
+from matplotlib import rcParams
+from matplotlib.font_manager import FontProperties
+
+font_path = "data/jf-openhuninn-2.0.ttf"
+font = FontProperties(fname = font_path)
+rcParams['font.family'] = font.get_name()
 
 st.set_page_config(layout="wide")
 
@@ -73,6 +79,7 @@ if option_2:
 
 fig, ax = plt.subplots(figsize = (10, 6))
 tainan.plot(column = 'count',cmap='OrRd', ax = ax, legend=True)
+plt.title('各行政區救護車數量面量圖')
 plt.axis('off')
 st.pyplot(fig)
 

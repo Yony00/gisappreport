@@ -5,16 +5,11 @@ import leafmap.foliumap as leafmap
 
 st.set_page_config(layout="wide")
 st.title("地震災害防治分析—以美濃地震為例")
-
-st.header("前言")
-markedown1="流程(前言)內文"
-st.markdown(markedown1)
-
 st.header("分工表")
 work = {
   '學號':["s1043032","s1043038","s1043048"],
   '姓名':["楊宇農","劉家芸","蔡雨潔"],
-  '項目':["賑災公共設施","環境介紹、模擬結果","醫療資源"],
+  '項目':["賑災公共設施","環境介紹、模擬結果","醫療資源、人口資料"],
 }
 df=pd.DataFrame(work)
 st.table(df)

@@ -21,7 +21,7 @@ folium.CircleMarker(
     fill=True,
     fill_opacity=0.6,
     opacity=1,
-    popup="{} pixels".format(radius),
+    popup="{} meters".format(radius)
 ).add_to(m)
 
 m.to_streamlit(height=600)

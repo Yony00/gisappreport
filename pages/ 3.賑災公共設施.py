@@ -51,7 +51,7 @@ with col2:
         st.dataframe(firestation_point)
 
 # 統計各行政區消防局數量並繪製長條圖(中文字體跑不出來)
-st.subheader("各行政區消防局數量")
+st.subheader("各行政區消防局數量長條圖")
 firestation_count = firestation_point['行政區'].value_counts()
 fig, ax = plt.subplots(figsize=(10, 6))
 firestation_count.plot(kind='bar', color='green', ax=ax)
@@ -123,22 +123,33 @@ police_point = pd.read_csv(police_point_csv)
 
 option_list2 = police_point["行政區"].unique().tolist()
 option2 = st.multiselect("選擇行政區", option_list2)
-filtered2 = police_point[police_point["行政區"].isin(option2)]
-
-m3 = leafmap.Map(center=[23, 120.3], zoom=10)
-m3.add_points_from_xy(
-    filtered2, x='x', y='y',
-    popup2=['中文單位名稱','地址','行政區'],
-    layer_name2="避難所點位",
-)
-m3.to_streamlit(height=500)
-
+# 篩選資料
 if option2:
-    st.markdown("### 選取的行政區警察局資料")
-    st.dataframe(filtered2)
+    filtered2 = police_point[police_point["行政區"].isin(option2)]
 else:
-    st.markdown("### 所有行政區警察局資料")
-    st.dataframe(police_point)
+    filtered2 = police_point
+
+# 創建兩個區域，左邊放地圖，右邊放表格
+col3, col4 = st.columns([3, 2])  # 調整比例，左邊地圖 3，右邊表格 2
+
+with col3:
+    st.subheader("地圖")
+    m3 = leafmap.Map(center=[23, 120.3], zoom=10)
+    m3.add_points_from_xy(
+        filtered2, x='經度', y='緯度',
+        popup=['','地址', '行政區'],
+        layer_name="警察局點位",
+    )
+    m3.to_streamlit(height=500)
+
+with col4:
+    st.subheader("資料")
+    if option2:
+        st.markdown("### 選取的行政區警察局資料")
+        st.dataframe(filtered2)
+    else:
+        st.markdown("### 所有行政區警察局資料")
+        st.dataframe(police_point)
 
 # 統計各行政區警察局數量並繪製長條圖
 st.subheader("各行政區警察局數量")

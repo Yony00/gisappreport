@@ -28,7 +28,13 @@ tainan_pop = gpd.read_file(pop)
 
 tainan = tainan.rename(columns={'TOWNNAME': '行政區'})
 tainan = tainan.merge(tainan_pop, on="行政區", how="left")
+
+tainan["人口數"] = pd.to_numeric(tainan["人口數"], errors="coerce")
 tainan["面積"] = tainan.geometry.area / 1e6
+
+tainan["人口數"] = tainan["人口數"].fillna(0)
+tainan["面積"] = tainan["面積"].replace(0, pd.NA).fillna(1)
+
 tainan["人口密度"] = tainan["人口數"] / tainan["面積"]
 
 fig, ax = plt.subplots(figsize=(8, 6))

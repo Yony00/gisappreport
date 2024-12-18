@@ -45,8 +45,8 @@ if lat is not None and lon is not None:
     for _, row in nearby_firestations.iterrows():
         folium.Marker(
             location=[row['緯度'], row['經度']],
-            popup=row['行政區'],
-            icon=folium.Icon(color='red', icon=':fire_engine:')
+            popup=row['地址'],
+            icon=folium.Icon(color='red', icon='fire')
         ).add_to(m)
     m.to_streamlit(height=600)
     st.write("範圍內的消防站：")

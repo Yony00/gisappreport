@@ -31,7 +31,12 @@ if lat is not None and lon is not None:
     )
     # 篩選出在半徑範圍內的消防站
     nearby_firestations = firestation[firestation['距離'] <= radius]
-    m = leafmap.Map(center=[23, 120.3], zoom=10)
+    m = leafmap.Map(center=[lat, lon], zoom=10)
+    folium.Marker(
+        location=[lat, lon],
+        popup=f"使用者位置\n經度: {lon}, 緯度: {lat}",
+        icon=folium.Icon(color='blue', icon='star')
+    ).add_to(m)
     folium.Circle(
         location=[lat, lon],
         radius=radius,

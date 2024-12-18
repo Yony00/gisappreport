@@ -45,7 +45,7 @@ with col1:
     ax.axis('off')
     st.pyplot(fig)
 with col2:
-    pop_show = tainan['行政區', '人口數, '人口密度']
+    pop_show = tainan[['行政區', '人口數, '人口密度']]
     st.dataframe(pop_show)
 
 m = leafmap.Map(center=[23, 120.3], zoom=10)

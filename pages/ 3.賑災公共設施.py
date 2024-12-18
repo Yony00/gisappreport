@@ -39,6 +39,17 @@ else:
     st.markdown("### 所有行政區消防局資料")
     st.dataframe(firestation_point)
 
+# 創建兩個區域，左邊放地圖，右邊放表格
+col1, col2 = st.columns([3, 2])  # 調整比例，左邊地圖 3，右邊表格 2
+
+with col1:
+    st.subheader("地圖")
+    m.to_streamlit(height=500)
+
+with col2:
+    st.subheader("表格資料")
+    st.dataframe(firestation_point)
+
 # 統計各行政區消防局數量並繪製長條圖(中文字體跑不出來)
 st.subheader("各行政區消防局數量")
 firestation_count = firestation_point['行政區'].value_counts()

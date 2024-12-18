@@ -23,7 +23,7 @@ polygon = 'https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%
 taiwan = gpd.read_file(polygon)
 tainan = taiwan[taiwan['COUNTYNAME'] == '臺南市']
 pop = 'data/臺南市人口資料.csv'
-tainan_pop = gpd.read_file(pop)
+tainan_pop = pd.read_file(pop)
 
 tainan = tainan.rename(columns={'TOWNNAME': '行政區'})
 tainan = tainan.merge(tainan_pop, on="行政區", how="left")
@@ -51,32 +51,10 @@ with col2:
     pop_show = tainan[['行政區', '人口數', '人口密度']]
     st.dataframe(pop_show, height=600)
 
-st.subheader("各行政區老幼人數比例長條圖")
-old_kids = tainan[['行政區', '老幼人數比例']]
-fig, ax = plt.subplots(figsize=(8, 6))
-old_kids.set_index('行政區')['老幼人數比例'].plot(kind='bar', color='green', ax=ax)
-plt.xlabel("行政區")
-plt.ylabel("老幼人數比例")
-plt.xticks(rotation=45)
-plt.tight_layout()
-st.pyplot(fig)
-
 st.subheader("各行政區獨居老人數量長條圖")
-old = tainan[['行政區','獨居老人人數']]
 fig, ax = plt.subplots(figsize=(8, 6))
-old.plot(kind='bar', color='lightblue', ax=ax)
+tainan_pop[['老幼人數比例', '獨居老人人數', '低收入戶戶內人數']].plot(kind='bar', color=['green', 'blue'], ax=ax)
 plt.xlabel("行政區")
-plt.ylabel("獨居老人人數")
+plt.ylabel("人數")
 plt.xticks(rotation=45)
-plt.tight_layout()
-st.pyplot(fig)
-
-st.subheader("各行政區低收入戶戶內人數長條圖")
-poor = tainan[['行政區','低收入戶戶內人數']]
-fig, ax = plt.subplots(figsize=(8, 6))
-poor.plot(kind='bar', color='pink', ax=ax)
-plt.xlabel("行政區")
-plt.ylabel("低收入戶戶內人數")
-plt.xticks(rotation=45)
-plt.tight_layout()
-st.pyplot(fig)
+plt.show()

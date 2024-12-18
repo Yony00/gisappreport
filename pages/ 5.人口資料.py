@@ -70,7 +70,7 @@ st.pyplot(fig)
 
 st.subheader("各行政區低收入戶戶內人數長條圖")
 fig, ax = plt.subplots(figsize=(8, 6))
-tainan_pop[['低收入戶戶內人數']].plot(kind='bar', color='lightblue', ax=ax)
+tainan_pop[['低收入戶戶內人數']].plot(kind='bar', color='lightpink', ax=ax)
 plt.xlabel("行政區")
 plt.ylabel("人數")
 plt.xticks(rotation=45)

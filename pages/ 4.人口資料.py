@@ -12,8 +12,8 @@ from folium.map import Icon
 #font = FontProperties(fname = font_path)
 #rcParams['font.family'] = font.get_name()
 
-matplotlib.font_manager.fontManager.addfont('jf-openhuninn-2.0.ttf')
-matplotlib.rc('font', family='jf-openhuninn-2.0')
+matplotlib.font_manager.fontManager.addfont('TaipeiSansTCBeta-Regular.ttf')
+matplotlib.rc('font', family='Taipei Sans TC Beta')
 
 st.set_page_config(layout="wide")
 

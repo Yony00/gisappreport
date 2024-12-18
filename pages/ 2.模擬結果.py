@@ -47,7 +47,7 @@ if options=="邏輯樹":
             ],
         )
     )
-    st.write("此模擬結果的相對最接近觀測值")
+    st.write("*此模擬結果的相對最接近觀測值")
     
 if options=="AbrahamsonEtAl2014":
     st.pydeck_chart(

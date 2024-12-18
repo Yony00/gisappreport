@@ -8,6 +8,9 @@ from matplotlib.font_manager import FontProperties
 from folium import Marker
 from folium.map import Icon
 
+m = leafmap.Map(center=[23, 120.3], zoom=10)
+m.add_gdf(tainan, layer_name="臺南行政區", style={"color": "blue", "weight": 1.5, "fillOpacity": 0.3})
+m.to_streamlit(height=600)
 
 font_path = "data/jf-openhuninn-2.0.ttf"
 font = FontProperties(fname = font_path)
@@ -37,7 +40,7 @@ tainan["面積"] = tainan["面積"].replace(0, pd.NA).fillna(1)
 
 tainan["人口密度"] = tainan["人口數"] / tainan["面積"]
 
-col1,col2=st.columns([3,1])
+col1,col2=st.columns([2,1])
 with col1:
     fig, ax = plt.subplots(figsize=(8, 6))
     tainan.plot(column="人口密度", cmap="OrRd", ax=ax, legend=False)
@@ -46,15 +49,34 @@ with col1:
     st.pyplot(fig)
 with col2:
     pop_show = tainan[['行政區', '人口數', '人口密度']]
-    st.dataframe(pop_show, height=800)
+    st.dataframe(pop_show, height=600)
 
-m = leafmap.Map(center=[23, 120.3], zoom=10)
-m.add_gdf(tainan, layer_name="臺南行政區", style={"color": "blue", "weight": 1.5, "fillOpacity": 0.3})
-for _, row in tainan.iterrows():
-    centroid = row.geometry.centroid
-    Marker(
-        location=[centroid.y, centroid.x], 
-        icon=Icon(icon="info-sign", color="red"), 
-        popup=row["行政區"],
-    ).add_to(m)
-m.to_streamlit(height=400)
+st.subheader("各行政區老幼人數比例長條圖")
+old = tainan[['行政區','老幼人數比例']]
+fig, ax = plt.subplots(figsize=(8, 6))
+old.plot(kind='bar', color='green', ax=ax)
+plt.xlabel("行政區")
+plt.ylabel("老幼人數比例")
+plt.xticks(rotation=45)
+plt.tight_layout()
+st.pyplot(fig)
+
+st.subheader("各行政區獨居老人數量長條圖")
+old = tainan[['行政區','獨居老人人數']]
+fig, ax = plt.subplots(figsize=(8, 6))
+old.plot(kind='bar', color='lightblue', ax=ax)
+plt.xlabel("行政區")
+plt.ylabel("獨居老人人數")
+plt.xticks(rotation=45)
+plt.tight_layout()
+st.pyplot(fig)
+
+st.subheader("各行政區低收入戶戶內人數長條圖")
+old = tainan[['行政區','低收入戶戶內人數']]
+fig, ax = plt.subplots(figsize=(8, 6))
+old.plot(kind='bar', color='pink', ax=ax)
+plt.xlabel("行政區")
+plt.ylabel("低收入戶戶內人數")
+plt.xticks(rotation=45)
+plt.tight_layout()
+st.pyplot(fig)

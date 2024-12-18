@@ -13,7 +13,7 @@ rcParams['font.family'] = font.get_name()
 st.set_page_config(layout="wide")
 
 m = leafmap.Map(center=[23, 120.3], zoom=10)
-radius=10
+radius=10000
 folium.Circle(
     location=[23, 120.3],
     radius=radius,

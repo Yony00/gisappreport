@@ -47,6 +47,7 @@ if options=="邏輯樹":
             ],
         )
     )
+    st.write("相對高值最接近觀測值")
     
 if options=="AbrahamsonEtAl2014":
     st.pydeck_chart(

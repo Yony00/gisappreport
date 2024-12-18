@@ -12,7 +12,7 @@ a="""
 2.加入使用者填入的座標位置(圖示是隨意設定的)/n
 3.把地圖的中心改成使用者自訂的座標
 """
-st.write(a)
+st.markdown(a)
 
 
 firestation_csv = 'https://raw.githubusercontent.com/tim9810/gis_final_exam/refs/heads/main/%E5%8F%B0%E5%8D%97%E6%B6%88%E9%98%B2%E5%B1%80wgs84%E5%BA%A7%E6%A8%99utf.csv'

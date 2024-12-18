@@ -59,7 +59,7 @@ if lat is not None and lon is not None:
     for _, row in nearby_firestations.iterrows():
         folium.Marker(
             location=[row['緯度'], row['經度']],
-            popup=row['單位名稱'],
+            popup=row['行政區'],
             icon=folium.Icon(color='red', icon='info-sign')
         ).add_to(m)
 
@@ -68,7 +68,7 @@ if lat is not None and lon is not None:
 
     # 顯示範圍內消防站的資料表
     st.write("範圍內的消防站：")
-    st.dataframe(nearby_firestations[['單位名稱', '經度', '緯度', '距離']])
+    st.dataframe(nearby_firestations[['行政區', '經度', '緯度', '距離']])
 else:
     st.write("請填入有效的經緯度")
 

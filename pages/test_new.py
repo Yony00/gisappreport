@@ -44,7 +44,7 @@ if lat is not None and lon is not None:
     )    
     # 篩選出在半徑範圍內
     nearby_firestations = firestation[firestation['距離'] <= radius]
-     nearby_hospitals = hospital[hospital['距離'] <= radius]
+    nearby_hospitals = hospital[hospital['距離'] <= radius]
 
     m = leafmap.Map(center=[lat, lon], zoom=10)
     folium.Marker(

@@ -11,11 +11,15 @@ firestation_csv = 'https://raw.githubusercontent.com/tim9810/gis_final_exam/refs
 firestation = pd.read_csv(firestation_csv)
 hospital_csv = 'https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%E8%87%BA%E5%8D%97%E5%B8%82%E9%86%AB%E7%99%82%E9%99%A2%E6%89%80%E9%BB%9E%E4%BD%8D%E8%B3%87%E6%96%99.csv'
 hospital = pd.read_csv(hospital_csv)
+refuge_csv = 'https://raw.githubusercontent.com/liuchia515/gisappreport/refs/heads/main/data/%E5%8F%B0%E5%8D%97%E9%81%BF%E9%9B%A3%E6%89%80utf.csv'
+refuge = pd.read_csv(refuge_csv)
 
 firestation['經度'] = pd.to_numeric(firestation['經度'], errors='coerce')
 firestation['緯度'] = pd.to_numeric(firestation['緯度'], errors='coerce')
 hospital['經度'] = pd.to_numeric(hospital['經度'], errors='coerce')
 hospital['緯度'] = pd.to_numeric(hospital['緯度'], errors='coerce')
+refuge['經度'] = pd.to_numeric(refuge['經度'], errors='coerce')
+refuge['緯度'] = pd.to_numeric(refuge['緯度'], errors='coerce')
 col1,col2=st.columns(2)
 with col1:
     lon = st.number_input("請填入經度", value=None, min_value=119.500, max_value=122.500)
@@ -38,10 +42,14 @@ if lat is not None and lon is not None:
     )
     hospital['距離(m)'] = hospital.apply(
         lambda row: haversine(lat, lon, row['緯度'], row['經度']), axis=1
-    )    
+    )
+    refuge['距離(m)'] = hospital.apply(
+        lambda row: haversine(lat, lon, row['緯度'], row['經度']), axis=1
+    )
     # 篩選出在半徑範圍內
     nearby_firestations = firestation[firestation['距離(m)'] <= radius]
     nearby_hospitals = hospital[hospital['距離(m)'] <= radius]
+    nearby_refuge = refuge[refuge['距離(m)'] <= radius]
 
     m = leafmap.Map(center=[lat, lon], zoom=12)
     folium.Marker(
@@ -74,12 +82,20 @@ if lat is not None and lon is not None:
             popup=row['地址'],
             icon=folium.Icon(color='green', icon='plus-sign')
         ).add_to(m)
+    for _, row in nearby_refuge.iterrows():
+        folium.Marker(
+            location=[row['緯度'], row['經度']],
+            popup=row['地址'],
+            icon=folium.Icon(color='green', icon='plus-sign')
+        ).add_to(m)
 
     m.to_streamlit(height=600)
     st.write("範圍內的消防站：")
     st.table(nearby_firestations[['地址', '經度', '緯度', '距離(m)']])
     st.write("範圍內的醫療院所：")
     st.table(nearby_hospitals[['機構名稱','地址', '經度', '緯度', '距離(m)']])
+    st.write("範圍內的避難所：")
+    st.table(nearby_refuge[['收容所名稱','地址', '經度', '緯度', '距離(m)']])
 
 else:
     st.write("請填入有效的經緯度")

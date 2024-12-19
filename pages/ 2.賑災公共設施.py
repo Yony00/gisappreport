@@ -13,8 +13,10 @@ st.set_page_config(layout="wide")
 st.title("臺南市各行政區賑災公共設施統計資料")
 st.header("臺南市各行政區消防局點位")
 
-markdown = "以下為台南市各行政區消防局的互動選單，選擇所需要的行政區可以看出此區有多少數量的消防局(多選)。" \n\n"地圖上標記的消防局點位有地址和行政區的資料，右邊屬性表則為選擇的行政區資料表(表單未選擇行政區則顯示全部行政區消防局資料)" 
+markdown = "以下為台南市各行政區消防局的互動選單，選擇所需要的行政區可以看出此區有多少數量的消防局(多選)。" 
 st.markdown(markdown)
+markdown1 = "地圖上標記的消防局點位有地址和行政區的資料，右邊屬性表則為選擇的行政區資料表(表單未選擇行政區則顯示全部行政區消防局資料)" 
+st.markdown(markdown1)
 
 polygon = 'https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%E9%84%89%E9%8E%AE%E5%B8%82%E5%8D%80%E7%95%8C/%E9%84%89(%E9%8E%AE%E3%80%81%E5%B8%82%E3%80%81%E5%8D%80)%E7%95%8C%E7%B7%9A(TWD97%E7%B6%93%E7%B7%AF%E5%BA%A6)1131028/TOWN_MOI_1131028.shp'
 taiwan = gpd.read_file(polygon)

@@ -17,7 +17,7 @@ rcParams['font.family'] = font.get_name()
 st.set_page_config(layout="wide")
 
 st.title("臺南市各行政區人口統計資料")
-st.header("各行政區人口")
+st.header(":family:各行政區人口")
 markdown1 = """
 將游標移動至地圖上各行政區，可獲得行政區人口資料，如：各行政區戶、人口數、男性人口數、女性人口數、0-14歲人口數、15-64歲人口數、65歲以上人口數、老幼人數比例、獨居老人人數、低收入戶戶內人數等。
 """
@@ -60,7 +60,7 @@ markdown2 = """
 """
 st.markdown(markdown2)
 
-st.subheader("各行政區老幼人數比例長條圖")
+st.subheader("🧓各行政區老幼人數比例長條圖")
 fig, ax = plt.subplots(figsize=(6, 4))
 tainan_pop.set_index('行政區', inplace=True)
 sorted_data_1 = tainan_pop.sort_values(by='老幼人數比例', ascending=False)
@@ -99,7 +99,7 @@ if option:
 else:
     st.markdown("#### 請選擇至少一個行政區")
 
-st.subheader("各行政區獨居老人人數長條圖")
+st.subheader("🧓各行政區獨居老人人數長條圖")
 fig, ax = plt.subplots(figsize=(6, 4))
 sorted_data_2 = tainan_pop.sort_values(by='獨居老人人數', ascending=False)
 sorted_data_2[['獨居老人人數']].plot(kind='bar', color='lightblue', ax=ax, legend=False)

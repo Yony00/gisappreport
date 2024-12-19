@@ -45,8 +45,8 @@ if lat is not None and lon is not None:
         lambda row: haversine(lat, lon, row['緯度'], row['經度']), axis=1
     )    
     # 篩選出在半徑範圍內
-    nearby_firestations = firestation[firestation['距離'] <= radius]
-    nearby_hospitals = hospital[hospital['距離'] <= radius]
+    nearby_firestations = firestation[firestation['距離(m)'] <= radius]
+    nearby_hospitals = hospital[hospital['距離(m)'] <= radius]
 
     m = leafmap.Map(center=[lat, lon], zoom=12)
     folium.Marker(

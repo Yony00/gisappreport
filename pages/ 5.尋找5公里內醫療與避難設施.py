@@ -43,7 +43,7 @@ if lat is not None and lon is not None:
     hospital['距離(m)'] = hospital.apply(
         lambda row: haversine(lat, lon, row['緯度'], row['經度']), axis=1
     )
-    refuge['距離(m)'] = hospital.apply(
+    refuge['距離(m)'] = refuge.apply(
         lambda row: haversine(lat, lon, row['緯度'], row['經度']), axis=1
     )
     # 篩選出在半徑範圍內

@@ -13,6 +13,9 @@ st.set_page_config(layout="wide")
 st.title("臺南市各行政區賑災公共設施統計資料")
 st.header("臺南市各行政區消防局點位")
 
+markdown = "（以下為台南市各行政區消防局的互動選單，選擇所需要的行政區可以看出此區有多少數量的消防局）"
+st.markdown(markdown)
+
 polygon = 'https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%E9%84%89%E9%8E%AE%E5%B8%82%E5%8D%80%E7%95%8C/%E9%84%89(%E9%8E%AE%E3%80%81%E5%B8%82%E3%80%81%E5%8D%80)%E7%95%8C%E7%B7%9A(TWD97%E7%B6%93%E7%B7%AF%E5%BA%A6)1131028/TOWN_MOI_1131028.shp'
 taiwan = gpd.read_file(polygon)
 tainan = taiwan[taiwan['COUNTYNAME'] == '臺南市']
@@ -49,6 +52,7 @@ with col2:
     else:
         st.markdown("### 所有行政區消防局資料")
         st.dataframe(firestation_point)
+
 
 # 統計各行政區消防局數量並繪製長條圖(中文字體跑不出來)
 st.subheader("各行政區消防局數量長條圖")

@@ -86,7 +86,7 @@ if lat is not None and lon is not None:
         folium.Marker(
             location=[row['緯度'], row['經度']],
             popup=row['地址'],
-            icon=folium.Icon(color='grey', icon='plus-sign')
+            icon=folium.Icon(color='grey', icon='home')
         ).add_to(m)
 
     m.to_streamlit(height=600)

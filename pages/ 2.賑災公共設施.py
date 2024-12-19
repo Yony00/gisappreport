@@ -15,7 +15,7 @@ st.header("臺南市各行政區消防局點位")
 
 markdown = """
 以下為台南市各行政區消防局的互動選單，選擇所需要的行政區可以看出此區有多少數量的消防局(多選)。  
-地圖上標記的消防局點位有地址和行政區的資料，資料則為選擇的行政區資料表(表單未選擇行政區則顯示全部行政區消防局資料)。
+地圖上標記的消防局點位資料有地址和行政區，資料則為選擇的行政區資料表(表單未選擇行政區則顯示全部行政區消防局資料)。
 """
 st.markdown(markdown)
 
@@ -75,6 +75,12 @@ st.subheader("避難所點位資料")
 refuge_point_csv = 'https://raw.githubusercontent.com/tim9810/gis_final_exam/refs/heads/main/%E5%8F%B0%E5%8D%97%E9%81%BF%E9%9B%A3%E6%89%80utf.csv'
 refuge_point = pd.read_csv(refuge_point_csv)
 
+markdown1 = """
+以下為台南市各行政區避難所的互動選單，選擇所需要的行政區可以看出此區有多少數量的避難所(多選)。  
+地圖上標記的消防局點位資料有收容所名稱、地址、行政區以及最大收容人數，資料則為選擇的行政區資料表(表單未選擇行政區則顯示全部行政區避難所資料)。
+"""
+st.markdown(markdown1)
+
 option_list1 = refuge_point["行政區"].unique().tolist()
 option1 = st.multiselect("選擇行政區", option_list1)
 # 篩選資料
@@ -106,6 +112,11 @@ with tcol2:
 
 #做收容人數熱區圖
 st.subheader("收容人數熱區圖")
+markdown2 = """
+利用避難所的最大收容人數建立熱區圖，可以了解地區中哪裡收容人數密度較高
+(圖例中顏色代表各避難所不同的最大收容人數)
+"""
+st.markdown(markdown2)
 
 
 m2 = leafmap.Map(center=[23.1, 120.3], zoom=10)

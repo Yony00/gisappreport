@@ -91,8 +91,11 @@ if option:
         
         # 設定標籤文字的字體
         for text in texts + autotexts:
-            text.set_fontproperties(8)
-        
+            text.set_fontproperties(font)
+            
+        for autotext in autotexts:
+            autotext.set_fontproperties(font)
+            autotext.set_fontsize(8)        
         # 設定標題的字體
         ax.set_title(f"{row['行政區']} 幼年、壯年、老年人口比例", fontsize=10, fontproperties=font)
         

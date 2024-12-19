@@ -78,11 +78,11 @@ option = st.multiselect("選擇行政區", option_list)
 filtered = tainan_pop_2[tainan_pop_2["行政區"].isin(option)]
 if option:
     for index, row in filtered.iterrows():
-        labels = ["幼年人口", "壯年人口", "老年人口", fontproperties=font]
+        labels = ["幼年人口", "壯年人口", "老年人口"]
         sizes = [row["幼年人口比例"], row["壯年人口比例"], row["老年人口比例"]]
         colors = ["#FFD700", "#FF8C00", "#8B0000"]
 
-        fig, ax = plt.subplots(figsize=(6, 4))
+        fig, ax = plt.subplots(figsize=(4, 3))
         ax.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=90)
         ax.set_title(f"{row['行政區']} 幼年、壯年、老年人口比例", fontsize=14, fontproperties=font)
         st.pyplot(fig)

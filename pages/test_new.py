@@ -38,10 +38,10 @@ if lat is not None and lon is not None:
         c = 2 * atan2(sqrt(a), sqrt(1-a))
         return R * c
     # 到輸入位置的距離
-    firestation['距離'] = firestation.apply(
+    firestation['距離(m)'] = firestation.apply(
         lambda row: haversine(lat, lon, row['緯度'], row['經度']), axis=1
     )
-    hospital['距離'] = hospital.apply(
+    hospital['距離(m)'] = hospital.apply(
         lambda row: haversine(lat, lon, row['緯度'], row['經度']), axis=1
     )    
     # 篩選出在半徑範圍內
@@ -82,9 +82,9 @@ if lat is not None and lon is not None:
 
     m.to_streamlit(height=600)
     st.write("範圍內的消防站：")
-    st.table(nearby_firestations[['地址', '經度', '緯度', '距離']])
+    st.table(nearby_firestations[['地址', '經度', '緯度', '距離(m)']])
     st.write("範圍內的醫療院所：")
-    st.table(nearby_hospitals[['機構名稱','地址', '經度', '緯度', '距離']])
+    st.table(nearby_hospitals[['機構名稱','地址', '經度', '緯度', '距離(m)']])
 
 else:
     st.write("請填入有效的經緯度")

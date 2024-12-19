@@ -84,6 +84,7 @@ if option:
 
         fig, ax = plt.subplots(figsize=(3, 2))
         ax.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=90, fontproperties=font)
+        plt.legend(prop=font)
         ax.set_title(f"{row['行政區']} 幼年、壯年、老年人口比例", fontsize=10, fontproperties=font)
         st.pyplot(fig)
 else:

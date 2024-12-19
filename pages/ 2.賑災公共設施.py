@@ -72,7 +72,7 @@ st.pyplot(fig)
 
 st.subheader("避難所點位資料")
 
-refuge_point_csv = 'https://raw.githubusercontent.com/tim9810/gis_final_exam/refs/heads/main/%E5%8F%B0%E5%8D%97%E9%81%BF%E9%9B%A3%E6%89%80utf.csv'
+refuge_point_csv = 'https://raw.githubusercontent.com/liuchia515/gisappreport/refs/heads/main/data/%E5%8F%B0%E5%8D%97%E9%81%BF%E9%9B%A3%E6%89%80utf.csv'
 refuge_point = pd.read_csv(refuge_point_csv)
 
 markdown1 = """

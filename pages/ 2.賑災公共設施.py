@@ -162,6 +162,12 @@ st.subheader("警察點位資料")
 police_point_csv = 'https://raw.githubusercontent.com/tim9810/gis_final_exam/refs/heads/main/PoliceAddress1_utf.csv'
 police_point = pd.read_csv(police_point_csv)
 
+markdown3 = """
+以下為台南市各行政區警察局的互動選單，選擇所需要的行政區可以看出此區有多少數量的警察局(多選)。  
+地圖上標記的警察局點位資料有中文單位名稱、地址和行政區，資料則為選擇的行政區資料表(表單未選擇行政區則顯示全部行政區警察局資料)。
+"""
+st.markdown(markdown3)
+
 option_list2 = police_point["行政區"].unique().tolist()
 option2 = st.multiselect("選擇行政區", option_list2)
 # 篩選資料

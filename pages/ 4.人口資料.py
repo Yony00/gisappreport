@@ -20,7 +20,6 @@ st.title("臺南市各行政區人口統計資料")
 st.header("各行政區人口")
 markdown1 = """
 將游標移動至地圖上各行政區，可獲得行政區人口資料，如：各行政區戶、人口數、男性人口數、女性人口數、0-14歲人口數、15-64歲人口數、65歲以上人口數、老幼人數比例、獨居老人人數、低收入戶戶內人數等。
-下方是台南市各行政區人口密度面量圖，以及在地震時較須受到幫助的弱勢群體比例與人數長條圖。
 """
 st.markdown(markdown1)
 
@@ -55,6 +54,11 @@ with col1:
 with col2:
     pop_show = tainan[['行政區', '人口數', '人口密度']]
     st.dataframe(pop_show, height=600)
+
+markdown2 = """
+下方是台南市各行政區在地震時較須受到幫助的弱勢群體比例與人數長條圖。
+"""
+st.markdown(markdown2)
 
 st.subheader("各行政區老幼人數比例長條圖")
 fig, ax = plt.subplots(figsize=(6, 4))

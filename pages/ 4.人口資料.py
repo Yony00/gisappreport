@@ -85,7 +85,7 @@ if option:
         colors = ["#FFD700", "#FF8C00", "#8B0000"]
 
         fig, ax = plt.subplots(figsize=(3, 2))
-        ax.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=90, autopct=autopct_format)
+        ax.pie(sizes, labels=labels, colors=colors, startangle=90, autopct=autopct_format)
         ax.set_title(f"{row['行政區']} 幼年、壯年、老年人口比例", fontsize=10, fontproperties=font)
         st.pyplot(fig)
 else:

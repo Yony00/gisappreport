@@ -72,22 +72,22 @@ plt.xticks(fontproperties=font, fontsize=8, rotation=45)
 plt.yticks(fontproperties=font, fontsize=8, rotation=45)
 st.pyplot(fig)
 
-option_list = tainan_pop["行政區"].unique().tolist()
+tainan_pop_2 = pd.read_csv(pop)
+option_list = tainan_pop_2["行政區"].unique().tolist()
 option = st.multiselect("選擇行政區", option_list)
-filtered = tainan_pop[tainan_pop["行政區"].isin(option)]
+filtered = tainan_pop_2[tainan_pop_2["行政區"].isin(option)]
 if option:
     for index, row in filtered.iterrows():
         labels = ["幼年人口", "壯年人口", "老年人口"]
         sizes = [row["幼年人口比例"], row["壯年人口比例"], row["老年人口比例"]]
         colors = ["#FFD700", "#FF8C00", "#8B0000"]
 
-        # 畫圓餅圖
         fig, ax = plt.subplots(figsize=(6, 4))
         ax.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=90)
         ax.set_title(f"{row['行政區']} 幼年、壯年、老年人口比例", fontsize=14)
         st.pyplot(fig)
 else:
-    st.markdown("### 請選擇至少一個行政區！")
+    st.markdown("### 請選擇至少一個行政區")
 
 st.subheader("各行政區獨居老人人數長條圖")
 fig, ax = plt.subplots(figsize=(6, 4))

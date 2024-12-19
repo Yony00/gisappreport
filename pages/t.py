@@ -95,9 +95,9 @@ if option:
             
         for autotext in autotexts:
             autotext.set_fontproperties(font)
-            autotext.set_fontsize(8)        
+            autotext.set_fontsize(6)        
         # 設定標題的字體
-        ax.set_title(f"{row['行政區']} 幼年、壯年、老年人口比例", fontsize=10, fontproperties=font)
+        ax.set_title(f"{row['行政區']} 幼年、壯年、老年人口比例", fontsize=9, fontproperties=font)
         
         st.pyplot(fig)
 else:

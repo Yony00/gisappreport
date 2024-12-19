@@ -13,7 +13,7 @@ rcParams['font.family'] = font.get_name()
 st.set_page_config(layout="wide")
 
 st.title("臺南市各行政區醫療資源統計資料")
-st.header("臺南市各醫院位置")
+st.header("🏥臺南市各醫院位置")
 markdown1 = "此地圖可查詢臺南市內各家醫院位置與院址，可用篩選器可查詢坐落於各行政區內的醫院資訊。"
 st.markdown(markdown1)
 
@@ -59,7 +59,7 @@ with col2:
         st.markdown("所有醫院位置")
         st.dataframe(hospital_point)
 
-st.header("各行政區救護車數量")
+st.header(":ambulance:各行政區救護車數量")
 markdown2 = "此面量圖呈現台南市各行政區所擁有之救護車數量多寡，可藉由篩選器查詢各行政區內實際救護車數量。"
 st.markdown(markdown2)
 
@@ -83,7 +83,7 @@ ax.set_title('各行政區救護車數量面量圖', fontproperties=font, fontsi
 ax.axis('off')
 st.pyplot(fig)
 
-st.header("各行政區醫療院所數量")
+st.header("🏨各行政區醫療院所數量")
 markdown3 = "下列表格可查看各行政區所擁有的醫療院所家數、病床數、平均每家服務人數、平均每千人擁有病床數等資訊。"
 st.markdown(markdown3)
 

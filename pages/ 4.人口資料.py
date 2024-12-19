@@ -85,8 +85,16 @@ if option:
         colors = ["#FFD700", "#FF8C00", "#8B0000"]
 
         fig, ax = plt.subplots(figsize=(3, 2))
-        ax.pie(sizes, labels=labels, colors=colors, startangle=90, autopct=autopct_format)
-        ax.set_title(f"{row['行政區']} 幼年、壯年、老年人口比例", fontsize=10, fontproperties=font)
+        wedges, texts, autotexts = ax.pie(
+            sizes, labels=labels, colors=colors, startangle=90, autopct=autopct_format
+        )
+        for text in texts + autotexts:
+            text.set_fontproperties(font)
+        for autotext in autotexts:
+            autotext.set_fontproperties(font)
+            autotext.set_fontsize(6)
+        ax.set_title(f"{row['行政區']} 幼年、壯年、老年人口比例", fontsize=9, fontproperties=font)
+        
         st.pyplot(fig)
 else:
     st.markdown("#### 請選擇至少一個行政區")

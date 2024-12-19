@@ -82,12 +82,12 @@ if option:
         sizes = [row["幼年人口比例"], row["壯年人口比例"], row["老年人口比例"]]
         colors = ["#FFD700", "#FF8C00", "#8B0000"]
 
-        fig, ax = plt.subplots(figsize=(4, 3))
-        ax.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=90)
-        ax.set_title(f"{row['行政區']} 幼年、壯年、老年人口比例", fontsize=14, fontproperties=font)
+        fig, ax = plt.subplots(figsize=(3, 2))
+        ax.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=90, fontproperties=font)
+        ax.set_title(f"{row['行政區']} 幼年、壯年、老年人口比例", fontsize=10, fontproperties=font)
         st.pyplot(fig)
 else:
-    st.markdown("### 請選擇至少一個行政區")
+    st.markdown("#### 請選擇至少一個行政區")
 
 st.subheader("各行政區獨居老人人數長條圖")
 fig, ax = plt.subplots(figsize=(6, 4))

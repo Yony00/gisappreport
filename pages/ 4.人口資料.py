@@ -76,6 +76,8 @@ tainan_pop_2 = pd.read_csv(pop)
 option_list = tainan_pop_2["行政區"].unique().tolist()
 option = st.multiselect("選擇行政區", option_list)
 filtered = tainan_pop_2[tainan_pop_2["行政區"].isin(option)]
+def autopct_format(pct):
+    return f'{pct:.1f}%'
 if option:
     for index, row in filtered.iterrows():
         labels = ["幼年人口", "壯年人口", "老年人口"]
@@ -83,8 +85,7 @@ if option:
         colors = ["#FFD700", "#FF8C00", "#8B0000"]
 
         fig, ax = plt.subplots(figsize=(3, 2))
-        ax.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=90, fontproperties=font)
-        plt.legend(prop=font)
+        ax.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=90, autopct=autopct_format)
         ax.set_title(f"{row['行政區']} 幼年、壯年、老年人口比例", fontsize=10, fontproperties=font)
         st.pyplot(fig)
 else:

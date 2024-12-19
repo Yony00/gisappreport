@@ -17,9 +17,12 @@ rcParams['font.family'] = font.get_name()
 st.set_page_config(layout="wide")
 
 st.title("臺南市各行政區人口統計資料")
-st.header("各行政區人口密度")
-markdown = "（內容）"
-st.markdown(markdown)
+st.header("各行政區人口")
+markdown1 = """
+將游標移動至地圖上各行政區，可獲得行政區人口資料，如：各行政區戶、人口數、男性人口數、女性人口數、0-14歲人口數、15-64歲人口數、65歲以上人口數、老幼人數比例、獨居老人人數、低收入戶戶內人數等。
+下方是台南市各行政區人口密度面量圖，以及在地震時較須受到幫助的弱勢群體比例與人數長條圖。
+"""
+st.markdown(markdown1)
 
 polygon = 'https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%E9%84%89%E9%8E%AE%E5%B8%82%E5%8D%80%E7%95%8C/%E9%84%89(%E9%8E%AE%E3%80%81%E5%B8%82%E3%80%81%E5%8D%80)%E7%95%8C%E7%B7%9A(TWD97%E7%B6%93%E7%B7%AF%E5%BA%A6)1131028/TOWN_MOI_1131028.shp'
 taiwan = gpd.read_file(polygon)

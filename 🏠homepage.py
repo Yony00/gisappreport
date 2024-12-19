@@ -8,7 +8,7 @@ st.set_page_config(layout="wide")
 st.title("地震災害防治分析—以美濃地震為例")
 
 st.header("環境介紹")
-st.subheader("歷史地震點位展示")
+st.subheader("📌歷史地震點位展示")
 st.write("下方圖台為1973年1月至2024年9月為止規模5以上的地震震央點位及相關資料")
 url="https://raw.githubusercontent.com/liuchia515/gisappreport/refs/heads/main/data/%E6%AD%B7%E5%8F%B2%E8%B3%87%E6%96%99.csv"
 data = pd.read_csv(url)
@@ -29,7 +29,7 @@ with colb:
   st.write("選定規模範圍內地震資料")
   st.dataframe(filtered_data)
 
-st.subheader("2016.02.06美濃地震觀測值散佈圖")
+st.subheader("🗺️2016.02.06美濃地震觀測值散佈圖")
 st.write("下圖為美濃地震觀測值散佈圖之互動式地圖，可以照行政區找尋特定測站之資料（多選）")
 url="https://raw.githubusercontent.com/liuchia515/gisappreport/refs/heads/main/data/%E8%A7%80%E6%B8%AC%E5%80%BC.csv"
 data = pd.read_csv(url)

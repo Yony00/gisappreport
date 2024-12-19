@@ -5,12 +5,7 @@ import folium
 from math import radians, sin, cos, sqrt, atan2
 st.set_page_config(layout="wide")
 
-st.title("5的測試頁，有成功")
-a="""
-修改項目:加入消防站、醫療院所在圓中的點位顯示、加入使用者填入的座標位置(圖示是隨意設定的)、把地圖的中心改成使用者自訂的座標
-"""
-st.markdown(a)
-
+st.title("尋找5公里內醫療與避難設施")
 
 firestation_csv = 'https://raw.githubusercontent.com/tim9810/gis_final_exam/refs/heads/main/%E5%8F%B0%E5%8D%97%E6%B6%88%E9%98%B2%E5%B1%80wgs84%E5%BA%A7%E6%A8%99utf.csv'
 firestation = pd.read_csv(firestation_csv)

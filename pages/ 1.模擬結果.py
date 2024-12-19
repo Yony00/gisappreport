@@ -20,7 +20,7 @@ data = pd.read_csv(
       "LinLee2008SInter",
     ],
 )
-
+st.markdown("以下為不同衰減式模擬之地震災害模擬，請選擇一種查看各地區的災害風險模擬熱區圖")
 selectable_columns = ['LinLee2008', 'AbrahamsonEtAl2014','BooreAtkinson2008','CampbellBozorgnia2008','ChiouYoungs2008']
 options = st.selectbox('選擇一種GMPE呈現', selectable_columns)
 if options=="LinLee2008":

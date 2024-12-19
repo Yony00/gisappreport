@@ -14,8 +14,8 @@ st.set_page_config(layout="wide")
 
 st.title("臺南市各行政區醫療資源統計資料")
 st.header("臺南市各醫院位置")
-markdown = "（內容）"
-st.markdown(markdown)
+markdown1 = "此地圖可查詢臺南市內各家醫院位置與院址，可用篩選器可查詢坐落於各行政區內的醫院資訊。"
+st.markdown(markdown2)
 
 polygon = 'https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%E9%84%89%E9%8E%AE%E5%B8%82%E5%8D%80%E7%95%8C/%E9%84%89(%E9%8E%AE%E3%80%81%E5%B8%82%E3%80%81%E5%8D%80)%E7%95%8C%E7%B7%9A(TWD97%E7%B6%93%E7%B7%AF%E5%BA%A6)1131028/TOWN_MOI_1131028.shp'
 taiwan = gpd.read_file(polygon)
@@ -60,8 +60,8 @@ with col2:
         st.dataframe(hospital_point)
 
 st.header("各行政區救護車數量")
-markdown = "內容"
-st.markdown(markdown)
+markdown2 = "此面量圖呈現台南市各行政區所擁有之救護車數量多寡，可藉由篩選器查詢各行政區內實際救護車數量。"
+st.markdown(markdown2)
 
 ambulance_csv = 'https://github.com/liuchia515/gisappreport/raw/refs/heads/main/data/%E8%87%BA%E5%8D%97%E5%B8%82%E6%95%91%E8%AD%B7%E8%BB%8A%E8%B3%87%E6%96%99.csv'
 ambulance = pd.read_csv(ambulance_csv)
@@ -84,8 +84,8 @@ ax.axis('off')
 st.pyplot(fig)
 
 st.header("各行政區醫療院所數量")
-markdown = "內容"
-st.markdown(markdown)
+markdown3 = "下列表格可查看各行政區所擁有的醫療院所家數、病床數、平均每家服務人數、平均每千人擁有病床數等資訊。"
+st.markdown(markdown3)
 
 hospital_csv = 'data/臺南市醫療院所數量統計.csv'
 hospital_data = pd.read_csv(hospital_csv)

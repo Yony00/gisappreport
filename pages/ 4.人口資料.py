@@ -92,7 +92,7 @@ if option:
             text.set_fontproperties(font)
         for autotext in autotexts:
             autotext.set_fontproperties(font)
-            autotext.set_fontsize(4)
+            autotext.set_fontsize(6)
         ax.set_title(f"{row['行政區']} 幼年、壯年、老年人口比例", fontsize=9, fontproperties=font)
         
         st.pyplot(fig)

@@ -14,7 +14,7 @@ st.title("發現鄰近美味！速食餐廳互動式地圖")
 geojson_urls = [
     "https://raw.githubusercontent.com/Yony00/gisappreport/refs/heads/main/SB10.geojson",  # 麥當勞
     "https://raw.githubusercontent.com/Yony00/gisappreport/refs/heads/main/KK10.geojson",  # 肯德基
-    "https://raw.githubusercontent.com/Yony00/20241127-class/refs/heads/main/MM10.geojson"   # Subway
+    "https://raw.githubusercontent.com/Yony00/gisappreport/refs/heads/main/MM10.geojson"   # Subway
 ]
 
 geo_dfs = []

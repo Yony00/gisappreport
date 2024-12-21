@@ -1,102 +1,73 @@
 import streamlit as st
-import pandas as pd
-import numpy as np
-import leafmap.foliumap as leafmap
-import pydeck as pdk
+import folium
+import geopandas as gpd
+import requests
+import pandas as pd  # 加入 pandas 模組
+from streamlit_folium import st_folium
 
 st.set_page_config(layout="wide")
-st.title("地震災害防治分析—以美濃地震為例")
 
-st.header("環境介紹")
-st.subheader("📌歷史地震點位展示")
-st.write("下方圖台為1973年1月至2024年9月為止規模5以上的地震震央點位及相關資料")
-url="https://raw.githubusercontent.com/liuchia515/gisappreport/refs/heads/main/data/%E6%AD%B7%E5%8F%B2%E8%B3%87%E6%96%99.csv"
-data = pd.read_csv(url)
+# 設定頁面標題
+st.title("發現鄰近美味！速食餐廳互動式地圖")
 
-cola,colb=st.columns([2,1])
-width = None
-height = 800
-tiles = None
+# 定義 GeoJSON 檔案的 URL
+geojson_urls = [
+    "https://raw.githubusercontent.com/Yony00/20241127-class/refs/heads/main/SB10.geojson",  # 麥當勞
+    "https://raw.githubusercontent.com/Yony00/20241127-class/refs/heads/main/KK10.geojson",  # 肯德基
+    "https://raw.githubusercontent.com/Yony00/20241127-class/refs/heads/main/MM10.geojson"   # Subway
+]
 
-with cola:
-  selected= st.slider("請依照需求自行調整範圍",5.0,7.3,(5.0,7.3))
-  def filterdata(df,selected_range):
-    lower, upper = selected_range
-    return df[(df["ML"]>=lower) & (df["ML"]<=upper)]
-  filtered_data = filterdata(data, selected)
-  st.map(filtered_data, size=20, color="#0044ff")
-with colb:
-  st.write("選定規模範圍內地震資料")
-  st.dataframe(filtered_data)
+geo_dfs = []
 
-st.subheader("🗺️2016.02.06美濃地震觀測值散佈圖")
-st.write("下圖為美濃地震觀測值散佈圖之互動式地圖，可以照行政區找尋特定測站之資料（多選）")
-url="https://raw.githubusercontent.com/liuchia515/gisappreport/refs/heads/main/data/%E8%A7%80%E6%B8%AC%E5%80%BC.csv"
-data = pd.read_csv(url)
-col1,col2=st.columns([2,1])
-width = None
-height = 800
-tiles = None
-
-data['color'] = data['震度值'].apply(lambda x: [255-(x*x), 255 - (x*x*5), x*x*5])
-data['radius'] = data['震度值'].apply(lambda x:x*x*x*10)
-
-with col1:
-    optiona = data["鄉鎮"].unique().tolist()
-    optionb = st.multiselect("選擇行政區（多選）", optiona)
-    if optionb:
-        filtered = data[data["鄉鎮"].isin(optionb)]
-        scatterplot_layer = pdk.Layer(
-            'ScatterplotLayer',
-            data=filtered,
-            get_position='[lon, lat]',
-            get_radius='radius',
-            get_fill_color='color', 
-            auto_highlight=True,
-            pickable=True,
-        )
-        view_state = pdk.ViewState(
-            latitude=23.15,
-            longitude=120.3,
-            zoom=9,
-            pitch=50,
-            bearing=0,
-        )
-        deck = pdk.Deck(
-            layers=[scatterplot_layer],
-            initial_view_state=view_state,
-            tooltip={"text": "測站名稱: {測站名稱}\n震度: {震度值}"},
-        )
-        st.pydeck_chart(deck,on_select="rerun")
+# 下載和讀取每個 GeoJSON 檔案
+for url in geojson_urls:
+    response = requests.get(url)
+    if response.status_code == 200:
+        geo_dfs.append(gpd.read_file(response.text))
     else:
-        scatterplot_layer = pdk.Layer(
-            'ScatterplotLayer',
-            data=data,
-            get_position='[lon, lat]',
-            get_radius='radius',
-            get_fill_color='color', 
-            auto_highlight=True,
-            pickable=True,
-        )
-        view_state = pdk.ViewState(
-            latitude=23.15,
-            longitude=120.3,
-            zoom=9,
-            pitch=50,
-            bearing=0,
-        )
-        deck = pdk.Deck(
-            layers=[scatterplot_layer],
-            initial_view_state=view_state,
-            tooltip={"text": "測站名稱: {測站名稱}\n震度: {震度值}"},
-        )
-        st.pydeck_chart(deck,on_select="rerun")
+        st.error(f"Failed to download GeoJSON file from: {url}")
 
-with col2:
-    if optionb:
-        st.markdown("選取區資料表格")
-        st.dataframe(filtered) 
-    else:
-        st.markdown("所有測站資料表格")
-        df = pd.read_csv(url)
-        st.dataframe(df)    
+# 合併所有 GeoDataFrame
+if geo_dfs:
+    combined_gdf = gpd.GeoDataFrame(pd.concat(geo_dfs, ignore_index=True))  # 使用 pd.concat 合併 GeoDataFrame
+
+    # 初始化地圖，將地圖中心設置為指定的座標
+    m = folium.Map(location=[23.6, 121], zoom_start=8)  # 地圖尺度設置為 (23.6, 121)
+
+    # 自定義每個來源的圖標
+    icons = [
+        "https://cdn-icons-png.flaticon.com/512/1046/1046784.png",  # 麥當勞
+        "https://cdn-icons-png.flaticon.com/512/1046/1046846.png",  # 肯德基
+        "https://cdn-icons-png.flaticon.com/512/1046/1046825.png"   # Subway
+    ]
+
+    # 根據不同來源選擇圖標
+    for idx, row in combined_gdf.iterrows():
+        lat, lon = row.geometry.y, row.geometry.x
+        source_index = row.get("source_index", idx % len(geojson_urls))  # 用來區分資料來源
+        icon_url = icons[source_index % len(icons)]  # 根據來源選擇圖標
+        custom_icon = folium.CustomIcon(icon_url, icon_size=(30, 30))
+
+        # 使用 HTML 格式來顯示 popup 內容
+        popup_content = f"""
+        <strong>分店:</strong> {row['name'] if 'name' in row else 'Unknown'}<br>
+        <strong>電話:</strong> {row['number'] if 'number' in row else 'Not Available'}<br>
+        <strong>地址:</strong> {row['address'] if 'address' in row else 'Not Available'}<br>
+        <strong>營業時間:</strong> {row['hours'] if 'hours' in row else 'Not Available'}<br>
+        """
+
+        folium.Marker(
+            location=[lat, lon],
+            popup=folium.Popup(popup_content, max_width=300),  # 使用自定義的 popup 內容
+            icon=custom_icon
+        ).add_to(m)
+
+    # 顯示放大後的地圖
+    st_folium(m, width=900, height=600)  # 增加 height 來放大地圖
+
+    # 顯示合併後的餐廳列表
+    if 'name' in combined_gdf.columns:
+        st.write("Combined Restaurant Locations:")
+        st.write(combined_gdf[['name', 'number', 'address', 'hours']])
+else:
+    st.error("No valid GeoJSON data could be loaded.")
